@@ -2,6 +2,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - DN02_63190321",
+            "request": "launch",
+            "mainClass": "DN02_63190321"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DN01_63190321",
+            "request": "launch",
+            "mainClass": "DN01_63190321"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Fib",
             "request": "launch",
             "mainClass": "Fib"

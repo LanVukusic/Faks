@@ -50,6 +50,7 @@ public class DN01_63190321 {
 
             case 5:
                 //piramida votla
+                
                 a = sc.nextInt();
                 int sumZidakov2 = 0;
 
