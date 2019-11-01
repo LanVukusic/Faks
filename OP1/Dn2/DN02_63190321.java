@@ -14,7 +14,6 @@ public class DN02_63190321 {
 
         switch(command){
             case 1:  // number of instances between a and b devisible by k
-                
                 int devisible = 0;
                 for (int i = a; i < b+1; i++) {
                     if(i % k == 0){
@@ -25,7 +24,6 @@ public class DN02_63190321 {
                 break;
 
             case 2:  // number of instances from a to b which include "k"
-                
                 int hasK = 0;
                 // String temp;
                 for (int i = a; i < b+1; i++) {
