@@ -20,7 +20,7 @@ public class DN02_63190321 {
                         devisible ++;
                     }
                 }
-                System.out.println(devisible);
+                //System.out.println(devisible);
                 break;
 
             case 2:  // number of instances from a to b which include "k"
@@ -46,15 +46,14 @@ public class DN02_63190321 {
                 break;
                 
             case 4:  // number of ints with k consequative digits
-                int conseqDec, currD, numD;
-                conseqDec = 0;
+                int conseqDec = 0, currD, numD;
                 for (int i = a; i < b+1; i++) {
                     currD = 10;  // something that no single digit could be
                     numD = 0;
                     for (int j = 1; j <= numDecimals(i); j++) {
                         if(decimalAtPlace(i, j) == currD){
                             numD += 1;
-                            if(numD >= k){
+                            if(numD == k){
                             //System.out.println(i);
                                 conseqDec ++;
                                 break;
