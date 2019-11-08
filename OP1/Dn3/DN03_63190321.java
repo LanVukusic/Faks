@@ -4,7 +4,7 @@ import java.lang.Math;
 /**
  * DN03_63190321
  * https://ucilnica.fri.uni-lj.si/pluginfile.php/130234/mod_resource/content/1/stevila.pdf
- * input h,w,aÑ,bÑ,cÑ,aÓ,bÓ,cÓint.
+ * input h,w,ax,bx,cx,ay,by,cy,t.
  */
 public class DN03_63190321 {
         public static void main(String[] args) {
