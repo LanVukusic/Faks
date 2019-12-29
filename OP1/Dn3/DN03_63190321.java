@@ -20,7 +20,7 @@ public class DN03_63190321 {
             int cy = sc.nextInt();
             int t = sc.nextInt();
 
-            int time = 0;
+            int time = Math.min(ax, ay);
 
             int nextFreeX = ax;
             int nextFreeY = ay;
@@ -62,9 +62,7 @@ public class DN03_63190321 {
         }
 
         public static int getTimeIncrement(int a, int b, int c, int delay, int time ){
-            if (time + delay < b){  // if we havent reached first GREEN that's the one
-                return a;
-            }else{ // that means we are in the green / red loop
+            { // that means we are in the green / red loop
                 int o = (time + delay - a) % (b + c); // we reset the loop to the relative times
                 if(o < (b)){  // if we are on GREEN at the moment we stop moving..
                     return time + delay;  // than sweet!! we can just say thats our time.

@@ -1,0 +1,9 @@
+8 bits representing the smallest number
+
+4 bits represent the maximal number of bits to represent all the numbers after adjusting with subtracting 
+the smaller number it is maximum of 8 (2 ** 8 = 256 > 255) and 8 is 1000 in binary
+that number will be abreviated as M
+
+now the sequence follows for every instance of number
+code bit for direction is a 2 bit string: 00 up, 01 down, 10 left, 11 right
+
