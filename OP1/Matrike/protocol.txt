@@ -1,9 +1,21 @@
+PROTO 1
 8 bits representing the smallest number
 
+PROTO 2
 4 bits represent the maximal number of bits to represent all the numbers after adjusting with subtracting 
 the smaller number it is maximum of 8 (2 ** 8 = 256 > 255) and 8 is 1000 in binary
 that number will be abreviated as M
 
+PROTO 3
+8 bits representing the length of the matrix
+
+
 now the sequence follows for every instance of number
-code bit for direction is a 2 bit string: 00 up, 01 down, 10 left, 11 right
+PROTO 4
+- M bits that encode the number
+
+following is the describtion of a tree that is creating the island of numbers
+code bit for direction is a 3 bit string: 000 NewNode, 001 up, 010 down, 011 left, 100 right.. 111 NextNumber,
+
+
 
