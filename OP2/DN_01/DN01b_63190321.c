@@ -3,21 +3,14 @@
 int main (){
 
     int a = 0;
+    void printme(int);
+    char in;
 
-    char in = 0;
-    int mod1 = 1;
-
-
-    in = getchar();
-    if (in == '-'){
-        mod1 = -1;
+    do{  // eliminate leading zeros
         in = getchar();
-    }
-    while(in != ' '){  // read for a
-        a = a*10 + (in -'0');
-        in = getchar();
-    }
-
+    } while (in != '0');
+    
+    
     return 0;
 }
 
@@ -33,4 +26,5 @@ void printme(int num){
         printme(num / 10);
         putchar(num%10);
     }
+    return;
 }
