@@ -10,7 +10,7 @@ import sys
 
 PORT = 1234
 IP  = "localhost"
-CLIENT = "client1"
+CLIENT = "client2"
 HEADER_LENGTH = 2
 
 
