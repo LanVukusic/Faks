@@ -1,0 +1,36 @@
+Pomnilnik programa:
++---------------+
+|       |       | SKLAD        (malo)
+|       v       |
+|               |
+|               |
+|       ^       |
+|       |       | KOPICA       (veliko)
++---------------+
+|               | STAT.PODATKI (veliko)
++---------------+
+|      asm      | PROGRAM
++---------------+
+
+OPERATOR &: vrne naslov operanda
+
+TIP NASLOVA: ... celo "stevilo (pri 64bitnih procesorjih i3,i5,i7: 64bitno)
+
+int a          ... a je spremenljivka, ki vsebuje int
+int *a         ... a je spremenljivka, ki vsebuje naslov int-a === kazalec na int
+
+int *a == int* a == int*a
+
+"ce je operand operatorja & tipa int, tedaj & vrne rezultat tipa int*
+"ce je operand operatorja & tipa char, tedaj & vrne rezultat tipa char*
+
+V IZRAZIH:
+     operator &: vrne naslov operanda
+     operator *: vrne vrednost na naslovu
+
+     operator sizeof: vrne "stevilo bytov za predstavitev podatka tipa, ki ga dolo"ca operand
+
+FUNKCIJI:
+    malloc: vrne nov blok pomnilnika "zelene velikosti
+        malloc(sizeof(int))
+        malloc(4)   <===   DA NE VIDIM TEGA!!! (SAMO ZA IZKU"SENE HACKERJE)
