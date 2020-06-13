@@ -174,3 +174,127 @@ float x[3][4];
 ```
 
 Ker je C zelo gay, predstavimo _string_ e z tabelo 🙉🙊
+```c
+char str1[12] = "Hello";
+char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
+
+// char arraye lahko normalno printamo in nam izpiše "Hello"
+printf("Greeting message: %s\n", greeting );
+```
+>Greeting message: Hello
+
+Če so stringi Null terminated ('\0' nakonc), lahok na jih zmetamo en kup funkcij kot so:  
+|Funkcija|Opis|
+|---|---|
+|strcpy(s1, s2);|Kopira S2 v S1|
+|strcat(s1, s2);|Concata (prilepi) S2 na konc S1|
+|strlen(s1);| Vrne dolžino stringa|
+|strcmp(s1, s2);| Vrne: __0__ ko sta S1 in S2 enaka; __<0__ ko S1<S2; __>0__ ko S1>S2|
+|strchr(s1, ch);|Vrne pointer na mesto kjer se prvič nahaja ch v S1|
+|strstr(s1, s2);|Vrne pointer na mesto kjer prvič najde S2 v S1
+
+
+# STRUCTI
+To je najbližji JSON-a ka boš v Cj pršu  
+```c
+struct Person {
+    char name[50];
+    int citNo;
+    float salary;
+};
+
+// dostopamo z . kot pri normalnih jezikih
+float letePare = person2.salary; 
+
+// tko passaš te structe v funkcijo
+float dvojniDenarci (struct Person osebica){
+    return osebica.salary * 2;
+}
+
+int main(){
+    // tko lahko definiraš nove osebe
+    struct Person person1, person2, p[20];
+    return 0;
+}
+```
+Ker hočemo pisat bl hitro in smooth obstaja še ta notacija:  
+```c
+//agh bad no
+struct Distance{
+    int feet;
+    float inch;
+};
+
+int main() {
+    struct Distance d1, d2;
+}
+
+
+//mmm gooood yes
+typedef struct Distance{
+    int feet;
+    float inch;
+} distances;
+
+int main() {
+    distances d1, d2;
+}
+```
+Lahko jih nestaš obviously...  
+
+Tuki pridemo do naslednjega bolečega spoznanja...in sicer __malloc__ in __sizeof__.  
+Primer uporabne na structih:  
+
+```c
+struct person {
+   int age;
+   float weight;
+   char name[30];
+};
+
+int main(){
+  struct person *ptr;
+   int i, n;
+
+   printf("Enter the number of persons: ");
+   scanf("%d", &n);
+
+   // allocating memory for n numbers of struct person
+   ptr = (struct person*) malloc(n * sizeof(struct person));
+
+   for(i = 0; i < n; ++i)
+   {
+       printf("Enter first name and age respectively: ");
+
+       // To access members of 1st struct person,
+       // ptr->name and ptr->age is used
+
+       // To access members of 2nd struct person,
+       // (ptr+1)->name and (ptr+1)->age is used
+
+       // tuki prebere in zapiše direkt na memory naslove.
+       scanf("%s %d", (ptr+i)->name, &(ptr+i)->age);
+   }
+
+   printf("Displaying Information:\n");
+   for(i = 0; i < n; ++i)
+       printf("Name: %s\tAge: %d\n", (ptr+i)->name, (ptr+i)->age);
+
+   return 0;
+}
+```
+__malloc__ ti memory alocata (bruh) neko velikost na disku  
+__sizeof()__ ti vrne kok je ena stvar velika. Dostkrat rabiš v uporabi z malloc da veš kolko prostora rabiš.
+Ta vrstica je usefull:  
+
+```ptr = (struct person*) malloc(n * sizeof(struct person));```
+
+Če imamo nek struct lahko dostopamo do njegovih komponent z ".", če smo fancy af in mamo pointer "*ptr" na struct pa uporabljamo tole :  
+__(ptr) -> name__; ekvivalentno __oseba.name__ če bi meli direkt osebo
+
+# UNIONS
+Okay zdej sm zvedu da je tole glih tolk JSON kokr struct.  
+Fora je da __UNION__ rezervira tok memorya da lahko notr spraviš največčjega memberja, __STRUCT__ pa rezervira plac za use memberje.  
+
+
+
