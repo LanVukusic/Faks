@@ -55,7 +55,7 @@ int main () {
   Value of *ip variable: 20
 
 
-__Pointer lahko tudi povečaš z recimo _ptr++_; Zabavno je, kr ti "visokonivjoski C" nardi u ozadju vs garbage iz ARS-a in ti naslov dejansko inkrementira za 4, tako da kaže na nov ukaz. Hvala C.  
+__Pointer lahko tudi povečaš z recimo _ptr++_; Zabavno je, kr ti "visokonivjoski C" nardi u ozadju vs garbage iz ARS-a in ti naslov dejansko inkrementira za 4 (ni zmer 4... ja ok whatever), tako da kaže na nov ukaz. Hvala C.  
 Uporabna vrednost tega je recimo to da lahko tko na izi loopaš čez tabele:  
 Primer:__  
 ```c
@@ -273,7 +273,7 @@ int main(){
        // (ptr+1)->name and (ptr+1)->age is used
 
        // tuki prebere in zapiše direkt na memory naslove.
-       scanf("%s %d", (ptr+i)->name, &(ptr+i)->age);
+       scanf("%s %d", (ptr+i)->name, (ptr+i)->age);
    }
 
    printf("Displaying Information:\n");
@@ -293,8 +293,114 @@ Ta vrstica je usefull:
 __(ptr) -> name__; ekvivalentno __oseba.name__ če bi meli direkt osebo
 
 # UNIONS
-Okay zdej sm zvedu da je tole glih tolk JSON kokr struct.  
-Fora je da __UNION__ rezervira tok memorya da lahko notr spraviš največčjega memberja, __STRUCT__ pa rezervira plac za use memberje.  
+Okay zdej sm zvedu da je tole nek slabši struct.  
+Fora je da __UNION__ rezervira tok memorya da lahko notr spraviš največčjega memberja, __STRUCT__ pa rezervira plac za use memberje... kokr bi člouk prčakavu....  
+
+In other words, če maš u unionu 5 različnih stvari, lahko uporabljas od teg sam enga (pač delijo si memory, sepravi če zapišeš v prvi element pokvariš drugega itd.). Realno ne vidim nekga usecasa za to uporabljat.  
+
+Kak Čopi bi lahko opazu da so lahko sick za kšne reees nišne optimizacije... sam pač struct go brrr  
+
+# ENUM
+Yey končno neki uporabnega nazaj.  
+To je uno ka nardiš int in si z številkami od 1 do 5 označuješ neka stanja in jih pol pozabiš.  
+Enum je proper way za to nardit.  
+```c
+enum State {Working = 1, Failed = 0}; 
+```
+Tle je primer
+```c
+#include<stdio.h> 
+  
+enum week{Mon, Tue, Wed, Thur, Fri, Sat, Sun}; 
+  
+int main() { 
+    enum week day; 
+    day = Wed; 
+    printf("%d",day); 
+    return 0; 
+}
+```
+izpiše:
+> 2
+
+To je pa tud to.
 
 
 
+# PODATKOVNE STRUKTURE REKURZIJA ..JADA JADA
+Tle pač ni nč takga sepcial. razna drevesa in take itak veš kako delajo in pol razni heapi, linked listi queueueu-ji itd... pač znaš že iz drugih jezikou. implementiras z structi
+
+# DATOTEKE read/write
+
+Ideja je dost podobna kokr u pythonu. Nardiš nek file object, in mu poveš kaj gleda pa nek MODE mu da. alora read/write/readbytes/append ...  
+tle so usi MODI:  https://www.programiz.com/c-programming/c-file-input-output  
+
+``` c
+FILE *fptr;
+fptr = open("E:\\cprogram\\newprogram.txt","r");
+fprintf(fptr,"%d",12);
+fclose(fptr)
+```
+
+Writing file :
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (int argc, char *args[])
+{
+    if (argc != 2) exit (1);
+    char *name = args[1];
+
+    FILE *file;
+    file = fopen (name, "a");
+    if (file == NULL) {
+        fprintf (stderr, "Cannot open file '%s' for writing.\n", name);
+        exit (1);
+    }
+
+    // tole je un deu ka piše u fajl
+    printf ("fprintf=%d\n", fprintf (file, "Hello, world."));
+
+    if (fclose (file) != 0) {
+        fprintf (stderr, "Cannot close file '%s'.\n", name);
+        exit (1);
+    }
+
+    return 0;
+}
+```
+ Branje vrstic:  
+ _EOF (end of file) je in built char ka lahk z njim primerjas kdaj si konc_
+
+ ```c
+ #include <stdio.h>
+#include <stdlib.h>
+
+int main (int argc, char *args[])
+{
+    if (argc != 3) exit (1);
+    char *iname = "/neki/disk/fajl.txt";
+
+    FILE *ifile;
+    if ((ifile = fopen (iname, "r")) == NULL) exit (2);
+
+    // tle sta dve opciji
+
+    /*
+    int data;
+    while ((data = fgetc (ifile)) != EOF) {
+        printf ("prebran znak '%c' [%d]\n", data, data);
+        fputc (data, ofile);
+    }
+    */
+
+    char c;
+    while (fscanf (ifile, "%c", &c) != EOF) {
+        printf ("prebran znak '%c' [%d]\n", c, c);
+    }
+
+    if (fclose (ifile) != 0) exit (4);
+
+    return 0;
+}
