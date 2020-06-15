@@ -2,6 +2,8 @@
 
 typedef struct _heap { int value; struct _heap *left, *right; } heap;
 
+
+// to je dejansko una naloga ka mors oddat
 void sums (char *f, heap *h){
     int summm = h->left->value + h->right->value;
     if(!f){
