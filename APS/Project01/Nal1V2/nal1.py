@@ -1,5 +1,3 @@
-
-
 def solve ():
     with open("test.txt") as t:
         data = t.readline().split(",")
@@ -13,17 +11,15 @@ def solve ():
         for i in range(NumStops):
             data = t.readline().strip().split(":")[1]
             stops.append(map(int, data.split(",")))
-    
+
     # solving the problem
     curr_dist = 0
     # append starting option
     options.append({"price":0, "dist":0, "gas":max_tank, "stops":[]})
-
     for index, curr_stop in enumerate(stops):
         curr_dist += curr_stop[0] #this is distance
         delete = []
         news = []
-        
         for ind, curr_option in enumerate(options):
             if(curr_option["dist"]+curr_option["gas"] >= curr_dist):  # if this path can reach this place
                 # we either continue without refill
@@ -37,12 +33,10 @@ def solve ():
                 news.append({"price":new_price, "dist":curr_option["dist"], "gas":max_tank, "stops":my_stops[:]})
             else:
                 delete.append(ind)
-        
+                
         for i in delete:
             del options[i]
-
         options += news
-    
     legit = []
     for opt in options:
         # check if it has enough to reach the end
