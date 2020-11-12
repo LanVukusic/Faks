@@ -1,7 +1,6 @@
 import java.io.*;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.StandardCharsets;
-
+import java.security.Guard;
+import java.util.concurrent.CountDownLatch;
 public class Naloga2 {
     static String[][] grid;
     static int xLen, yLen, xMax = Integer.MIN_VALUE, yMax = Integer.MIN_VALUE,       lenMax = Integer.MIN_VALUE;
@@ -87,7 +86,6 @@ public class Naloga2 {
         }
    
     }
-
     static class CacheKey {
         Dir direction = Dir.Up;
         int[] pos = new int[2];
@@ -103,6 +101,12 @@ public class Naloga2 {
         public CacheKey key;
         int length = 0;
         String path = "";
+
+        public Cache(){}
+        public Cache(String path, int length){
+            this.path = path;
+            this.length = length;
+        }
     }
 
     public static String[][] Copy(String[][] in){
@@ -110,7 +114,7 @@ public class Naloga2 {
 
         for (int i = 0; i < in.length; i++) {
             for (int j = 0; j < in[i].length; j++) {
-                out[i] = in[i];
+                out[i][j] = ""+in[i][j];
             }
         }
         return out;
@@ -118,7 +122,9 @@ public class Naloga2 {
 
     public static void main(String[] args) throws IOException {
         // read the input data
-        FileReader fileIn = new FileReader(args[0]);
+        //FileReader fileIn = new FileReader(args[0]);
+        FileReader fileIn = new FileReader("in.txt");
+
         BufferedReader reader = new BufferedReader(fileIn);
         String[] line = reader.readLine().split(",");
         xLen = Integer.parseInt(line[0]); // road length
@@ -128,96 +134,78 @@ public class Naloga2 {
         for (int y = 0; y < yLen; y++) {
             String[] lineIn = reader.readLine().split(",");
             for (int x = 0; x < xLen; x++) {
-                grid[x][y] = lineIn[y];
+                grid[x][y] = lineIn[x];
             }
         }
         reader.close();
 
         //used = new hashTable(xLen*yLen);
 
+        Cache vn;
         for(int y = 0; y < yLen; y++){
             for( int x = 0; x < xLen; x++){
-                // do shit
-                System.out.println(""+x+y);
-                rek(x, y, Copy(grid), Dir.Omni, 0, "");
+                // do stuff 
+                vn = rek(x, y, Copy(grid), Dir.Omni, 1, "");
+                if(vn.length > lenMax){
+                    lenMax = vn.length;
+                    pathMax = vn.path;
+                }
             }
         }
-        //System.out.println(grid[1][0])
         System.out.println("Max len: "+lenMax);
         System.out.println(pathMax);
     }
 
-    public static void rek(int x, int y, String[][] visited, Dir direction, int len, String path) {
-        if(len > lenMax){
-            lenMax = len;
-            pathMax = path;
+    public static void debugMeDaddy(String[][] grid){
+        System.out.println();
+        for (int y = 0; y < yLen; y++) {
+            for (int x = 0; x < xLen; x++) {
+                System.out.print(grid[x][y]);
+            }
+            System.out.println();
         }
+    }
 
-        //System.out.println(grid[x][y]);
+    public static Cache maxCache(Cache[] in){
+        Cache big = new Cache();
+        big.length = -1;
+        for (Cache cache : in) {
+            if(cache == null){
+                continue;
+            }
+            if(cache.length>big.length){
+                big = cache;
+            }
+        }
+        return big;
+    }
 
-        //System.out.println(visited[x][y]);
+    public static Cache rek (int x, int y, String[][] visited, Dir direction, int len, String path) {
+        Cache u=null, d=null, l=null, r=null;
+
         String[][] mask = Copy(visited);
         mask[x][y] = "";
 
         // up
-        if((y-1)>=0 && grid[x][y] == visited[x][y-1]){
-            rek(x, y-1, mask, Dir.Up, len + 1, path+",GOR");
-            //System.out.println(len);
+        if((y-1)>=0 && grid[x][y].equals(visited[x][y-1])){
+            u = rek(x, y-1, mask, Dir.Up, len + 1, path+",GOR");
         }
-        
+
         // down
-        if((y+1)<yLen && grid[x][y] == visited[x][y+1]){
-            rek(x, y+1, mask, Dir.Down, len + 1, path+",DOL");
-            //System.out.println(len);
+        if((y+1)<yLen && grid[x][y].equals(visited[x][y+1])){
+            d = rek(x, y+1, mask, Dir.Down, len + 1, path+",DOL");
         }
 
         // left
-        if((x-1)>=0 && grid[x][y] == visited[x-1][y]){
-            rek(x-1, y, mask, Dir.Left, len + 1, path+",LEVO");
-            //System.out.println(len);
+        if((x-1)>=0 && grid[x][y].equals(visited[x-1][y])){
+            l = rek(x-1, y, mask, Dir.Left, len + 1, path+",LEVO");
         }
-
         // right
-        if((x+1)<xLen && grid[x][y] == visited[x+1][y]){
-            rek(x+1, y, mask, Dir.Right, len + 1, path+",DESNO");
-            //System.out.println(len);
-        }
-        
-        /*
-        // if it's not calculated yet
-        if(used.get(new CacheKey(direction, new int[]{x,y})) != null){
-            String[][] mask = visited.clone();
-            mask[x][y] = "";
-
-            // up
-            if(direction != Dir.Down && (y-1)>=0 && grid[x][y-1] == visited[x][y]){
-                rek(x, y-1, mask, Dir.Up, len + 1, path+", UP");
-            }
-            
-            // down
-            if(direction != Dir.Up && (y+1)<yLen && grid[x][+1] == visited[x][y]){
-                rek(x, y+1, mask, Dir.Down, len + 1, path+", DOWN");
-            }
-
-            // left
-            if(direction != Dir.Right && (x-1)>=0 && grid[x-1][y] == visited[x][y]){
-                rek(x-1, y, mask, Dir.Left, len + 1, path+", LEFT");
-            }
-
-            // right
-            if(direction != Dir.Down && (x+1)<xLen && grid[x+1][y] == visited[x][y]){
-                rek(x, y-1, mask, Dir.Right, len + 1, path+", RIGHT");
-            }
-        }else{
-            int pLen = used.get(new CacheKey(direction, new int[]{x,y})).length;
-            if(pLen + len > lenMax){
-                lenMax = pLen + len;
-                pathMax = path+used.get(new CacheKey(direction, new int[]{x,y})).path;
-            }
-            return;
+        if((x+1)<xLen && grid[x][y].equals(visited[x+1][y])){
+            r = rek(x+1, y, mask, Dir.Right, len + 1, path+",DESNO");
         }
 
-        */
+        return maxCache(new Cache[]{u,d,l,r, new Cache(path, len)});
     }
 
 }
