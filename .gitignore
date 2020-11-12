@@ -1,6 +1,8 @@
-OP2/Vaje_01/drugoNajvecje/vaja.c
 *.out
 *.in
 *.diff
 *.res
+*.class
 Makefile
+
+APS/Project01/Nal3/Naloga3.java
