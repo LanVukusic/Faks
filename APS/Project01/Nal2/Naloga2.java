@@ -61,7 +61,7 @@ public class Naloga2 {
         }
 
         protected int hash (CacheKey key){
-            return (37*key.pos[0] + 59*key.pos[1] + 61*key.direction.hashCode()) % this.db.length;
+            return this.fancyMod(37*key.pos[0] + 59*key.pos[1] + 61*key.direction.hashCode());
         }
 
         public void push(CacheKey key, Cache val){
@@ -74,26 +74,41 @@ public class Naloga2 {
             }
         }
 
+        protected int fancyMod(int i){
+            return ((this.db.length + i%this.db.length)%this.db.length);
+        }
+
         public Cache get (CacheKey key){
+            if(this.db[this.hash(key)] == null){
+                return null;
+            }
             LinkNode item = this.db[this.hash(key)].head;
             do {
-                if(item.data.key == key){
+                if(item.data.key.equals(key)){
                     return item.data;
                 }
                 item = item.next;
             } while (item != null);
             return null;
         }
-   
     }
     static class CacheKey {
-        Dir direction = Dir.Up;
-        int[] pos = new int[2];
+        protected Dir direction = Dir.Up;
+        protected int[] pos = new int[2];
 
         public CacheKey(Dir dir, int[] pos){
             this.direction = dir;
             this.pos = pos;
 
+        }
+
+        public boolean equals(CacheKey obj) {
+            if(obj.direction == this.direction){
+                if(obj.pos[0] == this.pos[0] && obj.pos[1] == this.pos[1]){
+                    return true;
+                }
+            }
+            return false;
         }
     }
 
@@ -122,8 +137,8 @@ public class Naloga2 {
 
     public static void main(String[] args) throws IOException {
         // read the input data
-        //FileReader fileIn = new FileReader(args[0]);
-        FileReader fileIn = new FileReader("in.txt");
+        FileReader fileIn = new FileReader(args[0]);
+        //FileReader fileIn = new FileReader("in.txt");
 
         BufferedReader reader = new BufferedReader(fileIn);
         String[] line = reader.readLine().split(",");
@@ -139,19 +154,24 @@ public class Naloga2 {
         }
         reader.close();
 
-        //used = new hashTable(xLen*yLen);
+        used = new hashTable(xLen*yLen);
+
+        //debugMeDaddy(grid);
 
         Cache vn;
         for(int y = 0; y < yLen; y++){
             for( int x = 0; x < xLen; x++){
                 // do stuff 
+
                 vn = rek(x, y, Copy(grid), Dir.Omni, 1, "");
                 if(vn.length > lenMax){
                     lenMax = vn.length;
                     pathMax = vn.path;
                 }
             }
+            //System.out.println(". ");
         }
+
         System.out.println("Max len: "+lenMax);
         System.out.println(pathMax);
     }
@@ -181,8 +201,16 @@ public class Naloga2 {
     }
 
     public static Cache rek (int x, int y, String[][] visited, Dir direction, int len, String path) {
-        Cache u=null, d=null, l=null, r=null;
+        CacheKey key = new CacheKey(direction,new int[]{x,y});
 
+        Cache out = used.get(key);
+        if(out != null){
+            //System.out.println("cached");
+            return out;
+        }
+        //System.out.println("nocache");
+
+        Cache u=null, d=null, l=null, r=null;
         String[][] mask = Copy(visited);
         mask[x][y] = "";
 
@@ -204,8 +232,10 @@ public class Naloga2 {
         if((x+1)<xLen && grid[x][y].equals(visited[x+1][y])){
             r = rek(x+1, y, mask, Dir.Right, len + 1, path+",DESNO");
         }
-
-        return maxCache(new Cache[]{u,d,l,r, new Cache(path, len)});
+        // cache our thingey
+        Cache best = maxCache(new Cache[]{u,d,l,r, new Cache(path, len)});
+        used.push(key, best);
+        return best;
     }
 
 }
