@@ -176,7 +176,7 @@ public class Naloga2 {
         System.out.println(pathMax);
     }
 
-    public static void debugMeDaddy(String[][] grid){
+    public static void debugMe(String[][] grid){
         System.out.println();
         for (int y = 0; y < yLen; y++) {
             for (int x = 0; x < xLen; x++) {
