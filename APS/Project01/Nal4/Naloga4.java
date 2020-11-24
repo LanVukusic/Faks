@@ -11,15 +11,6 @@ class LLNode {
     public  LLNode(int id) {
         this.id = id;
     }
-
-    public void RemoveSelf(){
-        if (this.next != null) {
-            this.next.prev = this.prev;
-        }
-        if (this.prev != null) {
-            this.prev.next = this.next;
-        }
-   }
 }
 
 class Disk {

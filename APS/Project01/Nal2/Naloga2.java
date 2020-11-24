@@ -153,10 +153,8 @@ public class Naloga2 {
             }
         }
         reader.close();
-
         used = new hashTable(xLen*yLen);
-
-        //debugMeDaddy(grid);
+        //debugMe(grid);
 
         Cache vn;
         for(int y = 0; y < yLen; y++){
@@ -201,14 +199,15 @@ public class Naloga2 {
     }
 
     public static Cache rek (int x, int y, String[][] visited, Dir direction, int len, String path) {
+        /*
         CacheKey key = new CacheKey(direction,new int[]{x,y});
-
         Cache out = used.get(key);
         if(out != null){
             //System.out.println("cached");
             return out;
         }
         //System.out.println("nocache");
+        */
 
         Cache u=null, d=null, l=null, r=null;
         String[][] mask = Copy(visited);
@@ -234,7 +233,7 @@ public class Naloga2 {
         }
         // cache our thingey
         Cache best = maxCache(new Cache[]{u,d,l,r, new Cache(path, len)});
-        used.push(key, best);
+        //used.push(key, best);
         return best;
     }
 
