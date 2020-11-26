@@ -1,34 +1,131 @@
 import java.io.*;
 
-
-class Cache {
-    int length = 0;
-    String path = "";
-
-    public Cache(){}
-    public Cache(String path, int length){
-        this.path = path;
-        this.length = length;
-    }
-}
-
-class Poskus {
-    int koraki = 0;
-    String path = "";
-
-    public Poskus(int koraki, String path) {
-        this.koraki = koraki;
-        this.path = path;
-    }
-}
-
 public class Naloga2{
     static char[][] grid;
     static int xLen, yLen, xMax = Integer.MIN_VALUE, yMax = Integer.MIN_VALUE,       lenMax = Integer.MIN_VALUE;
     static String pathMax = "";
+    static hashTable used;
+
+    enum Dir {
+        Up, Down, Left, Right, Omni
+    }
+
+    static class LinkNode {
+        Cache data;
+        LinkNode next;
+        LinkNode prev;
+
+        public LinkNode(Cache item) {
+            this.data = item;
+        }
+    }
+
+    static class LinkedList {
+        LinkNode head;
+
+        public LinkedList(Cache item) {
+            this.head = new LinkNode(item);
+            this.head.prev = null;
+            this.head.next = null;
+        }
+
+        public void add(Cache item) {
+            // lets just add it at the beginning
+            LinkNode temp = new LinkNode(item);
+            temp.next = this.head;
+            temp.prev = null;
+            this.head.prev = temp;
+            this.head = temp;
+        }
+
+        public void remove(LinkNode node) {
+            // if its first
+            if (node.prev == null) {
+                this.head = node.next;
+                return;
+            }
+
+            // else
+            node.prev.next = node.next;
+            node = null;
+            return;
+        }
+    }
+
+    static class hashTable {
+        LinkedList[] db;
+
+        public hashTable(int len) {
+            this.db = new LinkedList[len];
+        }
+
+        protected int hash (CacheKey key){
+            return this.fancyMod(37*key.pos[0] + 59*key.pos[1] + 61*key.direction.hashCode());
+        }
+
+        public void push(CacheKey key, Cache val){
+            val.key = key;
+            if(db[this.hash(key)] == null){
+                // frst entry in this cell
+                db[this.hash(key)] = new LinkedList(val);
+            }else{
+                db[this.hash(key)].add(val);
+            }
+        }
+
+        protected int fancyMod(int i){
+            return ((this.db.length + i%this.db.length)%this.db.length);
+        }
+
+        public Cache get (CacheKey key){
+            if(this.db[this.hash(key)] == null){
+                return null;
+            }
+            LinkNode item = this.db[this.hash(key)].head;
+            do {
+                if(item.data.key.equals(key)){
+                    return item.data;
+                }
+                item = item.next;
+            } while (item != null);
+            return null;
+        }
+    }
+    static class CacheKey {
+        protected Dir direction = Dir.Up;
+        protected int[] pos = new int[2];
+
+        public CacheKey(Dir dir, int[] pos){
+            this.direction = dir;
+            this.pos = pos;
+
+        }
+
+        public boolean equals(CacheKey obj) {
+            if(obj.direction == this.direction){
+                if(obj.pos[0] == this.pos[0] && obj.pos[1] == this.pos[1]){
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+    static class Cache {
+        public CacheKey key;
+        int length = 0;
+        String path = "";
+
+        public Cache(){}
+        public Cache(String path, int length){
+            this.path = path;
+            this.length = length;
+        }
+    }
 
     public static char[][] Copy(char[][] in){
         char[][] out = new char[in.length][in[0].length];
+
         for (int i = 0; i < in.length; i++) {
             for (int j = 0; j < in[i].length; j++) {
                 out[i][j] = in[i][j];
@@ -37,19 +134,22 @@ public class Naloga2{
         return out;
     }
 
+    
     public static void main(String[] args) throws IOException {
         // read the input data
         FileReader fileIn = new FileReader(args[0]);
+        //FileReader fileIn = new FileReader("in.txt");
+
         BufferedReader reader = new BufferedReader(fileIn);
         String[] line = reader.readLine().split(",");
-        xLen = Integer.parseInt(line[0]); //visina
-        yLen = Integer.parseInt(line[1]); //sirina
-        grid = new char[xLen][yLen];
+        yLen = Integer.parseInt(line[0]); //visina
+        xLen = Integer.parseInt(line[1]); //sirina
+        grid = new char[yLen][xLen];
 
         for (int y = 0; y < yLen; y++) {
             String[] lineIn = reader.readLine().split(",");
             for (int x = 0; x < xLen; x++) {
-                grid[x][y] = lineIn[x].charAt(0);
+                grid[y][x] = lineIn[x].charAt(0);
             }
         }
         reader.close();
@@ -58,96 +158,26 @@ public class Naloga2{
 
         Cache vn;
         int mojx = 0, mojy = 0;
-        String potka = "";
         for(int y = 0; y < yLen; y++){
             for( int x = 0; x < xLen; x++){
-                
-                Poskus a =stejKorake(grid, grid[x][y], x, y, 0, new int[xLen][yLen], "");
-                if(a.koraki > lenMax){
-                    lenMax = a.koraki;
+                // do stuff 
+                vn = rek(x, y, Copy(grid), 1);
+                if(vn.length > lenMax){
+                    lenMax = vn.length;
                     mojx = x; mojy = y;
-                    potka = a.path;
                 }
             }
         }
 
         
-        //vn = rek_path(mojx, mojy, Copy(grid), 1, "");
+        vn = rek_path(mojx, mojy, Copy(grid), 1, "");
         System.out.print(mojy);
         System.out.println(","+mojx);
-        System.out.println(potka);
+        System.out.println(vn.path);
         System.out.println("Max len: "+lenMax);
     }
 
-    public static Poskus stejKorake(char[][] crke, char izbrana, int i, int j, int koraki, int[][] path, String potka) {
-        int stuck = 1;
-        Poskus desno = new Poskus(0, "");
-        Poskus levo = new Poskus(0, "");
-        Poskus gor = new Poskus(0, "");
-        Poskus dol = new Poskus(0, "");
-        if (koraki == 0) {
-            path[i][j] = 1;
-        }
-        // desno
-        if (j + 1 != crke[0].length) {
-            if (crke[i][j + 1] == izbrana && path[i][j + 1] != 1) {
-                path[i][j + 1] = 1;
-                stuck = 0;
-                desno = stejKorake(crke, izbrana, i, j + 1, koraki + 1, path,
-                        potka == "" ? potka + "DESNO" : potka + "," + "DESNO");
-            }
-        }
-        // levo
-        if (j - 1 >= 0) {
-            if (crke[i][j - 1] == izbrana && path[i][j - 1] != 1) {
-                path[i][j - 1] = 1;
-                stuck = 0;
-                levo = stejKorake(crke, izbrana, i, j - 1, koraki + 1, path,
-                        potka == "" ? potka + "LEVO" : potka + "," + "LEVO");
-            }
-        }
-        // gor
-        if (i - 1 >= 0) {
-            if (crke[i - 1][j] == izbrana && path[i - 1][j] != 1) {
-                path[i - 1][j] = 1;
-                stuck = 0;
-                gor = stejKorake(crke, izbrana, i - 1, j, koraki + 1, path,
-                        potka == "" ? potka + "GOR" : potka + "," + "GOR");
-            }
-        }
-        // dol
-        if (i + 1 != crke.length) {
-            if (crke[i + 1][j] == izbrana && path[i + 1][j] != 1) {
-                path[i + 1][j] = 1;
-                stuck = 0;
-                dol = stejKorake(crke, izbrana, i + 1, j, koraki + 1, path,
-                        potka == "" ? potka + "DOL" : potka + "," + "DOL");
-            }
-        }
-        Poskus obj = new Poskus(koraki, potka);
-        if (stuck == 1) {
-            path[i][j] = 0;
-            return obj;
-        }
-        path[i][j] = 0;
-        if (desno.koraki >= levo.koraki) {
-            if (desno.koraki >= gor.koraki) {
-                if (desno.koraki >= dol.koraki) {
-                    return desno;
-                }
-                return dol;
-            } else if (gor.koraki >= dol.koraki) {
-                return gor;
-            }
-            return dol;
-        } else if (levo.koraki >= gor.koraki) {
-            if (levo.koraki >= dol.koraki) {
-                return levo;
-            }
-            return dol;
-        }
-        return gor;
-    }
+    
 
     public static Cache rek (int x, int y, char[][] visited, int len) {
 

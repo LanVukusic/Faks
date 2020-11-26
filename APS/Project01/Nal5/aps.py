@@ -118,9 +118,10 @@ def solve():
 
     # updejtaj nivoje  
     if flipflop:
-      zacetne_slike = temp_nivo - zacetne_slike
+      zacetne_slike = temp_nivo #- zacetne_slike
     else:
-      koncne_slike = temp_nivo - koncne_slike
+      #koncne_slike = koncne_slike
+      koncne_slike = temp_nivo #- koncne_slike
     
     flipflop = not flipflop
     
