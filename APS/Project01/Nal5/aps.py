@@ -1,6 +1,3 @@
-#from llist import dllist, dllistnode
-import copy
-
 class Stanje:
   stolpci = []
   sirina = 0
@@ -62,8 +59,10 @@ class Stanje:
 def solve():
   zacetek = None
   konec = None
+  import sys
 
-  with open("in.txt") as f:
+  print(sys.argv[1])
+  with open(sys.argv[1], "r") as f:
     sirina, visina = [int(i) for i in f.readline().split(",")]
     zacetek = Stanje(sirina)
     konec = Stanje(sirina)
@@ -133,6 +132,7 @@ def solve():
       for i in zacetne_slike:
         for j in koncne_slike:
           if i == j:
+            print("REŠITEV :")
             for ins in i.instr:
               print("Vzemi: {}".format(ins[0]))
               print("Izpusti: {}".format(ins[1]))
@@ -140,7 +140,8 @@ def solve():
               print("Vzemi: {}".format(ins[1]))
               print("Izpusti: {}".format(ins[0]))
             
-            return
+            print("\n")
+            
 
             
       # ce najdemo ujemanje smo gucci... lahko samo sprintamo

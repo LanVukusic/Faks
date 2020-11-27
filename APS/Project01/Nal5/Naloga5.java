@@ -2,6 +2,7 @@ import java.io.*;
 import java.text.Normalizer.Form;
 import java.util.NoSuchElementException;
 
+
 import java.util.Iterator;
 
 class LLNode {
@@ -64,10 +65,11 @@ class WannabeList {
         if(other instanceof WannabeList){
             if(this.length == ((WannabeList)other).length){
                 for (int i = 0; i < this.db.length; i++) {
-                    if(this.db[i] == ((WannabeList)other).db[i]){
-                        return true;
+                    if(this.db[i] != ((WannabeList)other).db[i]){
+                        return false;
                     }
                 }
+                return true;
             }
         }
         return false;
@@ -92,7 +94,7 @@ class Stanje {
         }
         LLNode temp = new LLNode(from, to);
         temp.next = this.instructions;
-        this.instructions.next = temp;
+        this.instructions = temp;
     }
 
     public Stanje copy() {
@@ -127,6 +129,12 @@ class Stanje {
             }
             out += "\n";
         }
+
+        LLNode t = this.instructions;
+        while (t != null) {
+            out += String.format("%d -> %d\n", t.field_from, t.field_to);
+            t = t.next;
+        }
         return out;
 
     }
@@ -147,10 +155,11 @@ class Stanje {
     public boolean equals(Object obj) {
         if (obj instanceof Stanje) {
             for (int i = 0; i < stolpci.length; i++) {
-                if(stolpci[i].equals(((Stanje)obj).stolpci[i])){
-                    return true;
+                if(!stolpci[i].equals(((Stanje)obj).stolpci[i])){
+                    return false;
                 }
             }
+            return true;
         }
         return false;
     }
@@ -300,6 +309,8 @@ class HashSet implements Iterable {
                 sb.append('\n');
             }
         }
+
+
         return sb.toString();
     }
 
@@ -386,7 +397,7 @@ class HashSet implements Iterable {
 }
 
 public class Naloga5 {
-    public static void main_(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         // read the input data
         FileReader fileIn = new FileReader(args[0]);
         BufferedReader reader = new BufferedReader(fileIn);
@@ -423,40 +434,38 @@ public class Naloga5 {
 
         // solve
         // create first entries
-        HashSet start_images = new HashSet(10);
-        start_images.add(startImg);
-        HashSet end_images = new HashSet(10);
-        end_images.add(endImg);
+        HashSet zacetneSlike = new HashSet(10);
+        zacetneSlike.add(startImg);
+        HashSet koncneSlike = new HashSet(10);
+        koncneSlike.add(endImg);
 
         boolean flipflop = true;
+        HashSet tempNivo = null;
         while (true) {
-            HashSet tempLevel = new HashSet(5000);
+            tempNivo =  new HashSet(5000);
             if (flipflop) {
-                for (Object h : start_images) {
+                for (Object h : zacetneSlike) {
                     Stanje a = (Stanje) h;
                     for (int stolpci_iz = 0; stolpci_iz < length; stolpci_iz++) {
                         for (int stolpci_v = 0; stolpci_v < length; stolpci_v++) {
+                            //vrstica ni prazna, destinacija pa ni polna
                             if (a.stolpci[stolpci_iz].length == 0 || a.stolpci[stolpci_v].length == height) {
                                 continue;
                             }
+                            //ne dajemo isto v isto kr pač why
                             if (stolpci_iz == stolpci_v) {
                                 continue;
                             }
 
                             Stanje temp = a.copy();
-                            if (temp.instructions == null) {
-                                temp.instructions = new LLNode(stolpci_iz + 1, stolpci_v + 1);
-                            } else {
-                                temp.instructions.next = new LLNode(stolpci_iz + 1, stolpci_v + 1);
-                            }
-                            if(temp.stolpci[stolpci_v].append(temp.stolpci[stolpci_iz].pop())){
-                                tempLevel.add(temp);
-                            }
+                            temp.AddInstruction(stolpci_iz + 1, stolpci_v + 1);
+                            temp.stolpci[stolpci_v].append(temp.stolpci[stolpci_iz].pop());
+                            tempNivo.add(temp);
                         }
                     }
                 }
             } else {
-                for (Object h : end_images) {
+                for (Object h : koncneSlike) {
                     Stanje a = (Stanje) h;
                     for (int stolpci_iz = 0; stolpci_iz < length; stolpci_iz++) {
                         for (int stolpci_v = 0; stolpci_v < length; stolpci_v++) {
@@ -468,15 +477,9 @@ public class Naloga5 {
                             }
 
                             Stanje temp = a.copy();
-                            if (temp.instructions == null) {
-                                temp.instructions = new LLNode(stolpci_iz + 1, stolpci_v + 1);
-                            } else {
-                                temp.instructions.next = new LLNode(stolpci_iz + 1, stolpci_v + 1);
-                            }
-                            //temp.instructions.next = new LLNode(stolpci_iz + 1, stolpci_v + 1);
-                            if(temp.stolpci[stolpci_v].append(temp.stolpci[stolpci_iz].pop())){
-                                tempLevel.add(temp);
-                            }
+                            temp.AddInstruction(stolpci_iz + 1, stolpci_v + 1);
+                            temp.stolpci[stolpci_v].append(temp.stolpci[stolpci_iz].pop());
+                            tempNivo.add(temp);
                             
                         }
                     }
@@ -484,16 +487,22 @@ public class Naloga5 {
             }
 
             if (flipflop) {
-                start_images = tempLevel;
+                zacetneSlike = tempNivo;
             } else {
-                end_images = tempLevel;
+                koncneSlike = tempNivo;
             }
+            System.out.printf("%d %d\n", koncneSlike.length, zacetneSlike.length);
 
             flipflop = !flipflop;
        
-            Stanje[] intersect = start_images.intersect(end_images);
+            Stanje[] intersect = zacetneSlike.intersect(koncneSlike);
 
             if (intersect != null) {
+                System.out.println("start&end");
+                System.out.println(startImg);
+                System.out.println(endImg);
+                System.out.println("result");
+
                 //System.out.println();
                 LLNode temp = intersect[1].instructions;
                 while (temp != null){
@@ -509,6 +518,11 @@ public class Naloga5 {
                     temp = temp.next;
                 }
                 System.out.print(out);
+
+                System.out.println(intersect[0]); // iz zadnjega konca
+                System.out.println(intersect[1]); // iz sprednjega i  guess
+                System.out.println(intersect[0].equals(intersect[1]));
+
                 return;
             }
         }
@@ -517,7 +531,7 @@ public class Naloga5 {
     }
 
     // unit testing
-    public static void main(String[] args) throws IOException{
+    public static void main_(String[] args) throws IOException{
         // read the input data
         FileReader fileIn = new FileReader(args[0]);
         BufferedReader reader = new BufferedReader(fileIn);
@@ -557,8 +571,11 @@ public class Naloga5 {
         System.out.println("start");
         System.out.println(start_images);
 
+
         HashSet tempLevel = new HashSet(5000);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 2; i++) {
+            System.out.printf("Iteration %d\n", i);
+            tempLevel = new HashSet(5000);
             for (Object h : start_images) {
                 Stanje a = (Stanje) h;
                 for (int stolpci_iz = 0; stolpci_iz < length; stolpci_iz++) {

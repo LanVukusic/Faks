@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class Nova24 {
     public static int visina;
@@ -49,13 +50,23 @@ public class Nova24 {
 
         rek_path(grid, naj_x, naj_y, 0, obiskana, grid[naj_y][naj_x], "", naj_len);
 
-        System.out.printf("%d,%d\n",naj_y, naj_x);
-        System.out.printf("%s\n", naj_potka.substring(1));
-        //System.out.println("pedr");
+        // System.out.printf("%d,%d\n",naj_y, naj_x);
+        // System.out.printf("%s\n", naj_potka.substring(1));
+        // System.out.println("pedr");
 
-        long stopTime = System.currentTimeMillis();             // Time measuring
-        long elapsedTime = stopTime - startTime;                // Time measuring
-        System.out.println("> Ms elapsed: "  + elapsedTime);              // Time measuring
+        // long stopTime = System.currentTimeMillis();             // Time measuring
+        // long elapsedTime = stopTime - startTime;                // Time measuring
+        // System.out.println("> Ms elapsed: "  + elapsedTime);              // Time measuring
+
+        // output file
+        FileOutputStream out_f = new FileOutputStream(args[1]);
+        OutputStreamWriter ssreamWriter = new OutputStreamWriter(out_f, StandardCharsets.UTF_8);
+        BufferedWriter bufferedWriter = new BufferedWriter(ssreamWriter);
+
+        bufferedWriter.append(String.format("%d,%d\n",naj_y, naj_x));
+        bufferedWriter.append(String.format("%s\n", naj_potka.substring(1)));
+        //bufferedWriter.append("\n");
+        bufferedWriter.close();
         
     }
 
