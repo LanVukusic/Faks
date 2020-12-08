@@ -1,7 +1,7 @@
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-public class Nova24 {
+public class Naloga2 {
     public static int visina;
     public static int dolzina;
     public static String naj_potka = ""; 

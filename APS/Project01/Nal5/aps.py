@@ -101,7 +101,7 @@ def solve():
         for stolpci_v in range(len(a.stolpci)):
           
           # če vrstica ni faking prazna
-          if len(a.stolpci[stolpci_iz]) == 0:
+          if len(a.stolpci[stolpci_iz]) == 0 or len(a.stolpci[stolpci_v]) == visina:
             continue
 
           # če "vrstica iz" ni "vrstica v"

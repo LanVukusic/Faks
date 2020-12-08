@@ -1,8 +1,7 @@
 import java.io.*;
-import java.text.Normalizer.Form;
 import java.util.NoSuchElementException;
-
 import java.util.Iterator;
+
 
 class LLNode {
     public int field_from;
@@ -14,6 +13,30 @@ class LLNode {
         this.field_from = from;
         this.field_to = to;
     }
+}
+
+class InstrList {
+    public int[] db_from;
+    public int[] db_to;
+    public int length;
+
+    public InstrList(int len) {
+        this.db_from = new int[len];
+        this.db_to = new int[len];
+        this.length = 0;
+    }
+
+    public boolean append(int from, int to) {
+        if (this.length == this.db_from.length) {
+            System.out.println("nemorm apendat razbu"+this.length + "-"+this.db_from.length);
+            return false;
+        }
+        this.length++;
+        this.db_from[this.length - 1] = from;
+        this.db_to[this.length - 1] = to;
+        return true;
+    }
+
 }
 
 class WannabeList {
@@ -77,23 +100,23 @@ class WannabeList {
 
 class Stanje {
     public WannabeList[] stolpci;
-    public LLNode instructions;
+    public InstrList instructions;
 
     public Stanje(int sirina, int visina) {
         this.stolpci = new WannabeList[sirina];
+        this.instructions = new InstrList(100);
         for (int i = 0; i < stolpci.length; i++) {
             stolpci[i] = new WannabeList(sirina);
         }
     }
 
     public void AddInstruction(int from, int to) {
-        if (this.instructions == null) {
-            this.instructions = new LLNode(from, to);
-            return;
-        }
-        LLNode temp = new LLNode(from, to);
-        temp.next = this.instructions;
-        this.instructions = temp;
+        this.instructions.append(from, to);
+    }
+
+    public void move(int from, int to){
+        this.stolpci[to].append(this.stolpci[from].pop());
+        this.AddInstruction(from+1, to+1);
     }
 
     public Stanje copy() {
@@ -102,17 +125,12 @@ class Stanje {
             temp.stolpci[i] = this.stolpci[i].copy();
         }
 
-        LLNode temp_i = this.instructions;
-        LLNode temp_aggr = null;
-        while (temp_i != null) {
-            if (temp_aggr == null) {
-                temp_aggr = new LLNode(temp_i.field_from, temp_i.field_to);
-                continue;
-            }
-            temp_aggr.next = new LLNode(temp_i.field_from, temp_i.field_to);
-            temp_aggr = temp_aggr.next;
-            temp_i = temp_i.next;
-        }
+        // copy instructions
+        InstrList temp_i = this.instructions;
+        InstrList temp_aggr = new InstrList(temp_i.db_from.length);
+        System.arraycopy(temp_i.db_from, 0, temp_aggr.db_from, 0, temp_i.length);
+        System.arraycopy(temp_i.db_to, 0, temp_aggr.db_to, 0, temp_i.length);
+        temp_aggr.length = temp_i.length;
         temp.instructions = temp_aggr;
 
         return temp;
@@ -129,11 +147,16 @@ class Stanje {
             out += "\n";
         }
 
-        LLNode t = this.instructions;
-        while (t != null) {
-            out += String.format("%d -> %d\n", t.field_from, t.field_to);
-            t = t.next;
+        InstrList a = this.instructions;;
+        for (int i = 0; i < a.length; i++) {
+            out += (String.format("%d -> %d\n", a.db_from[i], a.db_to[i]));
         }
+
+        // LLNode t = this.instructions;
+        // while (t != null) {
+        //     out += String.format("%d -> %d\n", t.field_from, t.field_to);
+        //     t = t.next;
+        // }
         return out;
 
     }
@@ -396,31 +419,7 @@ class HashSet implements Iterable {
 }
 
 public class Naloga5 {
-    public static HashSet combos (HashSet in, int length, int height){
-        HashSet tempNivo =  new HashSet(5000);
-        for (Object h : in) {
-            Stanje a = (Stanje) h;
-            for (int stolpci_iz = 0; stolpci_iz < length; stolpci_iz++) {
-                for (int stolpci_v = 0; stolpci_v < length; stolpci_v++) {
-                    //vrstica ni prazna, destinacija pa ni polna
-                    if (a.stolpci[stolpci_iz].length == 0 || a.stolpci[stolpci_v].length == height) {
-                        continue;
-                    }
-                    //ne dajemo isto v isto kr pač why
-                    if (stolpci_iz == stolpci_v) {
-                        continue;
-                    }
-
-                    Stanje temp = a.copy();
-                    temp.AddInstruction(stolpci_iz + 1, stolpci_v + 1);
-                    temp.stolpci[stolpci_v].append(temp.stolpci[stolpci_iz].pop());
-                    tempNivo.add(temp);
-                }
-            }
-        }
-        return tempNivo;
-    }
-    public static void main_(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         // read the input data
         FileReader fileIn = new FileReader(args[0]);
         BufferedReader reader = new BufferedReader(fileIn);
@@ -481,8 +480,7 @@ public class Naloga5 {
                             }
 
                             Stanje temp = a.copy();
-                            temp.AddInstruction(stolpci_iz + 1, stolpci_v + 1);
-                            temp.stolpci[stolpci_v].append(temp.stolpci[stolpci_iz].pop());
+                            temp.move(stolpci_iz, stolpci_v);
                             tempNivo.add(temp);
                         }
                     }
@@ -500,8 +498,7 @@ public class Naloga5 {
                             }
 
                             Stanje temp = a.copy();
-                            temp.AddInstruction(stolpci_iz + 1, stolpci_v + 1);
-                            temp.stolpci[stolpci_v].append(temp.stolpci[stolpci_iz].pop());
+                            temp.move(stolpci_iz, stolpci_v );
                             tempNivo.add(temp);
                             
                         }
@@ -527,24 +524,19 @@ public class Naloga5 {
                 System.out.println("result");
 
                 //System.out.println();
-                LLNode temp = intersect[1].instructions;
-                while (temp != null){
-                    System.out.println(String.format("VZEMI %d\nIZPUSTI %d", temp.field_from, temp.field_to));
-                    temp = temp.next;
+                InstrList temp = intersect[1].instructions;
+                for (int i = 0; i < temp.length; i++) {
+                    System.out.println(String.format("VZEMI %d\nIZPUSTI %d", temp.db_from[i], temp.db_to[i]));
                 }
 
                 //System.out.println();
                 temp = intersect[0].instructions;
-                String out = "";
-                while (temp != null){
-                    out = String.format("VZEMI %d\nIZPUSTI %d\n", temp.field_to, temp.field_from) + out;
-                    temp = temp.next;
+                for (int i = 0; i < temp.length; i++) {
+                    System.out.println(String.format("VZEMI %d\nIZPUSTI %d", temp.db_from[temp.length -1 -i], temp.db_to[temp.length -1 -i]));
                 }
-                System.out.print(out);
-
+               
                 System.out.println(intersect[0]); // iz zadnjega konca
                 System.out.println(intersect[1]); // iz sprednjega i  guess
-                System.out.println(intersect[0].equals(intersect[1]));
 
                 return;
             }
@@ -554,20 +546,20 @@ public class Naloga5 {
     }
 
     // unit testing
-    public static void main(String[] args) throws IOException{
-        // read the input data
-        HashSet a = new HashSet(10);
-        Stanje b = new Stanje(3, 3);
-        b.stolpci[0].append(3);
-        b.stolpci[0].append(2);
-        b.stolpci[0].append(1);
+    public static void main_(String[] args) throws IOException{
 
-        a.add(b);
+        Stanje a = new Stanje(10, 10);
+        a.stolpci[0].append(10);
+        a.stolpci[0].append(12);
+        a.stolpci[0].append(13);
+        a.stolpci[0].append(14);
+        System.out.println(a);
+        a.move(0, 1);
+        a.move(0, 1);
+        a.move(0, 2);
+        System.out.println(a);
+        //System.out.println(b);
 
-        HashSet out = combos(a,3,3);
-        System.out.println(out);
 
-        HashSet out2 = combos(out,3,3);
-        System.out.println(out2);   
     }
 }
