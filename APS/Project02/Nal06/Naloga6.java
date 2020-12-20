@@ -7,9 +7,9 @@ class Edge{
     public int pathLenToNext;
     public int endIndex;
 
-    public Edge(int price, int node){
+    public Edge(int price, int nextNode){
         this.pathLenToNext = price;
-        this.endIndex = node;
+        this.endIndex = nextNode;
     }
 }
 
@@ -96,108 +96,36 @@ public class Naloga6 {
         // start problem solving
         // priority queue
         PriorityQueue<PriqObject> priQ = new PriorityQueue<>();
-        priQ.add(new PriqObject(pathStart, 0, cities[pathStart].color));
-        int currBest = Integer.MAX_VALUE;
+        priQ.add(new PriqObject(pathStart, 0, 0));
 
-        // infinte while loop. check every top element of priQ
-        while (true){
-            // get current node
-            PriqObject currentNode = priQ.poll();
-            //System.out.println(currentNode.pathLength);
-
-            // check the exiting condition
-            if (currentNode.pathLength > currBest){
-                break;
-            }
-
-            // get all of its children indexes
-            childrenLoop:
-            for (Edge priqObject : cities[currentNode.index].children) {
-                // the actual node is "cities[priqObject.endIndex]"
-                
-
-                // if any current or child are of color 0; or they have the same color, we are cool
-                if ( currentNode.color == 0 || cities[priqObject.endIndex].color == 0 || currentNode.color !=  cities[priqObject.endIndex].color ){
-                    // compute new path length
-                    int newLength = currentNode.pathLength + priqObject.pathLenToNext;
-                    System.out.println("" + priqObject.endIndex + " OK");
-
-                    // check if you can find the end node
-                    if (priqObject.endIndex == pathEnd){
-                        currBest = newLength;
-                        // System.out.println("najdu brttt");
-                        // System.out.println(currBest);
-                        return;
-                    }
-
-                    // if we already have a better price for this particular color
-                    if(cities[priqObject.endIndex].visitedPerColor[currentNode.color] < newLength){
-                        continue;
-                    }else{
-                        cities[priqObject.endIndex].visitedPerColor[currentNode.color] = newLength;
-                        priQ.add(new PriqObject(priqObject.pathLenToNext, newLength, currentNode.color));
-                    }
-                    
-                    // find the possibly better options
-                    // for (PriqObject iterObject : priQ) {
-                    //     if ( iterObject.index == priqObject.endIndex && iterObject.color == cities[priqObject.endIndex].color){
-                    //         if (newLength < iterObject.pathLength) {
-                    //             priQ.remove();
-                    //         }
-                    //         continue childrenLoop;
-                    //     }
-                    // }
-
-                    priQ.add(new PriqObject(priqObject.pathLenToNext, newLength, currentNode.color));
-                }
-            }
+        for (int i = 0; i < cities[pathStart].visitedPerColor.length; i++) {
+            cities[pathStart].visitedPerColor[i] = 0;
         }
 
-        // check the priority queue
+        PriqObject currentObj = priQ.poll();
 
-        // while (true) {
-        //     PriqObject curr = priQ.poll();
+        // while the last node doesnt bubble up to the top;
+        while (currentObj.index != pathEnd){
 
-        //     // break will get triggered when we find the best path
-        //     // we than only go through ne next few that might get us better off
-        //     if (curr.pathLength > currBest){
-        //         break;
-        //     }
+            // iterate over children of current object
+            // children being connections to other nodes
+            for (Edge currEdge : cities[currentObj.index].children) {
+                GraphNode nextCity = cities[currEdge.endIndex];
 
-        //     //check the children and see what's going on
-        //     for (Edge viewedChildEdge : cities[curr.index].children) {
-             
-        //         // check if we are color blocked
-        //         // if we are okay, continue exploration
-        //         if ( cities[viewedChildEdge.endIndex].color == 0 || curr.color == 0 ||  cities[viewedChildEdge.endIndex].color != curr.color){
-        //             int newLength = curr.pathLength + viewedChildEdge.pathLenToNext;
+                if( nextCity.color == 0 || currentObj.color == 0 || nextCity.color != currentObj.color ){
+                    int lastLength = nextCity.visitedPerColor[currentObj.color];
+                    int newLength = currentObj.pathLength + currEdge.pathLenToNext;
 
-        //             //check if we found the finish
-        //             if (viewedChildEdge.endIndex == pathEnd){
-        //                 System.out.println("found");
-        //                 currBest = newLength;
-        //                 System.out.println(newLength);
-        //                 return;
-        //                 //continue;
-        //             }  
+                    if( newLength < lastLength){
+                        priQ.add(new PriqObject(currEdge.endIndex, newLength, currentObj.color));
+                        nextCity.visitedPerColor[currentObj.color] = newLength;
+                    }
+                }
+                
+            }
 
-        //             // check if we have the occurance in priorityQ
-        //             // that potentialy has a shorter route
-        //             // possible speedup: priQ is sorted so we could serch much faseter... will we? nope ..no time
-        //             for (PriqObject priqObject : priQ) {
-        //                 if(priqObject.index == viewedChildEdge.endIndex && priqObject.color == cities[viewedChildEdge.endIndex].color && priqObject.pathLength> newLength){
-        //                     priqObject.pathLength = newLength;
-        //                     continue;
-        //                 }
-        //             }
-        //             // if not, we just add it to the priority queue
-        //             //System.out.println(newLength);
-        //             priQ.add(new PriqObject(viewedChildEdge.endIndex, newLength, cities[curr.index].color));
-        //         }
-        //     }
-        // }
-
-        System.out.println(currBest);
-
+            currentObj = priQ.poll();
+        }
+        System.out.println(currentObj.pathLength);
     }
 }
