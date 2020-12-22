@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
@@ -54,6 +55,8 @@ public class Naloga6 {
     public static void main(String[] args) throws IOException{
         // read the input data
         FileReader fileIn = new FileReader(args[0]);
+        //FileReader fileIn = new FileReader("t6.txt");
+
         BufferedReader bufferedReader = new BufferedReader(fileIn);
         // read first time
         String[] line = bufferedReader.readLine().split(" ");
@@ -85,17 +88,27 @@ public class Naloga6 {
         // set group colors. Color 0 is unique all others are legit colors
         for (int i = 0; i < S; i++) {
             line = bufferedReader.readLine().split(" ");
-            for (String s : line) {
-                int index = Integer.parseInt(s);
+            for (int j = 1; j <= Integer.parseInt(line[0]); j++) {
+                int index = Integer.parseInt(line[j]);
                 cities[index].color = i+1;
             }
         }
         bufferedReader.close();
         // end file reading
 
+        // int z = 0;
+        // for (GraphNode mesto : cities) {
+        //     System.out.printf("mesto: %d, barva: %d\n",z,  mesto.color);
+        //     z++;
+        // }
+
         // start problem solving
         // priority queue
         PriorityQueue<PriqObject> priQ = new PriorityQueue<>();
+        // for (Edge edgeFromFirst : cities[pathStart].children) {
+        //     priQ.add(new PriqObject(edgeFromFirst.endIndex, edgeFromFirst.pathLenToNext, cities[pathStart].color));
+        // }
+
         priQ.add(new PriqObject(pathStart, 0, 0));
 
         for (int i = 0; i < cities[pathStart].visitedPerColor.length; i++) {
@@ -111,21 +124,31 @@ public class Naloga6 {
             // children being connections to other nodes
             for (Edge currEdge : cities[currentObj.index].children) {
                 GraphNode nextCity = cities[currEdge.endIndex];
+                int parentColor = currentObj.color;
+                int thisColor = cities[currentObj.index].color;
+                int nextColor = nextCity.color;
 
-                if( nextCity.color == 0 || currentObj.color == 0 || nextCity.color != currentObj.color ){
-                    int lastLength = nextCity.visitedPerColor[currentObj.color];
+
+                if( parentColor == 0 || nextColor == 0 || nextColor != parentColor ){
+                    int lastLength = nextCity.visitedPerColor[thisColor];
                     int newLength = currentObj.pathLength + currEdge.pathLenToNext;
 
                     if( newLength < lastLength){
-                        priQ.add(new PriqObject(currEdge.endIndex, newLength, currentObj.color));
-                        nextCity.visitedPerColor[currentObj.color] = newLength;
+                        //System.out.printf("Dajem na priq iz %d na %d, dolgo %d. Barva: %d p: %d N: %d\n", currentObj.index, currEdge.endIndex, newLength, thisColor, parentColor, nextColor);
+                        priQ.add(new PriqObject(currEdge.endIndex, newLength, thisColor));
+                        nextCity.visitedPerColor[thisColor] = newLength;
                     }
                 }
                 
             }
-
             currentObj = priQ.poll();
         }
-        System.out.println(currentObj.pathLength);
+        
+        FileOutputStream out_f = new FileOutputStream(args[1]);
+        OutputStreamWriter ssreamWriter = new OutputStreamWriter(out_f, StandardCharsets.UTF_8);
+        BufferedWriter bufferedWriter = new BufferedWriter(ssreamWriter);
+        bufferedWriter.append(String.valueOf(currentObj.pathLength));
+        bufferedWriter.append("\n");
+        bufferedWriter.close();
     }
 }
