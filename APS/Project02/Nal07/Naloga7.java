@@ -14,8 +14,11 @@ class Node {
         this.children = new ArrayList<>();
     }
 
-    public void deletechild (int index){
+    public void deleteConn (int index, Node[] a){
+        // delete one way
         this.children.set(this.children.indexOf((Integer)index), -1);
+        //delete other way
+        a[index].children.set(a[index].children.indexOf((Integer)this.index), -1);
     }
 }
 
@@ -66,23 +69,23 @@ public class Naloga7 {
         //System.out.printf("starting with %d connections\n", getConnections(nodes));
 
         ArrayList<Integer> pathNodes = rek(nodes[pathStart], pathEnd);
-        for (Integer integer : pathNodes) {
-            System.out.println(integer);
-        }
+        // for (Integer integer : pathNodes) {
+        //     System.out.println(integer);
+        // }
         ArrayList<int[]> pairs = new ArrayList<>();
 
-        System.out.printf("starting with %d connections\n", getConnections(nodes));
+        //System.out.printf("starting with %d connections\n", getConnections(nodes));
         
         // get only needed connections
 
         // 1. get connections from last (-1. )
         int startIndex = pathNodes.get(0);
         int endIndex = pathNodes.get(pathNodes.size() - 1);
-        System.out.println("endindex:" + endIndex);
+        //System.out.println("endindex:" + endIndex);
         while (startIndex != endIndex){
             
-            int a = rek2(nodes[startIndex], pathNodes, startIndex);
-            System.out.printf("searching from %d ret: %d\n", startIndex, a);
+            int a = rek2(nodes[startIndex], pathNodes);
+            //System.out.printf("searching from %d ret: %d\n", startIndex, a);
             if(a == -1){ // if the function fails to find a path
                 removeTill(startIndex, pathNodes,true);
                 pairs.add(new int[]{startIndex,pathNodes.get(0)});
@@ -90,9 +93,6 @@ public class Naloga7 {
             }else{
                 // remove all connection that it had found. if it found 3;  we can remove 1, 2, 3
                 removeTill(a, pathNodes, false);
-                // if(a == endIndex){
-                //     break;
-                // }
             }
             startIndex = pathNodes.get(0);
         
@@ -107,7 +107,6 @@ public class Naloga7 {
             }else{
                 bufferedWriter.append(""+pairs.get(i)[1]+" "+pairs.get(i)[0]+"\n");
             }
-            
         }
         bufferedWriter.close();
     }
@@ -116,50 +115,63 @@ public class Naloga7 {
     * REK
     * Recursivly run through the graph and delete connections after
     */
-    static ArrayList<Integer> rek(Node start, int stopIndex){
+    static ArrayList<Integer> rek(Node origin, int stopIndex){
         // we mustn't start on a visited node
-        if (start.visited){
+        if (origin.visited){
             return null;
             //start.children.clear();
         }
 
-        if(start.index == stopIndex){
-            ArrayList<Integer> n = new ArrayList<Integer>();
+        if(origin.index == stopIndex){
+            ArrayList<Integer> n = new ArrayList<Integer>(100);
             n.add(stopIndex);
             //start.visited = -2;
+            origin.visited = true;
             return n;
         }
 
         // tag it so we dont get cycles
-        start.visited = true;
-        //System.out.println(start.index);
+        origin.visited = true;
 
         // visit all the children
         ArrayList<Integer> a;
-        for (Integer childIndex : start.children){
+        for (Integer childIndex : origin.children){
             if (childIndex != -1){
                 a = rek(nodes[childIndex], stopIndex);
                 if(a != null){
-                    nodes[childIndex].deletechild(start.index);
-                    start.deletechild(childIndex);
-                    a.add(start.index);
+                    nodes[childIndex].deleteConn(origin.index, nodes);
+                    //origin.deletechild(childIndex, nodes);
+                    a.add((Integer)origin.index);
                     return a;
                 }
             }
         }
-        start.visited = false;
         return null;
-        
     }
 
     // REK2
-    static int rek2(Node start, ArrayList<Integer> legal, int ignore){
+    static int rek2(Node start, ArrayList<Integer> legal){
         // iterate over children and try to find the match in array
+        int observedChild;
+        int observedGoal;
         for (int i = 0; i < start.children.size(); i++) {
-            int lol = start.children.get(i);
-            for (Integer legalEntry : legal) {
-                if (lol != -1 && lol == (int)legalEntry && lol != ignore){
-                    return lol;
+            observedChild = start.children.get(i);
+            if(observedChild == -1){  // we treat this as a deleted connection so we streightup skip it
+                continue;
+            }
+            for (int j = 0; j < legal.size(); j++) {
+                observedGoal = legal.get(j);
+                if(observedChild == observedGoal){
+                    // if we see an end node right around us
+                    return observedGoal;
+                }else{
+                    // we dont see it, but we see a possible path so we explore it further
+                    start.deleteConn(observedGoal, nodes);
+                    int a = rek2(nodes[observedChild], legal);
+                    if (a != -1){
+                        return a;
+                    }
+                    
                 }
             }
         }

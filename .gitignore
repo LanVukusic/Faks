@@ -1,3 +1,4 @@
+OUT/
 *.out
 *.in
 *.diff
@@ -5,3 +6,4 @@
 *.class
 Makefile
 Test/
+o.txt
