@@ -6,4 +6,5 @@ OUT/
 *.class
 Makefile
 Test/
+test/
 o.txt
