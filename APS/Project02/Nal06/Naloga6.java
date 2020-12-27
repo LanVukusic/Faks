@@ -96,6 +96,12 @@ public class Naloga6 {
         bufferedReader.close();
         // end file reading
 
+        // int z = 0;
+        // for (GraphNode mesto : cities) {
+        //     System.out.printf("mesto: %d, barva: %d\n",z,  mesto.color);
+        //     z++;
+        // }
+
         // start problem solving
         // priority queue
         PriorityQueue<PriqObject> priQ = new PriorityQueue<>();
