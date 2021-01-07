@@ -1,24 +1,62 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Queue;
+import java.util.TreeSet;
 import java.io.*;
+
+class Edge implements Comparable<Edge> {
+    public int from;
+    public int to;
+
+    public Edge(int to, int from) {
+        this.from = Math.min(to, from);
+        this.to = Math.max(to, from);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof Edge)) {
+            return false;
+        }
+        Edge otherNode = (Edge) other;
+        return (this.from == otherNode.from && this.to == otherNode.to);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.from * 31 + this.to * 17;
+    }
+
+    @Override
+    public int compareTo(Edge other) {
+        if(this.from != other.from){
+            return this.from - other.from;
+        }else{
+            return this.to - other.to; 
+        } 
+    }
+}
 
 class Node {
     int index;
     boolean visited;
     ArrayList<Integer> children;
+    public Node path_prev;
 
-    public Node(int index){
+    public Node(int index) {
         this.index = index;
         this.children = new ArrayList<>();
     }
 
-    public void deleteConn (int index, Node[] a){
+    public void deleteConn(int index, Node[] a) {
         // delete one way
-        this.children.set(this.children.indexOf((Integer)index), -1);
-        //delete other way
-        a[index].children.set(a[index].children.indexOf((Integer)this.index), -1);
+        this.children.set(this.children.indexOf((Integer) index), -1);
+        // delete other way
+        a[index].children.set(a[index].children.indexOf((Integer) this.index), -1);
     }
 }
 
@@ -26,12 +64,18 @@ class Node {
  * Naloga7
  */
 public class Naloga7 {
+
     static int nodesCount, edgesCount;
     static int pathStart, pathEnd;
     static Node[] nodes;
+    static int time = 0;
+    static TreeSet<Edge> rek2Out;
 
-    public static void main(String[] args) throws IOException{
-        // read the input data
+    public static void main(String[] args) throws IOException {
+        // init
+        rek2Out = new TreeSet<Edge>();
+
+        //red file
         FileReader fileIn = new FileReader(args[0]);
         BufferedReader bufferedReader = new BufferedReader(fileIn);
         // read first time
@@ -50,7 +94,7 @@ public class Naloga7 {
         nodes = new Node[nodesCount];
         for (int i = 0; i < nodesCount; i++) {
             nodes[i] = new Node(i);
-            //System.out.println("adding: "+i);
+            // System.out.println("adding: "+i);
         }
 
         // connect nodes
@@ -58,150 +102,130 @@ public class Naloga7 {
             line = bufferedReader.readLine().split(" ");
             int A = Integer.parseInt(line[0]);
             int B = Integer.parseInt(line[1]);
-            //System.out.printf("from: %d to: %d \n",A,B);
+            // System.out.printf("from: %d to: %d \n",A,B);
             nodes[A].children.add(B);
             nodes[B].children.add(A);
         }
 
-        //over line reading
+        // over line reading
         bufferedReader.close();
-        //start solving
-        //System.out.printf("starting with %d connections\n", getConnections(nodes));
 
-        ArrayList<Integer> pathNodes = rek(nodes[pathStart], pathEnd);
-        // for (Integer integer : pathNodes) {
-        //     System.out.println(integer);
-        // }
-        ArrayList<int[]> pairs = new ArrayList<>();
+        // start solving
+        Queue<Integer> q = new ArrayDeque<Integer>();
+        q.add(pathStart);
+        // nodes[pathStart].path.add(pathStart);
 
-        //System.out.printf("starting with %d connections\n", getConnections(nodes));
-        
-        // get only needed connections
-
-        // 1. get connections from last (-1. )
-        int startIndex = pathNodes.get(0);
-        int endIndex = pathNodes.get(pathNodes.size() - 1);
-        //System.out.println("endindex:" + endIndex);
-        while (startIndex != endIndex){
-            
-            int a = rek2(nodes[startIndex], pathNodes);
-            //System.out.printf("searching from %d ret: %d\n", startIndex, a);
-            if(a == -1){ // if the function fails to find a path
-                removeTill(startIndex, pathNodes,true);
-                pairs.add(new int[]{startIndex,pathNodes.get(0)});
-                //System.out.printf("%d : %d\n",startIndex,pathNodes.get(0));
-            }else{
-                // remove all connection that it had found. if it found 3;  we can remove 1, 2, 3
-                removeTill(a, pathNodes, false);
+        // get all the nodes in a path
+        TreeSet<Edge> out = null;
+        boolean[] visited = new boolean[nodes.length];
+        // BFS
+        while (true) {
+            Node n = nodes[q.poll()]; // poll one element from db
+            if (n.index == pathEnd) {
+                break;
             }
-            startIndex = pathNodes.get(0);
-        
+            for (Integer c : n.children) {
+                if (!visited[c]) {
+                    nodes[c].path_prev = n;
+                    q.add(c);
+                    visited[c] = true;
+                }
+            }
         }
+
+        // create a unique edge set from path
+        Node n = nodes[pathEnd];
+        out = new TreeSet<>();
+        while (n != null) {
+            if (n.index == pathStart) {
+                break;
+            }
+            out.add(new Edge(n.index, n.path_prev.index));
+            n = n.path_prev;
+        }
+
+        // // print path
+        // for (Edge e : out) {
+        //     System.out.printf("%d %d\n", e.from, e.to);
+        // }
+
+        // Mark all the vertices as not visited 
+        int V = nodes.length;
+        int NIL = -1;
+
+        visited = new boolean[V]; 
+        int disc[] = new int[V]; 
+        int low[] = new int[V]; 
+        int parent[] = new int[V]; 
+  
+  
+        // Initialize parent and visited, and ap(articulation point) 
+        // arrays 
+        for (int i = 0; i < V; i++) 
+        { 
+            parent[i] = NIL; 
+            visited[i] = false; 
+        } 
+  
+        // Call the recursive helper function to find Bridges 
+        // in DFS tree rooted with vertex 'i' 
+    
+        for (int i = 0; i < V; i++) 
+            if (visited[i] == false) 
+                bridgeUtil(i, visited, disc, low, parent);
+
+
+        rek2Out.retainAll(out);
 
         FileOutputStream out_f = new FileOutputStream(args[1]);
         OutputStreamWriter ssreamWriter = new OutputStreamWriter(out_f, StandardCharsets.UTF_8);
         BufferedWriter bufferedWriter = new BufferedWriter(ssreamWriter);
-        for (int i = pairs.size() - 1; i >= 0; i--) {
-            if(pairs.get(i)[0] < pairs.get(i)[1]){
-                bufferedWriter.append(""+pairs.get(i)[0]+" "+pairs.get(i)[1]+"\n");
-            }else{
-                bufferedWriter.append(""+pairs.get(i)[1]+" "+pairs.get(i)[0]+"\n");
-            }
+        
+        for(Edge e : rek2Out){
+            //System.out.println(""+e.from+" - "+e.to);
+            bufferedWriter.append(""+e.from+" "+e.to);
         }
+        bufferedWriter.append("\n");
         bufferedWriter.close();
     }
 
-    /*
-    * REK
-    * Recursivly run through the graph and delete connections after
-    */
-    static ArrayList<Integer> rek(Node origin, int stopIndex){
-        // we mustn't start on a visited node
-        if (origin.visited){
-            return null;
-            //start.children.clear();
-        }
+    public static void bridgeUtil(int u, boolean visited[], int disc[], int low[], int parent[]) {
 
-        if(origin.index == stopIndex){
-            ArrayList<Integer> n = new ArrayList<Integer>(100);
-            n.add(stopIndex);
-            //start.visited = -2;
-            origin.visited = true;
-            return n;
-        }
+        // Mark the current node as visited
+        visited[u] = true;
 
-        // tag it so we dont get cycles
-        origin.visited = true;
+        // Initialize discovery time and low value
+        disc[u] = low[u] = ++time;
 
-        // visit all the children
-        ArrayList<Integer> a;
-        for (Integer childIndex : origin.children){
-            if (childIndex != -1){
-                a = rek(nodes[childIndex], stopIndex);
-                if(a != null){
-                    nodes[childIndex].deleteConn(origin.index, nodes);
-                    //origin.deletechild(childIndex, nodes);
-                    a.add((Integer)origin.index);
-                    return a;
+        // Go through all vertices aadjacent to this
+        Iterator<Integer> i = nodes[u].children.iterator();
+        while (i.hasNext()) {
+            int v = i.next(); // v is current adjacent of u
+
+            // If v is not visited yet, then make it a child
+            // of u in DFS tree and recur for it.
+            // If v is not visited yet, then recur for it
+            if (!visited[v]) {
+                parent[v] = u;
+                bridgeUtil(v, visited, disc, low, parent);
+
+                // Check if the subtree rooted with v has a
+                // connection to one of the ancestors of u
+                low[u] = Math.min(low[u], low[v]);
+
+                // If the lowest vertex reachable from subtree
+                // under v is below u in DFS tree, then u-v is
+                // a bridge
+                if (low[v] > disc[u]){
+                    //System.out.println(""+u+" "+v);
+                    rek2Out.add(new Edge(u, v));
                 }
-            }
-        }
-        return null;
-    }
 
-    // REK2
-    static int rek2(Node start, ArrayList<Integer> legal){
-        // iterate over children and try to find the match in array
-        int observedChild;
-        int observedGoal;
-        for (int i = 0; i < start.children.size(); i++) {
-            observedChild = start.children.get(i);
-            if(observedChild == -1){  // we treat this as a deleted connection so we streightup skip it
-                continue;
             }
-            for (int j = 0; j < legal.size(); j++) {
-                observedGoal = legal.get(j);
-                if(observedChild == observedGoal){
-                    // if we see an end node right around us
-                    return observedGoal;
-                }else{
-                    // we dont see it, but we see a possible path so we explore it further
-                    start.deleteConn(observedGoal, nodes);
-                    int a = rek2(nodes[observedChild], legal);
-                    if (a != -1){
-                        return a;
-                    }
-                    
-                }
-            }
-        }
-        return -1;
-    }
 
-    static int getConnections(Node[] a){
-        int out = 0;
-        for (Node node : a) {
-            for (Integer i : node.children) {
-                if(i != -1){
-                    out++;
-                    //if(out%2 ==0) System.out.printf("%d : %d\n",node.index, i);
-                }
-                 
-            }
+            // Update low value of u for parent function calls.
+            else if (v != parent[u])
+                low[u] = Math.min(low[u], disc[v]);
         }
-        return out/2;
-    }
-
-    static void removeTill(int stopInclusive, ArrayList<Integer> arr, boolean inclusive){
-        ArrayList<Integer> temp = new ArrayList<>();
-        for (Integer integer : arr ) {
-            if(integer == stopInclusive){  // if we find it
-                if(inclusive) temp.add(integer);
-                break;
-            }else{
-                temp.add(integer);
-            }
-        }
-        arr.removeAll(temp);
     }
 }
