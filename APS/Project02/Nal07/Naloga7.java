@@ -8,13 +8,19 @@ import java.util.Queue;
 import java.util.TreeSet;
 import java.io.*;
 
+
+// NEDELA: 
+// 2, 5
 class Edge implements Comparable<Edge> {
     public int from;
     public int to;
 
-    public Edge(int to, int from) {
-        this.from = Math.min(to, from);
-        this.to = Math.max(to, from);
+    /*
+    * Creates an undirected edge between vertices
+    */
+    public Edge(int node_1, int node_2) {
+        this.from = Math.min(node_1, node_2);
+        this.to = Math.max(node_1, node_2);
     }
 
     @Override
@@ -28,7 +34,7 @@ class Edge implements Comparable<Edge> {
 
     @Override
     public int hashCode() {
-        return this.from * 31 + this.to * 17;
+        return this.from * 6451 + this.to * 7907;
     }
 
     @Override
@@ -174,18 +180,19 @@ public class Naloga7 {
             if (visited[i] == false) 
                 bridgeUtil(i, visited, disc, low, parent);
 
-
         rek2Out.retainAll(out);
+        // nej zracuna se enkrt tele večje majnše ka je shitshow
+        rek2Out = new TreeSet<>(rek2Out);
 
         FileOutputStream out_f = new FileOutputStream(args[1]);
         OutputStreamWriter ssreamWriter = new OutputStreamWriter(out_f, StandardCharsets.UTF_8);
         BufferedWriter bufferedWriter = new BufferedWriter(ssreamWriter);
+
         
         for(Edge e : rek2Out){
             //System.out.println(""+e.from+" - "+e.to);
-            bufferedWriter.append(""+e.from+" "+e.to);
+            bufferedWriter.append(""+e.from+" "+e.to+"\n");
         }
-        bufferedWriter.append("\n");
         bufferedWriter.close();
     }
 
