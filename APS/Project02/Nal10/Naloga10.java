@@ -73,12 +73,13 @@ public class Naloga10 {
         String before = "";
 
         while (true) {
+            iter++;
             current_place = places[start_place];
             if (tobreak) {
                 break;
             }
             tobreak = true;
-            iter++;
+            
             out = "";
 
             while (true) {
@@ -89,6 +90,11 @@ public class Naloga10 {
                 }
 
                 // get best option
+                if(current_place.children.isEmpty()){
+                    current_place.heuristic = Double.POSITIVE_INFINITY;
+                    break;
+                }
+
                 Edge best = null;
                 double vbb = 0;
                 for (Edge n : current_place.children) {
@@ -121,7 +127,7 @@ public class Naloga10 {
                 // check if there is a best option
                 if (best == null) {
                     // update to inf
-                    current_place.heuristic = Double.POSITIVE_INFINITY;
+                    //current_place.heuristic = Double.POSITIVE_INFINITY;
                     break;
                 }
 
