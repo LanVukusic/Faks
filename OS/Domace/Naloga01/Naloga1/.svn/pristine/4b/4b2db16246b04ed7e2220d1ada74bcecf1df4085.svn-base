@@ -1,0 +1,12 @@
+stat: cannot stat 'ping': No such file or directory
+stat: cannot stat 'ping': No such file or directory
+stat: cannot stat 'ping': No such file or directory
+stat: cannot stat 'pong': No such file or directory
+stat: cannot stat 'pong': No such file or directory
+stat: cannot stat 'pong': No such file or directory
+stat: cannot stat 'runme.sh': No such file or directory
+stat: cannot stat 'runme.sh': No such file or directory
+stat: cannot stat 'runme.sh': No such file or directory
+Velikost: 510
+Blokov: 16
+Prostor: 8192

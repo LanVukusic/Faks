@@ -8,3 +8,5 @@ Makefile
 Test/
 test/
 o.txt
+.vscode
+proc-demo/

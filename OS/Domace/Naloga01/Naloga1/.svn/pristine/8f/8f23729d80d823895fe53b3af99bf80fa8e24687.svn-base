@@ -1,0 +1,70 @@
+/home/test/tests/gozd/bukev
+total 0
+drwxrwxr-x. 4 test test 28 Mar 11  2019 .
+drwxrwxr-x. 5 test test 52 Mar 11  2019 ..
+drwxrwxr-x. 3 test test 61 Mar 11  2019 bor
+drwxrwxr-x. 3 test test 64 Mar 11  2019 jelka
+bor
+total 4
+drwxrwxr-x. 3 test test 61 Mar 11  2019 .
+drwxrwxr-x. 4 test test 28 Mar 11  2019 ..
+-rw-rw-r--. 1 test test 69 Mar 11  2019 gurus.txt
+lrwxrwxrwx. 1 test test 16 Mar 11  2019 linkec -> kam/kaze/ta/link
+drwxrwxr-x. 3 test test 18 Mar 11  2019 macesen
+prw-rw-r--. 1 test test  0 Mar 11  2019 pipca
+macesen
+total 0
+drwxrwxr-x. 3 test test 18 Mar 11  2019 .
+drwxrwxr-x. 3 test test 61 Mar 11  2019 ..
+drwxrwxr-x. 3 test test 65 Mar 11  2019 brest
+brest
+total 0
+drwxrwxr-x. 3 test test 65 Mar 11  2019 .
+drwxrwxr-x. 3 test test 18 Mar 11  2019 ..
+prw-rw-r--. 1 test test  0 Mar 11  2019 brda
+drwxrwxr-x. 3 test test 31 Mar 11  2019 brin
+lrwxrwxrwx. 1 test test  4 Mar 11  2019 ping -> pong
+lrwxrwxrwx. 1 test test  8 Mar 11  2019 pong -> ././ping
+-rw-rw-r--. 1 test test  0 Mar 11  2019 runme.sh
+brin
+total 0
+drwxrwxr-x. 3 test test 31 Mar 11  2019 .
+drwxrwxr-x. 3 test test 65 Mar 11  2019 ..
+drwxrwxr-x. 2 test test 35 Mar 11  2019 bodika
+prw-rw-r--. 1 test test  0 Mar 11  2019 pipca
+bodika
+total 4
+drwxrwxr-x. 2 test test 35 Mar 11  2019 .
+drwxrwxr-x. 3 test test 31 Mar 11  2019 ..
+-rw-rw-r--. 1 test test 69 Mar 11  2019 gurus.txt
+lrwxrwxrwx. 1 test test 16 Mar 11  2019 linkec -> kam/kaze/ta/link
+jelka
+total 0
+drwxrwxr-x. 3 test test 64 Mar 11  2019 .
+drwxrwxr-x. 4 test test 28 Mar 11  2019 ..
+prw-rw-r--. 1 test test  0 Mar 11  2019 cev
+drwxrwxr-x. 3 test test 20 Mar 11  2019 lipa
+lrwxrwxrwx. 1 test test  4 Mar 11  2019 ping -> pong
+lrwxrwxrwx. 1 test test  8 Mar 11  2019 pong -> ././ping
+-rw-rw-r--. 1 test test  0 Mar 11  2019 runme.sh
+lipa
+total 0
+drwxrwxr-x. 3 test test 20 Mar 11  2019 .
+drwxrwxr-x. 3 test test 64 Mar 11  2019 ..
+drwxrwxr-x. 2 test test  6 Mar 11  2019 cemprin
+cemprin
+total 0
+drwxrwxr-x. 2 test test  6 Mar 11  2019 .
+drwxrwxr-x. 3 test test 20 Mar 11  2019 ..
+stat: cannot stat 'ping': No such file or directory
+stat: cannot stat 'ping': No such file or directory
+stat: cannot stat 'ping': No such file or directory
+stat: cannot stat 'pong': No such file or directory
+stat: cannot stat 'pong': No such file or directory
+stat: cannot stat 'pong': No such file or directory
+stat: cannot stat 'runme.sh': No such file or directory
+stat: cannot stat 'runme.sh': No such file or directory
+stat: cannot stat 'runme.sh': No such file or directory
+Velikost: 510
+Blokov: 16
+Prostor: 8192
