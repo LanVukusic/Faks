@@ -9,5 +9,6 @@ Test/
 test/
 o.txt
 .vscode
+.svn
 proc-demo/
 log/
