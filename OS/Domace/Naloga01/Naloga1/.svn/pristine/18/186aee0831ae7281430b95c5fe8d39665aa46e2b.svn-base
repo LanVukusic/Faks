@@ -1,0 +1,16 @@
+Naloga1.sh: line 36: ((: 09: value too great for base (error token is "09")
+Naloga1.sh: line 38: ((: 09: value too great for base (error token is "09")
+Naloga1.sh: line 41: 09: value too great for base (error token is "09")
+Naloga1.sh: line 41: 09: value too great for base (error token is "09")
+Naloga1.sh: line 41: +  : syntax error: operand expected (error token is "+  ")
+09: 
+Naloga1.sh: line 36: ((: 08: value too great for base (error token is "08")
+Naloga1.sh: line 38: ((: 08: value too great for base (error token is "08")
+Naloga1.sh: line 41: 08: value too great for base (error token is "08")
+Naloga1.sh: line 41: 08: value too great for base (error token is "08")
+Naloga1.sh: line 41: +  : syntax error: operand expected (error token is "+  ")
+08: 
+07: 8
+06: 5
+Naloga1.sh: fork: retry: No child processes
+Naloga1.sh: fork: retry: No child processes
