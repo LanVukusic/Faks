@@ -1,0 +1,40 @@
+del(X, L1, L2): the list L2 is obtained from L1 by deleting element X:
+
+del(X, [X|L1], L1).
+del(X, [Y|L1], [Y|L2]) :- del(X,L1,L2). 
+
+
+dup(L1, L2): the list L2 is obtained from L1 by duplicating every element:
+
+dup([], []).
+dup([X | L1], [X, X | L2]) :- dup(L1, L2).
+
+
+conc(L1, L2, L): the list L is obtained by appending the elements of L2 to L1:
+
+conc(L1, L2, L) :- append(L1, L2, L).
+
+
+last_elem(L, E): E is the last element of list L.
+
+last_elem([E|[]], E).
+last_elem([_|L], E) :- last_elem(L,E).  
+
+
+divide(L, L1, L2): the list L1 contains elements at odd positions in L, and the list L2 contains the elements at even positions in L.
+
+divide([],[],[]).
+divide([H1 | []], [H1 | L1] , L2) :- divide([],L1,L2).
+divide([H1, H2 | L],  [H1 | L1], [H2 | L2]) :- divide(L, L1, L2). 
+
+
+permute(L1, L2): the list L2 is a permutation of the elements of the list L1.
+(* PAZI, PODVOJENIH ELEMENTOV NE ODPRAVLJA *)
+
+takeout(X,[X|R],R).
+takeout(X,[F|L2],[F|W]) :- takeout(X,L2,W).
+
+permute([],[]).
+permute([X|L1],L2) :- permute(L1,W), takeout(X,L2,W).
+
+

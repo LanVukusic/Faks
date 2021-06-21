@@ -1,0 +1,118 @@
+(* This is an OCaml editor.
+   Enter your program here and send it to the toplevel using the "Eval code"
+   button. *)
+type avltree = 
+  | Empty 
+  | Node of int * int * avltree * avltree ;; 
+
+(* definiraj avl drevo t*)
+let t = Node(5,3, 
+             Node(3,2, 
+                  Node(1,1,Empty,Empty),
+                  Node (4,1,Empty, Empty)
+                 ), 
+             Node(8,1,Empty,Empty));;
+
+(* definiraj funkcijo height, ki vrne višino drevesa *)
+let height tree =
+  match tree with
+  | Empty -> 0
+  | Node(_,y,_,_) -> y
+;;
+
+
+let leaf e = Node(e,1,Empty,Empty);;
+let six = leaf 6 ;;
+let seven = leaf 7 ;;
+
+let node (x,y,z) = 
+  let i = height y in
+  let j = height z in
+  let newHeight = max i j + 1 in
+  Node(x, newHeight, y, z);;
+
+let rec toList = function
+  | Empty -> []
+  | Node(x,_,l,r) -> x :: toList l @ toList r;;
+
+(* search *)
+type order = Less | Equal | Greater
+
+let cmp x y =
+  match compare x y with
+  | 0 -> Equal
+  | r when r < 0 -> Less
+  | _ -> Greater
+
+let rec search el tree =
+  match tree with
+  | Empty -> false
+  | Node(y,_,l,r) -> match cmp el y with
+    | Equal   -> true
+    | Less    -> search el l
+    | Greater -> search el r;;
+
+
+let imbalance = function
+  | Empty -> 0
+  | Node (x,_,l,r) -> height l - height r;;
+        
+let rotateLeft tree = 
+  match tree with
+  | Node (x,_,a,Node(y,_,b,c)) -> node (y, node (x, a, b), c)
+  | tree -> tree;;
+
+let rotateRight tree = 
+  match tree with
+  | Node (y,_,Node(x,_,a,b),c) -> node(x,a,node(y,b,c))
+  | tree -> tree;;
+
+let balance t =
+  match t with
+  | Empty -> Empty
+  | Node (x,_,l,r) ->
+      match imbalance t with
+      | 0 | -1 | 1 -> t
+      | 2  -> if (imbalance l) >= 0 
+          then rotateRight t
+          else rotateRight (node(x,(rotateLeft l), r)) 
+      | -2 -> if (imbalance r) <= 0 
+          then rotateLeft t
+          else rotateLeft (node(x,l,(rotateRight r))) 
+      | _ -> failwith "nemoremo popravit";; 
+                           
+
+let rec add el tree = 
+  match tree with
+  | Empty -> leaf el
+  | Node (y,_,l,r) -> (match cmp el y with 
+      | Equal   -> tree
+      | Greater -> balance(node(y,l,(add el r))) 
+      | Less    -> balance(node(y,(add el l), r))
+    )
+    
+let rec removeSuccesor tree = 
+  match tree with
+  | Empty -> failwith "minimum does not exist"
+  | Node (x,_,l,r) -> (match l with 
+      | Empty -> (r,x)
+      | _ -> let (l', y) = removeSuccesor l in
+          (balance (node (x, l', r)), y));;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
