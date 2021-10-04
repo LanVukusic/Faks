@@ -1,2 +1,0 @@
-Naloga1.sh: line 15: let: remainder = 0 % 0: division by 0 (error token is "0")
-1
