@@ -91,3 +91,34 @@ Za obratno pogojno vrjetnost
 Z povečanjem števila x-ov se eksponentno povečuje število faktorjev. Ker smo lazy, uporabimo **naivni bayesov klasifikator**.
 
 Predpostavimo da so vsi x-i med sabo **neodvisnoi** (Kar je kr nerealno tbh)
+
+## Predstavitev modela naivnega bayesa naredimo z NOMOGRAMI
+
+**Nomogram**:
+[primer grafa](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Components_of_a_Nomogram.png/640px-Components_of_a_Nomogram.png)
+
+Druga opcija kako narisat je taka: [primer 2. grafa](https://www.researchgate.net/profile/Michael-Kattan/publication/220699038/figure/fig3/AS:670356629094405@1536836883198/A-nomogram-for-prediction-of-survival-probability-of-a-passenger-on-HMS-Titanic.png)
+
+- Zbereš **en končni class** in za tistga računaš
+- Vsaka daljica je svoja skala
+- od leve proti desni so vrednosti, ki bolj pripomorejo k izhodu izbranega classa
+- če pri "male - female" daš na pou dobiš nek garbage. Don't do that.
+
+## logistična funkcija
+
+$$logit(P) = \log(\frac{P}{1-P}) $$
+
+`logit_h(C| x1 x2 x3) = logitP(C) + log(P(x_i|C) / P(x_i | !C))`
+$$\frac{P(X_i | C)}{P(X_i | \overline{C})} \implies \text{ODDS RATIO}$$
+
+Za vse atribute nardiš vsoto točk  
+`SUM_i(log(OR(X_i)))`
+
+$$\sum_i \log (OR(X_i)) $$
+
+Kar dejansko rabiš je ta formula:  
+računamo za _crew_  
+Iščemo doprinos classa _Yes_  
+`(P(yes | crew) / P(no | crew) ) / (P(yes) / P(no))`
+
+$$ \frac{P(X_i | C)}{P(X_i | \overline{C})} = \frac{\frac{P(C|X_i)}{P(\overline{C} | X_i)}}{\frac{P(C)}{P(\overline{C})}}$$
