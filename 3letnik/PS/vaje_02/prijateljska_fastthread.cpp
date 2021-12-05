@@ -5,7 +5,7 @@
 using namespace std;
 #define N_THREADS 4
 
-int vsotaDeliteljev(int N);
+int sumDiv(int N);
 void *job(void *params);
 
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
@@ -43,7 +43,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-int vsotaDeliteljev(int N)
+int sumDiv(int N)
 {
     if (cahce[N] != -1)
     {
@@ -68,7 +68,7 @@ void *job(void *params)
     int jobIndex = *(int *)params;
     for (int i = jobIndex; i < N_ITERS; i += N_THREADS)
     {
-        int vsota = vsotaDeliteljev(vsotaDeliteljev(i));
+        int vsota = sumDiv(sumDiv(i));
         if (i == vsota)
         {
             tempSum += (vsota + i);
