@@ -4,7 +4,7 @@
 #include <math.h>
 
 using namespace std;
-#define N_THREADS 8
+#define N_THREADS 1
 #define NUM_SIZE 10000
 #define VECTOR_LENGTH 80000000
 
@@ -50,15 +50,16 @@ int main(int argc, char const *argv[])
 
 void *job(void *params)
 {
+  int locl = 0;
   int jobIndex = *(int *)params;
   for (int i = jobIndex; i < VECTOR_LENGTH; i += N_THREADS)
   {
-    vecOut[i] = (int)pow((vecX[i] - vecY[i]), 2);
+    locl += (int)pow((vecX[i] - vecY[i]), 2); // bols bi blo samo mnozenje
   }
   // barrier here so all threads calculate their job
   pthread_barrier_wait(&barrier);
 
-  //
+  // to ni good.
   for (int depth = 0; depth < ceil(log2(VECTOR_LENGTH)); depth++)
   {
     // for each depth, each thread gets its own job to calculate what it needs

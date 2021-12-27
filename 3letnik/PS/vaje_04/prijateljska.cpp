@@ -3,6 +3,8 @@
 #include <omp.h>
 
 using namespace std;
+#define N_THREADS 32
+#define N_BUCKETS 4
 
 int sumDiv(int N);
 int job(int i);
@@ -17,9 +19,9 @@ int main(int argc, char const *argv[])
 
   auto timeStart = chrono::high_resolution_clock::now();
   int out = 0;
-#pragma omp parallel num_threads(8)
-#pragma omp for schedule(dynamic, 4) reduction(+ \
-                                               : out)
+#pragma omp parallel num_threads(N_THREADS)
+#pragma omp for schedule(dynamic, N_BUCKETS) reduction(+ \
+                                                       : out)
   for (int i = 0; i < nIters; i++)
   {
     out += job(i);

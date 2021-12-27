@@ -4,6 +4,9 @@
 
 using namespace std;
 
+#define N_THREADS 32
+#define N_BUCKETS 4
+
 int sumDiv(int N);
 int job(int i);
 
@@ -13,13 +16,15 @@ int main(int argc, char const *argv[])
 {
   // number of iters, read from stdin
   nIters = atoi(argv[1]);
-  cout << "INPUT: " << nIters << endl;
+  cout << "INPUT: " << nIters << endl
+       << "Threads: " << N_THREADS << endl
+       << "Buckets: " << N_BUCKETS << endl;
 
   auto timeStart = chrono::high_resolution_clock::now();
   int out = 0;
-#pragma omp parallel num_threads(8)
-#pragma omp for schedule(static, 4) reduction(+ \
-                                              : out)
+#pragma omp parallel num_threads(N_THREADS)
+#pragma omp for schedule(static, N_BUCKETS) reduction(+ \
+                                                      : out)
   for (int i = 0; i < nIters; i++)
   {
     out += job(i);
