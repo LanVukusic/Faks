@@ -14,15 +14,14 @@ Date: 6.apr 2022
 Deauth attack.
 ```
   
-```
 
 ## Postopek za deautentikacijo
 
 - poiščemo mac naslove tarče ter AP-ja
   - `sudo nmap 192.168.252.52/24`
   
-```
-Starting Nmap 7.80 ( https://nmap.org ) at 2022-04-10 13:47 CEST
+
+``` Starting Nmap 7.80 ( https://nmap.org ) at 2022-04-10 13:47 CEST
 Nmap scan report for _gateway (192.168.252.52)
 Host is up (0.0044s latency).
 Not shown: 999 closed ports
