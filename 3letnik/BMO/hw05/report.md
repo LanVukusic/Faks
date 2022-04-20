@@ -11,7 +11,7 @@
 
 5. homework for BMO
 Author: Lan Vukušič
-Date: 6.apr 2022
+Date: 20.apr 2022
 
 Bluetooth
 ```
