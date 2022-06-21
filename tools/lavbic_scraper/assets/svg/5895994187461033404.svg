@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="572px" preserveAspectRatio="none" style="width:292px;height:572px;background:#00000000;" version="1.1" viewBox="0 0 292 572" width="292px" zoomAndPan="magnify"><defs><filter height="300%" id="ft1azajf4p53x" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[5096c3efbf9f9f468ee36ed25d17a3e5]
+entity NadzorniSistem--><ellipse cx="48" cy="320.5" fill="#FFFFFF" filter="url(#ft1azajf4p53x)" rx="8" ry="8" style="stroke:#000000;stroke-width:1.5;"/><path d="M48,328.5 L48,355.5 M35,336.5 L61,336.5 M48,355.5 L35,370.5 M48,355.5 L61,370.5 " fill="none" filter="url(#ft1azajf4p53x)" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="17.5" y="388.9951">Nadzorni</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="25" y="405.292">sistem</text><!--MD5=[8e58e1b2e2407e819002587e9abfc98b]
+entity VremenskiIS--><ellipse cx="48" cy="28.5" fill="#FFFFFF" filter="url(#ft1azajf4p53x)" rx="8" ry="8" style="stroke:#000000;stroke-width:1.5;"/><path d="M48,36.5 L48,63.5 M35,44.5 L61,44.5 M48,63.5 L35,78.5 M48,63.5 L61,78.5 " fill="none" filter="url(#ft1azajf4p53x)" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="11.5" y="96.9951">Vremenski</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="6" y="113.292">informacijski</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="25" y="129.5889">sistem</text><ellipse cx="214.8112" cy="32.0473" fill="#FFFFFF" filter="url(#ft1azajf4p53x)" rx="63.8112" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="180.3112" y="26.7455">Poročanje</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="177.8112" y="43.0424">o vremenu</text><ellipse cx="214.7756" cy="119.0473" fill="#FFFFFF" filter="url(#ft1azajf4p53x)" rx="60.2756" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="180.2756" y="113.7455">Poročanje</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="187.2756" y="130.0424">o stanju</text><ellipse cx="214.8762" cy="206.0473" fill="#FFFFFF" filter="url(#ft1azajf4p53x)" rx="50.3762" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="187.3762" y="200.7455">Ponovni</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="43" x="193.3762" y="217.0424">zagon</text><ellipse cx="215.0766" cy="282.9153" fill="#FFFFFF" filter="url(#ft1azajf4p53x)" rx="65.0766" ry="15.4153" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79" x="172.5766" y="286.6629">Zaustavitev</text><ellipse cx="214.7756" cy="360.0473" fill="#FFFFFF" filter="url(#ft1azajf4p53x)" rx="60.2756" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="184.7756" y="354.7455">Ponovna</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="180.2756" y="371.0424">nastavitev</text><ellipse cx="215.0183" cy="447.0473" fill="#FFFFFF" filter="url(#ft1azajf4p53x)" rx="64.5183" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75" x="177.5183" y="441.7455">Varčevanje</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="181.0183" y="458.0424">z energijo</text><ellipse cx="215.1188" cy="534.0473" fill="#FFFFFF" filter="url(#ft1azajf4p53x)" rx="54.6188" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="184.6188" y="528.7455">Oddaljen</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="191.1188" y="545.0424">nadzor</text><!--MD5=[6f68689a34c24263d8f18f8053195eb9]
+link VremenskiIS to PorocanjeOVremenu--><path d="M90.21,65.01 C110.18,59.69 134.49,53.2 156.27,47.4 " fill="none" id="VremenskiIS-to-PorocanjeOVremenu" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="161.16,46.09,151.4338,44.5404,156.3284,47.3765,153.4923,52.2711,161.16,46.09" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[3238abd9edaea11dc77c57ffe0db0537]
+link VremenskiIS to PorocanjeOStanju--><path d="M90.21,86.74 C110.71,92.08 135.79,98.62 158,104.41 " fill="none" id="VremenskiIS-to-PorocanjeOStanju" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="162.99,105.71,155.3007,99.5557,158.1539,104.4403,153.2693,107.2935,162.99,105.71" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[879547ecfcedcf944b982e46ce7686d7]
+link NadzorniSistem to PonovniZagon--><path d="M78.51,323.88 C97.72,301.42 123.97,272.61 150,250 C158.56,242.56 168.41,235.26 177.77,228.81 " fill="none" id="NadzorniSistem-to-PonovniZagon" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="182.03,225.91,172.3404,227.6741,177.8986,228.7262,176.8464,234.2844,182.03,225.91" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[f77bcc2d74faa6fc72b0f41d41851b66]
+link NadzorniSistem to Zaustavitev--><path d="M78.88,346.06 C107.35,332.77 150.18,312.78 179.96,298.89 " fill="none" id="NadzorniSistem-to-Zaustavitev" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="184.62,296.71,174.7728,296.8929,180.0894,298.8252,178.1572,304.1418,184.62,296.71" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[6b39a8a7bad3dbfb3df1a77f5956dc99]
+link NadzorniSistem to PonovnaNastavitev--><path d="M78.88,360 C98.47,360 124.87,360 149.12,360 " fill="none" id="NadzorniSistem-to-PonovnaNastavitev" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="154.27,360,145.27,356,149.27,360,145.27,364,154.27,360" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[98bd50faefa36fef731435a3f43ed71e]
+link NadzorniSistem to VarcevanjeZEnergijo--><path d="M78.88,375.76 C104.44,389.23 141.58,408.81 170.45,424.04 " fill="none" id="NadzorniSistem-to-VarcevanjeZEnergijo" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="175.01,426.44,168.9056,418.711,170.5845,424.113,165.1825,425.7919,175.01,426.44" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[2e70cdefd975988cd5b65f59341d4090]
+link NadzorniSistem to OddaljenNadzor--><path d="M78.52,405.42 C97.14,432.09 122.76,465.48 150,491 C157.72,498.24 166.78,505.1 175.61,511.14 " fill="none" id="NadzorniSistem-to-OddaljenNadzor" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="179.92,514.04,174.6899,505.6946,175.773,511.2468,170.2207,512.3299,179.92,514.04" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[5a42a3a6a931e3f6913ed589cf828c5e]
+@startuml
+skinparam backgroundcolor transparent
+skinparam defaultTextAlignment center
+skinparam usecase {
+  backgroundColor white
+  borderColor #5FB8EC
+  arrowColor black
+}
+skinparam actorBorderColor black
+skinparam actorBackgroundColor white
+
+left to right direction
+
+actor "Nadzorni\nsistem" as NadzorniSistem
+actor "Vremenski\ninformacijski\nsistem" as VremenskiIS
+
+usecase (Poročanje\no vremenu) as (PorocanjeOVremenu)
+usecase (Poročanje\no stanju) as (PorocanjeOStanju)
+usecase (Ponovni\nzagon) as (PonovniZagon)
+usecase (Zaustavitev)
+usecase (Ponovna\nnastavitev) as (PonovnaNastavitev)
+usecase (Varčevanje\nz energijo) as (VarcevanjeZEnergijo)
+usecase (Oddaljen\nnadzor) as (OddaljenNadzor)
+
+VremenskiIS - -> (PorocanjeOVremenu)
+VremenskiIS - -> (PorocanjeOStanju)
+
+NadzorniSistem - -> (PonovniZagon)
+NadzorniSistem - -> (Zaustavitev)
+NadzorniSistem - -> (PonovnaNastavitev)
+NadzorniSistem - -> (VarcevanjeZEnergijo)
+NadzorniSistem - -> (OddaljenNadzor)
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

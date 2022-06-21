@@ -1,0 +1,8 @@
+[Unit]
+Description=Run etcd conf
+
+[Service]
+ExecStart=/home/sk01/etconf.sh
+
+[Install]
+WantedBy=multi-user.target

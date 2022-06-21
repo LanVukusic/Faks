@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="598px" preserveAspectRatio="none" style="width:660px;height:598px;background:#00000000;" version="1.1" viewBox="0 0 660 598" width="660px" zoomAndPan="magnify"><defs><filter height="300%" id="fzyhprozzuvig" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[58682da5b471bbf1dc6a8663a4f0a258]
+cluster SistemNarocanja--><polygon fill="#FFFFFF" filter="url(#fzyhprozzuvig)" points="16,6,153,6,160,28.2969,472,28.2969,472,409,16,409,16,6" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="16" x2="160" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="131" x="20" y="20.9951">SistemNarocanja</text><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="94" x="201" y="43.292">«subsystem»</text><!--MD5=[beb5ad5244d3d849df9473931f7c2e5e]
+entity GUI--><polygon fill="#E8F5FD" filter="url(#fzyhprozzuvig)" points="360.5,57,405.5,57,412.5,79.2969,429.5,79.2969,429.5,96.2969,360.5,96.2969,360.5,57" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="360.5" x2="412.5" y1="79.2969" y2="79.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="27" x="370.5" y="72.9951">GUI</text><!--MD5=[6dfb0f23b2ba2090042f6d34800546c0]
+entity ObdelavaNarocil--><polygon fill="#E8F5FD" filter="url(#fzyhprozzuvig)" points="287.5,156,432.5,156,439.5,178.2969,456.5,178.2969,456.5,195.2969,287.5,195.2969,287.5,156" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="287.5" x2="439.5" y1="178.2969" y2="178.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="127" x="297.5" y="171.9951">ObdelavaNarocil</text><!--MD5=[7daf217ce9ab28fba637a2c857141175]
+entity IzracunCene--><polygon fill="#E8F5FD" filter="url(#fzyhprozzuvig)" points="314.5,255,431.5,255,438.5,277.2969,455.5,277.2969,455.5,294.2969,314.5,294.2969,314.5,255" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="314.5" x2="438.5" y1="277.2969" y2="277.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="99" x="324.5" y="270.9951">IzracunCene</text><!--MD5=[2600092164355b8a39bdd611fbde8231]
+entity ZunanjaShrambaPodatkov--><polygon fill="#E8F5FD" filter="url(#fzyhprozzuvig)" points="32.5,255,255.5,255,262.5,277.2969,279.5,277.2969,279.5,294.2969,32.5,294.2969,32.5,255" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="32.5" x2="262.5" y1="277.2969" y2="277.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="205" x="42.5" y="270.9951">ZunanjaShrambaPodatkov</text><!--MD5=[d2cad37b07a2ed00e8fd221a5a369ef4]
+entity SamostojniPodatki--><polygon fill="#E8F5FD" filter="url(#fzyhprozzuvig)" points="47,354,209,354,216,376.2969,233,376.2969,233,393.2969,47,393.2969,47,354" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="47" x2="216" y1="376.2969" y2="376.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="144" x="57" y="369.9951">SamostojniPodatki</text><!--MD5=[ea3460aae148680b1afee0d66d6d7639]
+entity TokPodatkov--><polygon fill="#E8F5FD" filter="url(#fzyhprozzuvig)" points="268,354,388,354,395,376.2969,412,376.2969,412,393.2969,268,393.2969,268,354" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="268" x2="395" y1="376.2969" y2="376.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="102" x="278" y="369.9951">TokPodatkov</text><!--MD5=[0b2c35d7b1e2a48d9ab7b2b955c4b851]
+entity ObvladovanjePodatkov--><polygon fill="#E8F5FD" filter="url(#fzyhprozzuvig)" points="139.5,552,336.5,552,343.5,574.2969,360.5,574.2969,360.5,591.2969,139.5,591.2969,139.5,552" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="139.5" x2="343.5" y1="574.2969" y2="574.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="179" x="149.5" y="567.9951">ObvladovanjePodatkov</text><!--MD5=[614cac5e6c4676141f90b3904689b8c5]
+entity Repozitorij--><polygon fill="#E8F5FD" filter="url(#fzyhprozzuvig)" points="85,453,187,453,194,475.2969,211,475.2969,211,492.2969,85,492.2969,85,453" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="85" x2="194" y1="475.2969" y2="475.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="84" x="95" y="468.9951">Repozitorij</text><!--MD5=[0830e6e257515c28bb371e5deb3771b8]
+entity DatotecniSistem--><polygon fill="#E8F5FD" filter="url(#fzyhprozzuvig)" points="246,453,392,453,399,475.2969,416,475.2969,416,492.2969,246,492.2969,246,453" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="246" x2="399" y1="475.2969" y2="475.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="128" x="256" y="468.9951">DatotecniSistem</text><!--MD5=[9d04ce0768c8395b78c7232c6d60e28f]
+entity UpravljalecGUI--><polygon fill="#E8F5FD" filter="url(#fzyhprozzuvig)" points="488.5,57,619.5,57,626.5,79.2969,643.5,79.2969,643.5,96.2969,488.5,96.2969,488.5,57" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="488.5" x2="626.5" y1="79.2969" y2="79.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="113" x="498.5" y="72.9951">UpravljalecGUI</text><!--MD5=[3d6ee5f27138419d4df75075b39aaf46]
+link GUI to ObdelavaNarocil--><path d="M390.57,96.2 C386.87,111.77 381.6,134.02 377.61,150.83 " fill="none" id="GUI-to-ObdelavaNarocil" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#000000" points="376.42,155.85,382.3699,148.0015,377.562,150.9822,374.5814,146.1743,376.42,155.85" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[cb69cc07e8b268aa8a74f46a203db767]
+link ObdelavaNarocil to IzracunCene--><path d="M374.51,195.2 C376.59,210.77 379.57,233.02 381.83,249.83 " fill="none" id="ObdelavaNarocil-to-IzracunCene" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#000000" points="382.5,254.85,385.2826,245.4024,381.8429,249.8934,377.352,246.4537,382.5,254.85" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[4048de726aec69a115d5148ac87f10ee]
+link ObdelavaNarocil to ZunanjaShrambaPodatkov--><path d="M330.61,195.09 C293.76,211.63 239.95,235.8 201.82,252.92 " fill="none" id="ObdelavaNarocil-to-ZunanjaShrambaPodatkov" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#000000" points="197.25,254.98,207.0988,254.9485,201.8125,252.9347,203.8264,247.6485,197.25,254.98" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[469ac7420870828df1183d14f6e431fa]
+reverse link ZunanjaShrambaPodatkov to SamostojniPodatki--><path d="M149.63,314.14 C147.37,327.82 144.93,342.59 143.08,353.85 " fill="none" id="ZunanjaShrambaPodatkov-backto-SamostojniPodatki" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="142.75,312.8,152.92,294.2,156.57,315.08,142.75,312.8" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[8370d37591f2db27d5935f2168c63bfa]
+reverse link ZunanjaShrambaPodatkov to TokPodatkov--><path d="M209.49,303.7 C240.11,319.84 277.68,339.65 304.63,353.85 " fill="none" id="ZunanjaShrambaPodatkov-backto-TokPodatkov" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="205.9,309.72,191.48,294.2,212.43,297.34,205.9,309.72" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[2b8aae0da1c2a8b77b002dcf4ad4aec1]
+link Repozitorij to ObvladovanjePodatkov--><path d="M167.67,492.2 C181.21,505.08 199.57,522.55 215.52,537.71 " fill="none" id="Repozitorij-to-ObvladovanjePodatkov" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="220.72,533,230.39,551.85,211.08,543.14,220.72,533" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[4469141f4a45564798455384925fe9bc]
+link DatotecniSistem to ObvladovanjePodatkov--><path d="M315.38,492.2 C304.96,504.68 290.95,521.46 278.57,536.28 " fill="none" id="DatotecniSistem-to-ObvladovanjePodatkov" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="none" points="283.76,540.99,265.57,551.85,273.02,532.02,283.76,540.99" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[decb4c352c1b313d4eaaf5e9157c9770]
+link GUI to UpravljalecGUI--><path d="M429.73,76.5 C447.57,76.5 465.41,76.5 483.25,76.5 " fill="none" id="GUI-to-UpravljalecGUI" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#000000" points="488.29,76.5,479.29,72.5,483.29,76.5,479.29,80.5,488.29,76.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[e38f4d335cb266a04cd7fe2fca01f039]
+link SamostojniPodatki to Repozitorij--><path d="M141.54,393.2 C142.83,408.77 144.66,431.02 146.05,447.83 " fill="none" id="SamostojniPodatki-to-Repozitorij" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#000000" points="146.46,452.85,149.701,443.5497,146.046,447.8672,141.7285,444.2121,146.46,452.85" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[d244f6d2a9e8e6772c11dce31e833350]
+link TokPodatkov to DatotecniSistem--><path d="M338.26,393.2 C336.82,408.77 334.76,431.02 333.2,447.83 " fill="none" id="TokPodatkov-to-DatotecniSistem" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#000000" points="332.73,452.85,337.5618,444.2678,333.202,447.8723,329.5975,443.5126,332.73,452.85" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[45b0ba1a9854d9afccbd35f97c3a080c]
+@startuml
+skinparam backgroundcolor transparent
+skinparam defaultTextAlignment center
+skinparam ArrowColor black
+skinparam package {
+  backgroundcolor #e8f5fd
+  backgroundcolor<<subsystem>> white
+  bordercolor #5FB8EC
+}
+
+package SistemNarocanja <<subsystem>> {
+  package GUI
+  package ObdelavaNarocil
+  package IzracunCene
+  package ZunanjaShrambaPodatkov
+  package SamostojniPodatki
+  package TokPodatkov
+}
+
+package UpravljalecGUI
+together {
+  package ObvladovanjePodatkov
+  package Repozitorij
+  package DatotecniSistem
+}
+
+GUI .down.> ObdelavaNarocil
+ObdelavaNarocil .down.> IzracunCene
+ObdelavaNarocil .down.> ZunanjaShrambaPodatkov
+SamostojniPodatki -up-|> ZunanjaShrambaPodatkov
+TokPodatkov -up-|> ZunanjaShrambaPodatkov
+
+Repozitorij -down-|> ObvladovanjePodatkov
+DatotecniSistem -down-|> ObvladovanjePodatkov
+
+GUI .right.> UpravljalecGUI
+SamostojniPodatki .down.> Repozitorij
+TokPodatkov .down.> DatotecniSistem
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

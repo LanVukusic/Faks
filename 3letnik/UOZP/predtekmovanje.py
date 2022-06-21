@@ -1,25 +1,38 @@
 import numpy as np
 from datetime import datetime, timedelta
-import tensorflow as tf
+
+# import tensorflow as tf
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from sklearn import preprocessing as pp
+
+# sori tensorflow rad te mam smo....
+from sklearn.linear_model import LinearRegression
 
 # defining global variables
-learning_rate = 0.004
-training_epochs = 400
-num_coeffs = 20
+learning_rate = 0.005
+training_epochs = 500
 
 # tensorboard
 log_dir = (
     "logs/fit/"
     + datetime.now().strftime("%Y%m%d-%H%M%S")
-    + "P:{}_{}_{}".format(learning_rate, training_epochs, num_coeffs)
+    + f"P:{learning_rate}_{training_epochs}"
 )
-print(tf.__version__)
 
-mean = 0
-std = 0
+# print(tf.__version__)
+
+# testing training split
+def split_data(data_x, data_y, train_percentage):
+    # split data
+    train_size = int(len(data_x) * train_percentage)
+    train_x = data_x[:train_size]
+    train_y = data_y[:train_size]
+    test_x = data_x[train_size:]
+    test_y = data_y[train_size:]
+
+    return train_x, train_y, test_x, test_y
 
 
 class DateManipulator:
@@ -53,192 +66,162 @@ class DateManipulator:
         return self.toDate(dateString) + timedelta(seconds=seconds)
 
 
-# create a function that reads tab seperated values and returns a list of lists
-def parse_file(file_name):
-    with open(file_name) as f:
-        content = f.read()
-        lines = content.split("\n")
-
-        parsed_lines = []
-        for line in lines:
-            if len(line) == 0:
-                continue
-            words = line.split("\t")
-            parsed_lines.append(words)
-
-        return parsed_lines
+# output_df = PolynomialFeatures_labeled(input_df, 2)
+def polify(data, feature_name, power):
+    poly = pp.PolynomialFeatures(power, include_bias=False)
+    # pandas dataframe to numpy array
+    polified = poly.fit_transform(data[feature_name].values.reshape(-1, 1))
+    # numpy array to pandas dataframe
+    polified = pd.DataFrame(polified, columns=poly.get_feature_names([feature_name]))
+    return polified
 
 
-def categorical_buckets(data):
-    # num_buckets = len(set(data))
-    mappings = list(set(data))
-    return np.array([mappings.index(x) for x in data])
+def get_data_x(filename):
+    df = pd.read_csv(filename, delimiter=",", header="infer")
+
+    df = df[["Driver ID", "Departure time"]]
+
+    d = DateManipulator()
+
+    df["Departure time"] = pd.to_datetime(df["Departure time"])
+
+    # times
+    df["Departure hour"] = df["Departure time"].apply(lambda x: x.hour)
+    df["Departure month"] = df["Departure time"].apply(lambda x: x.month)
+
+    # df["Departure inmin"] = df["Departure hour"] * 60 + df["Departure minute"]
+    # df["Arrival inmin"] = df["Arrival hour"] * 60 + df["Arrival minute"]
+    # get day of the week
+    df["Departure day"] = df["Departure time"].apply(lambda x: x.weekday())
+
+    one_hot_drivers = pd.get_dummies(df["Driver ID"])
+    one_hot_week_day = pd.get_dummies(
+        df["Departure day"],
+        prefix="day",
+    )
+    one_hot_month = pd.get_dummies(df["Departure month"], prefix="month")
+    poly_month = polify(df, "Departure month", 2)
+    poly_hours = polify(df, "Departure hour", 4)
+
+    train_df = pd.concat(
+        [
+            poly_hours,
+            # one_hot_drivers,
+            one_hot_week_day,
+            poly_month,
+        ],
+        axis=1,
+    )
+
+    print("shapee", train_df.shape)
+    # print(train_df.head())
+    # print(train_df.describe())
+
+    return train_df.to_numpy()
 
 
-def get_is_weekend(date):
-    dm = DateManipulator()
-    if dm.getDayOfWeek(date) >= 5:
-        return 1
-    else:
-        return 0
+def get_data_y(filename):
+    df = pd.read_csv(filename, delimiter=",", header="infer")
+
+    df = df[["Departure time", "Arrival time"]]
+
+    d = DateManipulator()
+
+    df["Departure time"] = pd.to_datetime(df["Departure time"])
+    df["Arrival time"] = pd.to_datetime(df["Arrival time"])
+
+    # get travel time
+    df["Travel time"] = df["Arrival time"] - df["Departure time"]
+    df["Travel time"] = df["Travel time"].apply(lambda x: x.total_seconds())
+
+    return df["Travel time"].to_numpy()
 
 
-def is_at_nigh(date):
-    dm = DateManipulator()
-    t = dm.getHour(date)
-    if (t >= 20 and t <= 23) or (t >= 0 and t <= 7):
-        return 1
-    else:
-        return 0
-
-
-def is_rush_hour(date):
-    dm = DateManipulator()
-    hour = dm.getHour(date)
-    if (hour >= 7 and hour <= 9) or (hour >= 15 and hour <= 17):
-        return 1
-    else:
-        return 0
-
-
-def is_holiday(date):
-    dm = DateManipulator()
-    if dm.getDayOfWeek(date) == 5 or dm.getDayOfWeek(date) == 6:
-        return 1
-    else:
-        return 0
-
-
-# get features from dataset
-def getFeatures(data, isTrain):
-    dataset = []
-    dm = DateManipulator()
-
-    j = len(data)
-
-    for sample in data:
-        hour = dm.getHour(sample[0])
-        day_of_week = dm.getDayOfWeek(sample[0])
-        is_night = is_at_nigh(sample[0])
-        is_weekend = get_is_weekend(sample[0])
-        is_rush = is_rush_hour(sample[0])
-
-        dataset.append([is_night, is_weekend, hour, is_rush, day_of_week])
-        if isTrain:
-            duration = dm.diff(sample[0], sample[1])
-            dataset[-1].append(duration)
-        # print(dataset[-1])
-
-    return np.array(dataset)
-
-
-# predefining the model
-def model(x, y):
-    # this predicts the y based on the given weight
-    temp = []
-    for i in range(num_coeffs):
-        temp.append(tf.add(w[i], tf.pow(x, i)))
-    prediction = tf.add(tf.reduce_sum(temp), b)
-    # this is the cost function
-    errors = tf.square(y - prediction)
-    return [prediction, errors]
-
-
-# split dataset into train and test
-def split_dataset(dataset, y_data, ratio=0.85):
-    train_size = int(len(dataset) * ratio)
-    train_set = dataset[:train_size]
-    test_set = dataset[train_size:]
-    y_train = y_data[:train_size]
-    y_test = y_data[train_size:]
-    return train_set, y_train, test_set, y_test
-
-
-# standardize dataset
-def standardize(dataset):
-    mean = np.mean(dataset, axis=0)
-    std = np.std(dataset, axis=0)
-
-    return (dataset - mean) / std
-
-
-def destandaize(dataset, mean, std):
-    return (dataset * std) + mean
+def seconds_to_date(departure, seconds):
+    d = DateManipulator()
+    return d.addSeconds(departure, seconds)
 
 
 def main():
-    # d1 = "2012-01-13 12:27:04.000"
-    # d2 = "2012-01-13 13:00:33.000"
 
-    # dm = DateManipulator()
-    # print(dm.toString(dm.addSeconds(d1, dm.diff(d1, d2))))
+    data_x = get_data_x("train_pred.csv")
+    data_y = get_data_y("train_pred.csv")
 
-    train_data_parsed = np.vstack(parse_file("train_pred.csv.gz")[1:])
-    train_data = np.vstack(
-        [
-            np.array(train_data_parsed[:, 6]),  # departure  0
-            np.array(train_data_parsed[:, 8]),  # arrival  1
-            np.array(train_data_parsed[:, 1]),  # driver id  2 BAD COLUMN
-            np.array(train_data_parsed[:, 0]),  # registration  3
-        ]
-    ).T
+    # split data
+    train_x, train_y, test_x, test_y = split_data(data_x, data_y, 0.8)
 
-    train_data_features = getFeatures(train_data, True)  # get features from train data
+    test_stamps = pd.read_csv("test.tsv", delimiter=",", header="infer")[
+        "Departure time"
+    ]
+    test_x = get_data_x("test.tsv")
 
-    DATASET_LEN = 5
-    x = np.array([x[0:DATASET_LEN] for x in train_data_features])
-    y = np.array([x[DATASET_LEN] for x in train_data_features])
+    print(data_x.shape, data_y.shape, test_x.shape)
+    DATA_LEN = data_x.shape[1]
 
-    x_train, y_train, x_test, y_test = split_dataset(x, y, ratio=0.7)
+    # # defining the model using tensorflow 2
+    # model = tf.keras.Sequential()
+    # model.add(tf.keras.layers.Dense(1, input_shape=(DATA_LEN,)))
+    # model.add(tf.keras.layers.Dense(1))
 
-    print(x_train, y_train)
-    # exit(0)
+    reg = LinearRegression(fit_intercept=True, normalize=True)
+    reg.fit(train_x, train_y)
 
-    # defining the model using tensorflow 2
-    model = tf.keras.Sequential()
-    model.add(tf.keras.layers.Dense(num_coeffs, input_shape=(DATASET_LEN,)))
-    model.add(tf.keras.layers.Dense(1))
+    # reg = LinearRegression().fit(data_x, data_y)
+    print(reg.score(test_x, test_y))
+    y_pred = reg.predict(test_x)
 
-    # learning rate decay
-    lr_schedule = tf.keras.optimizers.schedules.ExponentialDecay(
-        learning_rate,
-        decay_steps=training_epochs,
-        decay_rate=0.95,
-        staircase=True,
-    )
+    mae = np.mean(np.abs(y_pred - test_y))
+    print(mae)
 
-    model.compile(
-        optimizer=tf.keras.optimizers.Adam(learning_rate=lr_schedule),
-        loss=tf.keras.losses.MeanAbsoluteError(),
-    )
+    out = reg.predict(test_x)
+    out = [str(seconds_to_date(test_stamps[i], out[i]))[:-3] for i in range(len(out))]
 
-    # training the model
+    df_out = pd.DataFrame(out)
+    df_out.to_csv("out.csv", index=False)
+    exit(0)
 
-    # init tensorboard logging
-    tensorboard_callback = tf.keras.callbacks.TensorBoard(
-        log_dir=log_dir, histogram_freq=1
-    )
+    # # learning rate decay
+    # lr_schedule = tf.keras.optimizers.schedules.ExponentialDecay(
+    #     learning_rate,
+    #     decay_steps=training_epochs,
+    #     decay_rate=0.95,
+    #     staircase=True,
+    # )
 
-    # fit the model
-    model.fit(
-        x_train,
-        y_train,
-        epochs=training_epochs,
-        callbacks=[tensorboard_callback],
-        validation_data=(x_test, y_test),
-    )
+    # model.compile(
+    #     optimizer=tf.keras.optimizers.Adam(learning_rate=lr_schedule),
+    #     loss=tf.keras.losses.MeanAbsoluteError(),
+    # )
 
-    # testing the model
-    # y_pred = model.predict(x_test)
-    # print predictions
-    # print("Predictions:")
-    # print(y_pred)
+    # # training the model
 
-    # plotting the results
-    # plt.scatter(y_test, y_pred)
-    # plt.xlabel("True Values")
-    # plt.ylabel("Predictions")
-    # plt.show()
+    # # init tensorboard logging
+    # tensorboard_callback = tf.keras.callbacks.TensorBoard(
+    #     log_dir=log_dir, histogram_freq=1
+    # )
+
+    # # fit the model
+    # model.fit(
+    #     data_x,
+    #     data_y,
+    #     epochs=training_epochs,
+    #     callbacks=[tensorboard_callback],
+    #     # validation_data=(x_test, y_test),
+    # )
+
+
+# testing the model
+# y_pred = model.predict(x_test)
+# print predictions
+# print("Predictions:")
+# print(y_pred)
+
+
+# plotting the results
+# plt.scatter(y_test, y_pred)
+# plt.xlabel("True Values")
+# plt.ylabel("Predictions")
+# plt.show()
 
 
 if __name__ == "__main__":

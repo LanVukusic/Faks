@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="240px" preserveAspectRatio="none" style="width:227px;height:240px;background:#00000000;" version="1.1" viewBox="0 0 227 240" width="227px" zoomAndPan="magnify"><defs><filter height="300%" id="fq9ksyfnya6uv" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[75f8d1d6e4b5d4654d121990b3b18868]
+class Posvet--><rect codeLine="12" fill="#FFFFFF" filter="url(#fq9ksyfnya6uv)" height="219.2344" id="Posvet" style="stroke:#5FB8EC;stroke-width:1.5;" width="206" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="42" x="89" y="23.1387">Posvet</text><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="8" x2="212" y1="30.9688" y2="30.9688"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="38.9688"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="180" x="27" y="45.1792">zdravniki: Bolnišnični zdravnik []</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="51.7734"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="69" x="27" y="57.9839">datum: date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="64.5781"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="53" x="27" y="70.7886">čas: time</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="77.3828"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="85" x="27" y="83.5933">oddelek: string</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="90.1875"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="75" x="27" y="96.3979">razlog: string</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="102.9922"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="178" x="27" y="109.2026">predpisana zdravila: Zdravilo []</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="115.7969"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="108" x="27" y="122.0073">zvočni zapiski: blob</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="128.6016"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="129" x="27" y="134.812">prepis zapiskov: string</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="12" x="27" y="147.6167">...</text><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="8" x2="212" y1="154.2109" y2="154.2109"/><ellipse cx="18" cy="165.2109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="59" x="27" y="168.4214">nov(): void</text><ellipse cx="18" cy="178.0156" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="85" x="27" y="181.2261">predpiši(): void</text><ellipse cx="18" cy="190.8203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="127" x="27" y="194.0308">snemajZapiske(): void</text><ellipse cx="18" cy="203.625" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="124" x="27" y="206.8354">prepišiZapiske(): void</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="12" x="27" y="219.6401">...</text><!--MD5=[6b4d0b16d980356b8cd72ec9a471d594]
+@startuml
+skinparam class {
+  backgroundColor white
+  borderColor #5FB8EC
+  arrowColor black
+}
+skinparam backgroundcolor transparent
+'skinparam shadowing false
+skinparam defaultTextAlignment center
+hide circle
+'hide members
+
+Class Posvet {
+  -zdravniki: Bolnišnični zdravnik []
+  -datum: date
+  -čas: time
+  -oddelek: string
+  -razlog: string
+  -predpisana zdravila: Zdravilo []
+  -zvočni zapiski: blob
+  -prepis zapiskov: string
+  {field} ...
+  +nov(): void
+  +predpiši(): void
+  +snemajZapiske(): void
+  +prepišiZapiske(): void
+  {method} ...
+}
+@enduml
+
+@startuml
+skinparam class {
+  backgroundColor white
+  borderColor #5FB8EC
+  arrowColor black
+}
+skinparam backgroundcolor transparent
+skinparam defaultTextAlignment center
+hide circle
+
+Class Posvet {
+  -zdravniki: Bolnišnični zdravnik []
+  -datum: date
+  -čas: time
+  -oddelek: string
+  -razlog: string
+  -predpisana zdravila: Zdravilo []
+  -zvočni zapiski: blob
+  -prepis zapiskov: string
+  {field} ...
+  +nov(): void
+  +predpiši(): void
+  +snemajZapiske(): void
+  +prepišiZapiske(): void
+  {method} ...
+}
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="329px" preserveAspectRatio="none" style="width:625px;height:329px;background:#00000000;" version="1.1" viewBox="0 0 625 329" width="625px" zoomAndPan="magnify"><defs><filter height="300%" id="ftedgwcjquhyh" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[18e9fd8cd1a094f920abeb87bf15eabc]
+entity SenzorZaKrvniSladkor--><rect fill="#FFFFFF" filter="url(#ftedgwcjquhyh)" height="52.5938" style="stroke:#5FB8EC;stroke-width:1.5;" width="106" x="7" y="15"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="25.5" y="37.9951">Senzor za</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="86" x="17" y="54.292">krvni sladkor</text><!--MD5=[c33af32b9e1cf100420913b64310171b]
+entity VrniVrednostSenzorja--><rect fill="#FFFFFF" filter="url(#ftedgwcjquhyh)" height="52.5938" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="111" x="148.5" y="15"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="158.5" y="37.9951">Vrni vrednost</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="174.5" y="54.292">senzorja</text><!--MD5=[2bfc46e5d1fb21d0d9ec1d422759fb4b]
+entity PodatkiSenzorja--><rect fill="#FFFFFF" filter="url(#ftedgwcjquhyh)" height="52.5938" style="stroke:#5FB8EC;stroke-width:1.5;" width="79" x="294.5" y="15"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="51" x="308.5" y="37.9951">Podatki</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="304.5" y="54.292">senzorja</text><!--MD5=[e61d0151d727756878d87f8b30af0e0e]
+entity IzracunajRavenSladkorja--><rect fill="#FFFFFF" filter="url(#ftedgwcjquhyh)" height="68.8906" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="81" x="408.5" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="418.5" y="29.9951">Izračunaj</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="430" y="46.292">raven</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="418.5" y="62.5889">sladkorja</text><!--MD5=[57873e368dbd15b5b7a2b11dbaa84b05]
+entity RavenSladkorja--><rect fill="#FFFFFF" filter="url(#ftedgwcjquhyh)" height="52.5938" style="stroke:#5FB8EC;stroke-width:1.5;" width="81" x="524.5" y="15"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="43" x="543.5" y="37.9951">Raven</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="534.5" y="54.292">sladkorja</text><!--MD5=[904c4583ee9ac4f76a9766790a3884d8]
+entity IzracunajOdmerekInzulina--><rect fill="#FFFFFF" filter="url(#ftedgwcjquhyh)" height="68.8906" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="82" x="524" y="136"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="534.5" y="158.9951">Izračunaj</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="534" y="175.292">odmerek</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="539" y="191.5889">inzulina</text><!--MD5=[f4a83840a7d95091510bb100d8627a8b]
+entity PotrebaPoInzulinu--><rect fill="#FFFFFF" filter="url(#ftedgwcjquhyh)" height="52.5938" style="stroke:#5FB8EC;stroke-width:1.5;" width="96" x="517" y="265"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="527" y="287.9951">Potreba po</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="538.5" y="304.292">inzulinu</text><!--MD5=[06bc0c6a3bac68bc31cf434f7c5a2d3b]
+entity DolociUkazCrpalki--><rect fill="#FFFFFF" filter="url(#ftedgwcjquhyh)" height="52.5938" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="100" x="382" y="265"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="392" y="287.9951">Določi ukaz</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="410" y="304.292">črpalki</text><!--MD5=[6369bd28709e1868223bb18287af607c]
+entity PodatkiCrpalke--><rect fill="#FFFFFF" filter="url(#ftedgwcjquhyh)" height="52.5938" style="stroke:#5FB8EC;stroke-width:1.5;" width="71" x="275.5" y="265"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="51" x="285.5" y="287.9951">Podatki</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="286" y="304.292">črpalke</text><!--MD5=[eb3ff49d6b0cf55723a73fa6dd0b0f53]
+entity KrmiliCrpalko--><rect fill="#FFFFFF" filter="url(#ftedgwcjquhyh)" height="52.5938" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="70" x="170" y="265"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="187" y="287.9951">Krmili</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="180" y="304.292">črpalko</text><!--MD5=[42641ce54782d2b88cafc336dde61222]
+entity InzulinskaCrpalka--><rect fill="#FFFFFF" filter="url(#ftedgwcjquhyh)" height="52.5938" style="stroke:#5FB8EC;stroke-width:1.5;" width="88" x="47" y="265"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="57" y="287.9951">Inzulinska</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="66.5" y="304.292">črpalka</text><!--MD5=[ecff14cb231415fb31e224e6df34a105]
+link SenzorZaKrvniSladkor to VrniVrednostSenzorja--><path d="M113.16,41.5 C123.13,41.5 133.1,41.5 143.07,41.5 " fill="none" id="SenzorZaKrvniSladkor-to-VrniVrednostSenzorja" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="148.29,41.5,139.29,37.5,143.29,41.5,139.29,45.5,148.29,41.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[72537775d048691eecddb1f23a6cd25a]
+link VrniVrednostSenzorja to PodatkiSenzorja--><path d="M259.61,41.5 C269.5,41.5 279.4,41.5 289.3,41.5 " fill="none" id="VrniVrednostSenzorja-to-PodatkiSenzorja" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="294.48,41.5,285.48,37.5,289.48,41.5,285.48,45.5,294.48,41.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[11be43c8b4d42b37c412dcd6132397ef]
+link PodatkiSenzorja to IzracunajRavenSladkorja--><path d="M373.53,41.5 C383.41,41.5 393.28,41.5 403.15,41.5 " fill="none" id="PodatkiSenzorja-to-IzracunajRavenSladkorja" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="408.32,41.5,399.32,37.5,403.32,41.5,399.32,45.5,408.32,41.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[2b3efbc455a0059f86e051e0c9ee3d57]
+link IzracunajRavenSladkorja to RavenSladkorja--><path d="M489.78,41.5 C499.62,41.5 509.46,41.5 519.31,41.5 " fill="none" id="IzracunajRavenSladkorja-to-RavenSladkorja" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="524.45,41.5,515.45,37.5,519.45,41.5,515.45,45.5,524.45,41.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[0e4b277d3ff146e769267a3efb718e6a]
+link RavenSladkorja to IzracunajOdmerekInzulina--><path d="M565,68.2 C565,86.11 565,110.32 565,130.58 " fill="none" id="RavenSladkorja-to-IzracunajOdmerekInzulina" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="565,135.64,569,126.64,565,130.64,561,126.64,565,135.64" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[40461ee9598c50b7da4cf6a15d60475e]
+link IzracunajOdmerekInzulina to PotrebaPoInzulinu--><path d="M565,205.28 C565,222.47 565,243.2 565,259.91 " fill="none" id="IzracunajOdmerekInzulina-to-PotrebaPoInzulinu" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="565,264.96,569,255.96,565,259.96,561,255.96,565,264.96" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[4e83c378aee97b0dec7337f84d6f8c78]
+reverse link DolociUkazCrpalki to PotrebaPoInzulinu--><path d="M487.28,291.5 C497.11,291.5 506.94,291.5 516.77,291.5 " fill="none" id="DolociUkazCrpalki-backto-PotrebaPoInzulinu" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="482.13,291.5,491.13,295.5,487.13,291.5,491.13,287.5,482.13,291.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[29d8887d2fb0ffd824915a2838b29873]
+reverse link PodatkiCrpalke to DolociUkazCrpalki--><path d="M352.1,291.5 C362.01,291.5 371.91,291.5 381.82,291.5 " fill="none" id="PodatkiCrpalke-backto-DolociUkazCrpalki" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="346.92,291.5,355.92,295.5,351.92,291.5,355.92,287.5,346.92,291.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[14956755c52041b1576eb146fbf0d760]
+reverse link KrmiliCrpalko to PodatkiCrpalke--><path d="M245.41,291.5 C255.38,291.5 265.35,291.5 275.32,291.5 " fill="none" id="KrmiliCrpalko-backto-PodatkiCrpalke" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="240.2,291.5,249.2,295.5,245.2,291.5,249.2,287.5,240.2,291.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[ad4e5fd49c16f37600a5e4b66e20f994]
+reverse link InzulinskaCrpalka to KrmiliCrpalko--><path d="M140.23,291.5 C150.08,291.5 159.92,291.5 169.77,291.5 " fill="none" id="InzulinskaCrpalka-backto-KrmiliCrpalko" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="135.09,291.5,144.09,295.5,140.09,291.5,144.09,287.5,135.09,291.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[529e8480332c0cd3814180446c514311]
+@startuml
+skinparam backgroundcolor transparent
+'skinparam shadowing false
+skinparam defaultTextAlignment center
+
+hide stereotype
+
+skinparam arrowColor black
+skinparam rectangle {
+  roundCorner<<aktivnost>> 25
+  backgroundColor White
+  borderColor #5FB8EC
+}
+
+rectangle "Senzor za\nkrvni sladkor" as SenzorZaKrvniSladkor
+rectangle "Vrni vrednost\nsenzorja" <<aktivnost>> as VrniVrednostSenzorja
+rectangle "Podatki\nsenzorja" as PodatkiSenzorja
+rectangle "Izračunaj\nraven\nsladkorja" <<aktivnost>> as IzracunajRavenSladkorja
+rectangle "Raven\nsladkorja" as RavenSladkorja
+rectangle "Izračunaj\nodmerek\ninzulina" <<aktivnost>> as IzracunajOdmerekInzulina
+rectangle "Potreba po\ninzulinu" as PotrebaPoInzulinu
+rectangle "Določi ukaz\nčrpalki" <<aktivnost>> as DolociUkazCrpalki
+rectangle "Podatki\nčrpalke" as PodatkiCrpalke
+rectangle "Krmili\nčrpalko" <<aktivnost>> as KrmiliCrpalko
+rectangle "Inzulinska\nčrpalka" as InzulinskaCrpalka
+
+SenzorZaKrvniSladkor -right-> VrniVrednostSenzorja
+VrniVrednostSenzorja -right-> PodatkiSenzorja
+PodatkiSenzorja -right-> IzracunajRavenSladkorja
+IzracunajRavenSladkorja -right-> RavenSladkorja
+RavenSladkorja -down-> IzracunajOdmerekInzulina
+IzracunajOdmerekInzulina -down-> PotrebaPoInzulinu
+PotrebaPoInzulinu -left-> DolociUkazCrpalki
+DolociUkazCrpalki -left-> PodatkiCrpalke
+PodatkiCrpalke -left-> KrmiliCrpalko
+KrmiliCrpalko -left-> InzulinskaCrpalka
+@enduml
+
+@startuml
+skinparam backgroundcolor transparent
+skinparam defaultTextAlignment center
+
+hide stereotype
+
+skinparam arrowColor black
+skinparam rectangle {
+  roundCorner<<aktivnost>> 25
+  backgroundColor White
+  borderColor #5FB8EC
+}
+
+rectangle "Senzor za\nkrvni sladkor" as SenzorZaKrvniSladkor
+rectangle "Vrni vrednost\nsenzorja" <<aktivnost>> as VrniVrednostSenzorja
+rectangle "Podatki\nsenzorja" as PodatkiSenzorja
+rectangle "Izračunaj\nraven\nsladkorja" <<aktivnost>> as IzracunajRavenSladkorja
+rectangle "Raven\nsladkorja" as RavenSladkorja
+rectangle "Izračunaj\nodmerek\ninzulina" <<aktivnost>> as IzracunajOdmerekInzulina
+rectangle "Potreba po\ninzulinu" as PotrebaPoInzulinu
+rectangle "Določi ukaz\nčrpalki" <<aktivnost>> as DolociUkazCrpalki
+rectangle "Podatki\nčrpalke" as PodatkiCrpalke
+rectangle "Krmili\nčrpalko" <<aktivnost>> as KrmiliCrpalko
+rectangle "Inzulinska\nčrpalka" as InzulinskaCrpalka
+
+SenzorZaKrvniSladkor -right-> VrniVrednostSenzorja
+VrniVrednostSenzorja -right-> PodatkiSenzorja
+PodatkiSenzorja -right-> IzracunajRavenSladkorja
+IzracunajRavenSladkorja -right-> RavenSladkorja
+RavenSladkorja -down-> IzracunajOdmerekInzulina
+IzracunajOdmerekInzulina -down-> PotrebaPoInzulinu
+PotrebaPoInzulinu -left-> DolociUkazCrpalki
+DolociUkazCrpalki -left-> PodatkiCrpalke
+PodatkiCrpalke -left-> KrmiliCrpalko
+KrmiliCrpalko -left-> InzulinskaCrpalka
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

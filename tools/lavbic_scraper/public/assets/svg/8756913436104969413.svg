@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="126px" preserveAspectRatio="none" style="width:613px;height:126px;background:#00000000;" version="1.1" viewBox="0 0 613 126" width="613px" zoomAndPan="magnify"><defs><filter height="300%" id="fj2nwqfyukux4" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[87d3ae5fc2854641d6befccee4ee802b]
+class Porocanje--><rect codeLine="9" fill="#FFFFFF" filter="url(#fj2nwqfyukux4)" height="79.5469" id="Porocanje" style="stroke:#5FB8EC;stroke-width:1.5;" width="247" x="7" y="19.5"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="70" x="95.5" y="35.6387">«interface»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="63" x="99" y="49.6074">Poročanje</text><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="8" x2="253" y1="57.4375" y2="57.4375"/><line style="stroke:#5FB8EC;stroke-width:1.0;" x1="8" x2="253" y1="65.4375" y2="65.4375"/><ellipse cx="18" cy="76.4375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="220" x="27" y="79.6479">vremePorocilo(WS-ident: int): Vporocilo</text><ellipse cx="18" cy="89.2422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="221" x="27" y="92.4526">statusPorocilo(WS-ident: int): Sporocilo</text><!--MD5=[e05fcd39bb40c55b172026d0e08d1d2a]
+class OddaljenNadzor--><rect codeLine="15" fill="#FFFFFF" filter="url(#fj2nwqfyukux4)" height="105.1563" id="OddaljenNadzor" style="stroke:#5FB8EC;stroke-width:1.5;" width="310" x="289.5" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="70" x="409.5" y="23.1387">«interface»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="101" x="394" y="37.1074">Oddaljen nadzor</text><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="290.5" x2="598.5" y1="44.9375" y2="44.9375"/><line style="stroke:#5FB8EC;stroke-width:1.0;" x1="290.5" x2="598.5" y1="52.9375" y2="52.9375"/><ellipse cx="300.5" cy="63.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="284" x="309.5" y="67.1479">zazeniInstrument(instrument: Instrument): iStatus</text><ellipse cx="300.5" cy="76.7422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="284" x="309.5" y="79.9526">ustaviInstrument(instrument: Instrument): iStatus</text><ellipse cx="300.5" cy="89.5469" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="260" x="309.5" y="92.7573">zberiPodatke(instrument: Instrument): iStatus</text><ellipse cx="300.5" cy="102.3516" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="272" x="309.5" y="105.562">zagotoviPodatke(instrument: Instrument): string</text><!--MD5=[89a877cac31d616a4de38a65199434b1]
+@startuml
+skinparam class {
+  backgroundColor white
+  borderColor #5FB8EC
+  arrowColor black
+}
+skinparam backgroundcolor transparent
+hide circle
+
+Class "Poročanje" as Porocanje <<interface>> {
+  - -
+  +vremePorocilo(WS-ident: int): Vporocilo
+  +statusPorocilo(WS-ident: int): Sporocilo
+}
+
+Class "Oddaljen nadzor" as OddaljenNadzor <<interface>> {
+  - -
+  +zazeniInstrument(instrument: Instrument): iStatus
+  +ustaviInstrument(instrument: Instrument): iStatus
+  +zberiPodatke(instrument: Instrument): iStatus
+  +zagotoviPodatke(instrument: Instrument): string
+}
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

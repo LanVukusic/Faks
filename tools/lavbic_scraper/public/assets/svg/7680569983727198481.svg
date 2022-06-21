@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="123px" preserveAspectRatio="none" style="width:319px;height:123px;background:#00000000;" version="1.1" viewBox="0 0 319 123" width="319px" zoomAndPan="magnify"><defs><filter height="300%" id="fu2drdftts4if" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[d584c8c80d2b7218868350ad4a292901]
+entity Referent--><ellipse cx="36" cy="30.5" fill="#FFFFFF" filter="url(#fu2drdftts4if)" rx="8" ry="8" style="stroke:#000000;stroke-width:1.5;"/><path d="M36,38.5 L36,65.5 M23,46.5 L49,46.5 M36,65.5 L23,80.5 M36,65.5 L49,80.5 " fill="none" filter="url(#fu2drdftts4if)" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="6" y="98.9951">Referent</text><!--MD5=[a076a1f53d649d8e136f5011869e3575]
+entity SistemEvidenceBolnikov--><ellipse cx="281" cy="14" fill="#FFFFFF" filter="url(#fu2drdftts4if)" rx="8" ry="8" style="stroke:#000000;stroke-width:1.5;"/><path d="M281,22 L281,49 M268,30 L294,30 M281,49 L268,64 M281,49 L294,64 " fill="none" filter="url(#fu2drdftts4if)" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="257.5" y="82.4951">Sistem</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="249.5" y="98.792">evidence</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="57" x="252.5" y="115.0889">bolnikov</text><ellipse cx="158.2401" cy="61.5473" fill="#FFFFFF" filter="url(#fu2drdftts4if)" rx="56.7401" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="133.7401" y="56.2455">Prenos</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="126.2401" y="72.5424">podatkov</text><!--MD5=[705be1cb332838b59b8988fdeaf24a91]
+link Referent to PrenosPodatkov--><path d="M66.02,61.5 C76.02,61.5 86.01,61.5 96.01,61.5 " fill="none" id="Referent-to-PrenosPodatkov" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="101.23,61.5,92.23,57.5,96.23,61.5,92.23,65.5,101.23,61.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[a539492cbfd32e3dfbbcb85e87fc26ab]
+link PrenosPodatkov to SistemEvidenceBolnikov--><path d="M214.7,61.5 C224.55,61.5 234.4,61.5 244.25,61.5 " fill="none" id="PrenosPodatkov-to-SistemEvidenceBolnikov" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="249.4,61.5,240.4,57.5,244.4,61.5,240.4,65.5,249.4,61.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[9adda438efb9e14f61ecd0e593a48931]
+@startuml
+skinparam backgroundcolor transparent
+'skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam usecase {
+  backgroundColor white
+  borderColor #5FB8EC
+  arrowColor black
+}
+skinparam actorBorderColor black
+skinparam actorBackgroundColor white
+
+actor Referent
+actor "Sistem\nevidence\nbolnikov" as SistemEvidenceBolnikov
+usecase (Prenos\npodatkov) as (PrenosPodatkov)
+
+Referent -right-> (PrenosPodatkov)
+(PrenosPodatkov) -right-> SistemEvidenceBolnikov
+@enduml
+
+@startuml
+skinparam backgroundcolor transparent
+skinparam defaultTextAlignment center
+skinparam usecase {
+  backgroundColor white
+  borderColor #5FB8EC
+  arrowColor black
+}
+skinparam actorBorderColor black
+skinparam actorBackgroundColor white
+
+actor Referent
+actor "Sistem\nevidence\nbolnikov" as SistemEvidenceBolnikov
+usecase (Prenos\npodatkov) as (PrenosPodatkov)
+
+Referent -right-> (PrenosPodatkov)
+(PrenosPodatkov) -right-> SistemEvidenceBolnikov
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

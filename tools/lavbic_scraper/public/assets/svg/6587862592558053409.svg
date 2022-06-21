@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="615px" preserveAspectRatio="none" style="width:396px;height:615px;background:#00000000;" version="1.1" viewBox="0 0 396 615" width="396px" zoomAndPan="magnify"><defs><filter height="300%" id="f1kvygpepad4ww" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[d584c8c80d2b7218868350ad4a292901]
+entity Referent--><ellipse cx="44.5" cy="254.5" fill="#FFFFFF" filter="url(#f1kvygpepad4ww)" rx="8" ry="8" style="stroke:#000000;stroke-width:1.5;"/><path d="M44.5,262.5 L44.5,289.5 M31.5,270.5 L57.5,270.5 M44.5,289.5 L31.5,304.5 M44.5,289.5 L57.5,304.5 " fill="none" filter="url(#f1kvygpepad4ww)" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="14.5" y="322.9951">Referent</text><ellipse cx="199.6335" cy="316.5473" fill="#FFFFFF" filter="url(#f1kvygpepad4ww)" rx="46.1335" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="43" x="178.1335" y="311.2455">Prijava</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="175.1335" y="327.5424">bolnika</text><ellipse cx="199.7401" cy="43.5709" fill="#FFFFFF" filter="url(#f1kvygpepad4ww)" rx="56.7401" ry="37.5709" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="179.2401" y="30.1207">Ogled</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="171.7401" y="46.4176">osebnih</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="167.7401" y="62.7144">podatkov</text><!--MD5=[73c311cfb66d7c39616301b5546b29e9]
+entity Upravljalec--><ellipse cx="352.5" cy="111.5" fill="#FFFFFF" filter="url(#f1kvygpepad4ww)" rx="8" ry="8" style="stroke:#000000;stroke-width:1.5;"/><path d="M352.5,119.5 L352.5,146.5 M339.5,127.5 L365.5,127.5 M352.5,146.5 L339.5,161.5 M352.5,146.5 L365.5,161.5 " fill="none" filter="url(#f1kvygpepad4ww)" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="316" y="179.9951">Upravljalec</text><ellipse cx="199.3259" cy="142.5473" fill="#FFFFFF" filter="url(#f1kvygpepad4ww)" rx="55.3259" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="181.8259" y="137.2455">Izvoz</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="168.3259" y="153.5424">statistike</text><ellipse cx="199.4117" cy="229.5473" fill="#FFFFFF" filter="url(#f1kvygpepad4ww)" rx="53.9117" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="169.4117" y="224.2455">Kreiranje</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54" x="172.4117" y="240.5424">poročila</text><!--MD5=[a02089e96606f53541bedf2569954f0c]
+entity Zdravnik--><ellipse cx="352.5" cy="415.5" fill="#FFFFFF" filter="url(#f1kvygpepad4ww)" rx="8" ry="8" style="stroke:#000000;stroke-width:1.5;"/><path d="M352.5,423.5 L352.5,450.5 M339.5,431.5 L365.5,431.5 M352.5,450.5 L339.5,465.5 M352.5,450.5 L365.5,465.5 " fill="none" filter="url(#f1kvygpepad4ww)" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="323" y="483.9951">Zdravnik</text><!--MD5=[190be00927e416383dee1db7a069ed2c]
+entity MedicinskaSestra--><ellipse cx="44.5" cy="395" fill="#FFFFFF" filter="url(#f1kvygpepad4ww)" rx="8" ry="8" style="stroke:#000000;stroke-width:1.5;"/><path d="M44.5,403 L44.5,430 M31.5,411 L57.5,411 M44.5,430 L31.5,445 M44.5,430 L57.5,445 " fill="none" filter="url(#f1kvygpepad4ww)" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="6" y="463.4951">Medicinska</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="43" x="23" y="479.792">sestra</text><ellipse cx="199.598" cy="490.5473" fill="#FFFFFF" filter="url(#f1kvygpepad4ww)" rx="42.598" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="179.098" y="485.2455">Ogled</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="177.598" y="501.5424">zapisa</text><ellipse cx="199.5833" cy="403.5473" fill="#FFFFFF" filter="url(#f1kvygpepad4ww)" rx="51.0833" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="171.5833" y="398.2455">Urejanje</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="177.5833" y="414.5424">zapisa</text><ellipse cx="199.7401" cy="577.5473" fill="#FFFFFF" filter="url(#f1kvygpepad4ww)" rx="56.7401" ry="26.0473" style="stroke:#5FB8EC;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="167.7401" y="572.2455">Določitev</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="172.2401" y="588.5424">posveta</text><!--MD5=[a8e15ba6bd9a2271aed79dd8124cc7aa]
+reverse link DolocitevPosveta to Zdravnik--><path d="M234,552.28 C241.35,546.55 249.01,540.41 256,534.5 C279.07,514.99 304.15,491.8 322.82,474.12 " fill="none" id="DolocitevPosveta-backto-Zdravnik" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="229.96,555.42,239.5181,553.0448,233.9045,552.3473,234.6019,546.7336,229.96,555.42" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[b485125b1f3fba699da1851147ac647f]
+reverse link UrejanjeZapisa to Zdravnik--><path d="M249.68,417.51 C273.9,424.4 302.24,432.47 322.87,438.35 " fill="none" id="UrejanjeZapisa-backto-Zdravnik" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="244.58,416.05,252.1398,422.3627,249.3887,417.4198,254.3315,414.6687,244.58,416.05" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[0845a4d76d2751931c0d9b1f26a7d109]
+link MedicinskaSestra to UrejanjeZapisa--><path d="M83.32,426.84 C102.49,422.95 126.06,418.18 146.87,413.96 " fill="none" id="MedicinskaSestra-to-UrejanjeZapisa" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="151.82,412.96,142.2019,410.8404,146.921,413.9598,143.8016,418.6789,151.82,412.96" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[b59a15565da5980f11dd4494d8f4ede5]
+reverse link OgledZapisa to Zdravnik--><path d="M243.22,478.05 C268.68,470.63 300.31,461.42 322.8,454.86 " fill="none" id="OgledZapisa-backto-Zdravnik" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="238.21,479.51,247.97,480.83,243.01,478.11,245.73,473.15,238.21,479.51" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[1d2f9c16b0ef96561991edaf70635882]
+link MedicinskaSestra to OgledZapisa--><path d="M83.32,448.34 C105.96,456.63 134.73,467.16 157.85,475.62 " fill="none" id="MedicinskaSestra-to-OgledZapisa" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="162.69,477.39,155.6239,470.5293,157.9973,475.6641,152.8625,478.0376,162.69,477.39" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[b44f0193fe838f4993003a0489c9c3f8]
+reverse link KreiranjePorocila to Zdravnik--><path d="M236.06,253.54 C243.15,259.26 250.19,265.7 256,272.5 C290.8,313.25 318.56,368.69 334.99,405.95 " fill="none" id="KreiranjePorocila-backto-Zdravnik" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="232.12,250.43,236.7116,259.1431,236.0466,253.5254,241.6643,252.8605,232.12,250.43" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[a26a2442eacb862cb954f0e929ac8bd2]
+reverse link KreiranjePorocila to Upravljalec--><path d="M239.1,207.26 C262.72,193.65 292.73,176.36 315.8,163.07 " fill="none" id="KreiranjePorocila-backto-Upravljalec" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="234.76,209.76,244.5541,208.7226,239.0897,207.2593,240.553,201.795,234.76,209.76" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[26b4ea64c1b6fd18d1474fc6ab07e3ff]
+reverse link IzvozStatistike to Upravljalec--><path d="M260.29,142.5 C279.12,142.5 299.32,142.5 315.91,142.5 " fill="none" id="IzvozStatistike-backto-Upravljalec" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="255.01,142.5,264.01,146.5,260.01,142.5,264.01,138.5,255.01,142.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[29442ce1c66068a84bcb2bfadb3f60ec]
+reverse link OgledOsebnihPodatkov to Upravljalec--><path d="M245.03,72.69 C267.62,87.51 294.69,105.26 315.89,119.15 " fill="none" id="OgledOsebnihPodatkov-backto-Upravljalec" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="240.57,69.77,245.9054,78.0485,244.7521,72.5105,250.2901,71.3572,240.57,69.77" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[51f2e2d68a83c4fffbeaa798eaf2ecfc]
+link Referent to PrijavaBolnika--><path d="M74.64,291.4 C96.18,295.77 125.98,301.81 150.95,306.87 " fill="none" id="Referent-to-PrijavaBolnika" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="155.88,307.86,147.8456,302.1636,150.9782,306.8739,146.2679,310.0065,155.88,307.86" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[227164cd96d014b89aa928699ef2754a]
+link Referent to OgledOsebnihPodatkov--><path d="M62.33,244.74 C79.58,205.38 108.67,145.06 143,98.5 C148.43,91.13 154.86,83.82 161.38,77.06 " fill="none" id="Referent-to-OgledOsebnihPodatkov" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="165,73.36,155.8438,76.9882,161.5004,76.9311,161.5575,82.5876,165,73.36" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[9670419dd6b2da257a4e3f7bfc0981a7]
+@startuml
+skinparam backgroundcolor transparent
+skinparam defaultTextAlignment center
+skinparam usecase {
+  backgroundColor white
+  borderColor #5FB8EC
+  arrowColor black
+}
+skinparam actorBorderColor black
+skinparam actorBackgroundColor white
+
+left to right direction
+
+actor Referent
+usecase (Prijava\nbolnika) as (PrijavaBolnika)
+usecase (Ogled\nosebnih\npodatkov) as (OgledOsebnihPodatkov)
+actor Upravljalec
+usecase (Izvoz\nstatistike) as (IzvozStatistike)
+usecase (Kreiranje\nporočila) as (KreiranjePorocila)
+actor Zdravnik
+actor "Medicinska\nsestra" as MedicinskaSestra
+usecase (Ogled\nzapisa) as (OgledZapisa)
+usecase (Urejanje\nzapisa) as (UrejanjeZapisa)
+usecase (Določitev\nposveta) as (DolocitevPosveta)
+
+Zdravnik -up-> (DolocitevPosveta)
+Zdravnik -up-> (UrejanjeZapisa)
+MedicinskaSestra - -> (UrejanjeZapisa)
+Zdravnik -up-> (OgledZapisa)
+MedicinskaSestra - -> (OgledZapisa)
+Zdravnik -up-> (KreiranjePorocila)
+Upravljalec -up-> (KreiranjePorocila)
+Upravljalec -up-> (IzvozStatistike)
+Upravljalec -up-> (OgledOsebnihPodatkov)
+Referent - -> (PrijavaBolnika)
+Referent - -> (OgledOsebnihPodatkov)
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="117px" preserveAspectRatio="none" style="width:405px;height:117px;background:#00000000;" version="1.1" viewBox="0 0 405 117" width="405px" zoomAndPan="magnify"><defs><filter height="300%" id="f1nvoreis94y2r" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[ce4f3cc40b32c15353069a5c921c46ba]
+cluster ZbiranjePodatkov--><polygon fill="#FFFFFF" filter="url(#f1nvoreis94y2r)" points="16,6,160,6,167,28.2969,388,28.2969,388,110,16,110,16,6" style="stroke:#5FB8EC;stroke-width:1.5;"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="16" x2="167" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="138" x="20" y="20.9951">ZbiranjePodatkov</text><!--MD5=[647fcaacea61af6ac475f91ffbdbb468]
+entity Oddajnik--><rect fill="#E8F5FD" filter="url(#f1nvoreis94y2r)" height="36.2969" style="stroke:#5FB8EC;stroke-width:1.5;" width="80" x="292" y="49.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="302" y="72.4951">Oddajnik</text><!--MD5=[3b5a93e42ef24d012b52e7819c87637c]
+entity Sprejemnik--><rect fill="#E8F5FD" filter="url(#f1nvoreis94y2r)" height="36.2969" style="stroke:#5FB8EC;stroke-width:1.5;" width="97" x="31.5" y="49.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="41.5" y="72.4951">Sprejemnik</text><!--MD5=[e0b8ff9cb49cb43903f008c5ba2dc616]
+entity VremenskiPodatki--><rect fill="#E8F5FD" filter="url(#f1nvoreis94y2r)" height="52.5938" style="stroke:#5FB8EC;stroke-width:1.5;" width="93" x="163.5" y="41"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="173.5" y="63.9951">Vremenski</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="51" x="184.5" y="80.292">podatki</text><!--MD5=[aa26396ac4819a58b22038b4d5d2a4fc]
+link Sprejemnik to VremenskiPodatki--><path d="M128.75,67.5 C138.57,67.5 148.39,67.5 158.21,67.5 " fill="none" id="Sprejemnik-to-VremenskiPodatki" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="163.34,67.5,154.34,63.5,158.34,67.5,154.34,71.5,163.34,67.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[037ed176bb0eb8e516808dff6b45e0ed]
+link VremenskiPodatki to Oddajnik--><path d="M256.7,67.5 C266.72,67.5 276.74,67.5 286.76,67.5 " fill="none" id="VremenskiPodatki-to-Oddajnik" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="292,67.5,283,63.5,287,67.5,283,71.5,292,67.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[2ec3bf2add8dd405af4cab0fd1633a00]
+@startuml
+skinparam backgroundcolor transparent
+skinparam defaultTextAlignment center
+skinparam ArrowColor black
+skinparam package {
+  backgroundcolor white
+  bordercolor #5FB8EC
+}
+skinparam rectangle {
+  backgroundcolor #e8f5fd
+  bordercolor #5FB8EC
+}
+
+package ZbiranjePodatkov {
+  rectangle Oddajnik
+  rectangle Sprejemnik
+  rectangle "Vremenski\npodatki" as VremenskiPodatki
+}
+
+Sprejemnik -right-> VremenskiPodatki
+VremenskiPodatki -right-> Oddajnik
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

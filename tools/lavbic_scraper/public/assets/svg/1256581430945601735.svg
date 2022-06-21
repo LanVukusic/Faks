@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="522px" preserveAspectRatio="none" style="width:406px;height:522px;background:#00000000;" version="1.1" viewBox="0 0 406 522" width="406px" zoomAndPan="magnify"><defs><filter height="300%" id="fcbqbipclfkns" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[7e48da7477ec85c806695670f798d67a]
+cluster Polnjenje--><rect fill="#E8F5FD" filter="url(#fcbqbipclfkns)" height="120" style="stroke:#5FB8EC;stroke-width:1.5;" width="257" x="137" y="101"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="72" x="229.5" y="115.9951">Polnjenje</text><!--MD5=[6a804db92f1a61addcda690b492c665b]
+cluster Pakiranje--><rect fill="#E8F5FD" filter="url(#fcbqbipclfkns)" height="249" style="stroke:#5FB8EC;stroke-width:1.5;" width="155" x="7" y="261"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="72" x="48.5" y="275.9951">Pakiranje</text><!--MD5=[b5ce1dfb525a9dfdfb39123bea078571]
+entity KrmilnikRoke--><rect fill="#FFFFFF" filter="url(#fcbqbipclfkns)" height="52.5938" style="stroke:#5FB8EC;stroke-width:1.5;" width="73" x="296.5" y="144"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="306.5" y="166.9951">Krmilnik</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31" x="317.5" y="183.292">roke</text><!--MD5=[a88249813b5b4126197a32956afd826c]
+entity KrmilnikPrijemala--><rect fill="#FFFFFF" filter="url(#fcbqbipclfkns)" height="52.5938" style="stroke:#5FB8EC;stroke-width:1.5;" width="81" x="180.5" y="144"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="194.5" y="166.9951">Krmilnik</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="190.5" y="183.292">prijemala</text><!--MD5=[5bffbd9296e465a31d85e029a6085aa0]
+entity SistemZaIzbiroEmbalaze--><rect fill="#FFFFFF" filter="url(#fcbqbipclfkns)" height="68.8906" style="stroke:#5FB8EC;stroke-width:1.5;" width="87" x="50.5" y="304"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="60.5" y="326.9951">Sistem za</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="75.5" y="343.292">izbiro</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="60.5" y="359.5889">embalaže</text><!--MD5=[a24ffeff61cf1460d93845fbcd169bdc]
+entity SistemZaPakiranje--><rect fill="#FFFFFF" filter="url(#fcbqbipclfkns)" height="52.5938" style="stroke:#5FB8EC;stroke-width:1.5;" width="87" x="50.5" y="433"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="60.5" y="455.9951">Sistem za</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="63" y="472.292">pakiranje</text><!--MD5=[e4ee1a2e0051062b28c731d91522b585]
+entity SistemRacunalniskegaVida--><rect fill="#FFFFFF" filter="url(#fcbqbipclfkns)" height="68.8906" style="stroke:#5FB8EC;stroke-width:1.5;" width="124" x="40" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="78.5" y="29.9951">Sistem</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="50" y="46.292">računalniškega</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="27" x="88.5" y="62.5889">vida</text><!--MD5=[89085c86a70174b1d7e7b7c0591cd304]
+entity SistemZaRazpoznavoObjektov--><rect fill="#FFFFFF" filter="url(#fcbqbipclfkns)" height="68.8906" style="stroke:#5FB8EC;stroke-width:1.5;" width="100" x="10" y="136"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="26.5" y="158.9951">Sistem za</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="20" y="175.292">razpoznavo</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="30.5" y="191.5889">objektov</text><!--MD5=[40324fd5fb3444174b936ed350d2cf62]
+entity KrmilnikTekocegaTraku--><rect fill="#FFFFFF" filter="url(#fcbqbipclfkns)" height="52.5938" style="stroke:#5FB8EC;stroke-width:1.5;" width="124" x="186" y="433"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="221.5" y="455.9951">Krmilnik</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="196" y="472.292">tekočega traku</text><!--MD5=[c2843bd582739450cb14667f36fedd13]
+link SistemRacunalniskegaVida to Polnjenje--><path d="M124.08,76.29 C125.53,79.18 126.86,82.1 128,85 C131.3875,93.6375 134.1313,103.0475 136.3444,112.3492 C136.4827,112.9306 136.6189,113.5115 136.7531,114.0918 C136.8202,114.382 136.8868,114.6719 136.9529,114.9617 " fill="none" id="SistemRacunalniskegaVida-to-Polnjenje" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="136.9529,114.9617,138.852,105.2977,135.8413,110.0869,131.0522,107.0763,136.9529,114.9617" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[e6d4c2226eacba7cc253e516d6ce3471]
+link SistemRacunalniskegaVida to SistemZaRazpoznavoObjektov--><path d="M90.86,76.2 C85.3,92.99 78.56,113.38 72.8,130.81 " fill="none" id="SistemRacunalniskegaVida-to-SistemZaRazpoznavoObjektov" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="71.2,135.64,77.8078,128.3368,72.7597,130.8895,70.207,125.8413,71.2,135.64" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[89a362b97c960938e35a923dd7c494c5]
+link SistemZaRazpoznavoObjektov to Polnjenje--><path d="M110.14,170.5 C115.86,170.5 121.58,170.5 127.3,170.5 C130.16,170.5 133.02,170.5 135.88,170.5 C136.2375,170.5 136.595,170.5 136.9525,170.5 " fill="none" id="SistemZaRazpoznavoObjektov-to-Polnjenje" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="136.9525,170.5,127.9525,166.5,131.9525,170.5,127.9525,174.5,136.9525,170.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[a89dbb7c5da825b26a5aa1574e7ebba5]
+link SistemZaRazpoznavoObjektov to Pakiranje--><path d="M46.98,205.22 C42.48,217.61 37.66,231.83 34,245 C32.6375,249.8963 31.3264,254.9631 30.0742,260.0875 C30.0351,260.2476 29.996,260.4078 29.957,260.5681 " fill="none" id="SistemZaRazpoznavoObjektov-to-Pakiranje" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="29.957,260.5681,35.9725,252.7698,31.1398,255.71,28.1996,250.8773,29.957,260.5681" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[49aebd16c6fba3501c640424399b59b1]
+link Polnjenje to SistemZaPakiranje--><path d="M157.0215,221.1066 C157.4342,223.2951 157.842,225.5357 158.2422,227.8241 C159.0424,232.401 159.8117,237.1694 160.5263,242.095 C166.2425,281.5 168.455,330.97 155,373 C148.44,393.48 134.99,413.23 122.38,428.58 " fill="none" id="Polnjenje-SistemZaPakiranje" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="118.85,432.79,127.7004,428.4691,122.065,428.9606,121.5734,423.3252,118.85,432.79" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="157.0215,221.1066,154.7584,230.6919,157.948,226.02,162.6199,229.2096,157.0215,221.1066" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[886814f2cfb98b5512aa876151bef9e0]
+link SistemZaPakiranje to KrmilnikTekocegaTraku--><path d="M137.61,459.5 C151.95,459.5 166.29,459.5 180.63,459.5 " fill="none" id="SistemZaPakiranje-to-KrmilnikTekocegaTraku" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="185.91,459.5,176.91,455.5,180.91,459.5,176.91,463.5,185.91,459.5" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[4a5f35b3541014d9c6437f108ac5c953]
+link SistemZaIzbiroEmbalaze to SistemZaPakiranje--><path d="M94,378.72 C94,394.61 94,412.69 94,427.62 " fill="none" id="SistemZaIzbiroEmbalaze-SistemZaPakiranje" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="94,432.96,98,423.96,94,427.96,90,423.96,94,432.96" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="94,373.28,90,382.28,94,378.28,98,382.28,94,373.28" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[6d690288d7aaa97db95de865c3cf85b6]
+@startuml
+skinparam backgroundcolor transparent
+skinparam defaultTextAlignment center
+hide stereotype
+
+skinparam arrowColor black
+skinparam rectangle {
+  backgroundColor<<sistem>> White
+  backgroundColor #e8f5fd
+  borderColor #5FB8EC
+}
+skinparam actorBorderColor black
+skinparam actorBackgroundColor white
+
+rectangle "Sistem\nračunalniškega\nvida" as SistemRacunalniskegaVida <<sistem>>
+rectangle "Sistem za\nrazpoznavo\nobjektov" as SistemZaRazpoznavoObjektov <<sistem>>
+rectangle Polnjenje {
+  rectangle "Krmilnik\nroke" as KrmilnikRoke <<sistem>>
+  rectangle "Krmilnik\nprijemala" as KrmilnikPrijemala <<sistem>>
+}
+rectangle Pakiranje {
+  rectangle "Sistem za\nizbiro\nembalaže" as SistemZaIzbiroEmbalaze <<sistem>>
+  rectangle "Sistem za\npakiranje" as SistemZaPakiranje <<sistem>>
+}
+rectangle "Krmilnik\ntekočega traku" as KrmilnikTekocegaTraku <<sistem>>
+
+SistemRacunalniskegaVida -down-> Polnjenje
+SistemRacunalniskegaVida -down-> SistemZaRazpoznavoObjektov
+SistemZaRazpoznavoObjektov -right-> Polnjenje
+SistemZaRazpoznavoObjektov -down-> Pakiranje
+SistemZaPakiranje <-up-> Polnjenje
+SistemZaPakiranje  -right-> KrmilnikTekocegaTraku
+SistemZaIzbiroEmbalaze <- -> SistemZaPakiranje
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

@@ -1,0 +1,352 @@
+firewall {
+    name OUTSIDE-IN {
+        default-action drop
+        rule 10 {
+            action accept
+            state {
+                established enable
+                related enable
+            }
+        }
+    }
+    name OUTSIDE-LOCAL {
+        default-action drop
+        rule 10 {
+            action accept
+            state {
+                established enable
+                related enable
+            }
+        }
+        rule 20 {
+            action accept
+            icmp {
+                type-name echo-request
+            }
+            protocol icmp
+            state {
+                new enable
+            }
+        }
+        rule 31 {
+            action accept
+            destination {
+                port 22
+            }
+            protocol tcp
+            state {
+                new enable
+            }
+        }
+        rule 32 {
+            action accept
+            destination {
+                port 51820
+            }
+            protocol tcp
+            state {
+                new enable
+            }
+        }
+        rule 33 {
+            action accept
+            destination {
+                port 80
+            }
+            protocol tcp
+            state {
+                new enable
+            }
+        }
+    }
+}
+interfaces {
+    ethernet eth0 {
+        address 88.200.24.231/24
+        address 2001:1470:fffd:80::2/64
+        description "ISP connection interface"
+        duplex auto
+        hw-id 00:0c:29:72:23:9c
+        smp-affinity auto
+        speed auto
+    }
+    ethernet eth1 {
+        address 10.8.0.1/24
+        address 2001:1470:fffd:81::1/64
+        description "internal interface"
+        duplex auto
+        hw-id 00:0c:29:72:23:a6
+        ipv6 {
+            dup-addr-detect-transmits 1
+            router-advert {
+                cur-hop-limit 64
+                link-mtu 0
+                managed-flag true
+                max-interval 600
+                other-config-flag false
+                reachable-time 0
+                retrans-timer 0
+                send-advert true
+            }
+        }
+        smp-affinity auto
+        speed auto
+    }
+    ethernet eth2 {
+        address 192.168.1.1/24
+        address 2001:1470:fffd:82::1/64
+        description "DMZ interface"
+        duplex auto
+        hw-id 00:0c:29:72:23:b0
+        ipv6 {
+            dup-addr-detect-transmits 1
+            router-advert {
+                cur-hop-limit 64
+                link-mtu 0
+                managed-flag false
+                max-interval 600
+                other-config-flag false
+                prefix 2001:1470:fffd:82::/64 {
+                    autonomous-flag true
+                    on-link-flag true
+                    valid-lifetime 2592000
+                }
+                reachable-time 0
+                retrans-timer 0
+                send-advert true
+            }
+        }
+        smp-affinity auto
+        speed auto
+    }
+    ethernet eth3 {
+        address 2001:1470:fffd:83::1/64
+        address fc00:dead:fffd:83::1/64
+        description ipv6only
+        hw-id 00:0c:29:72:23:ba
+        ipv6 {
+            router-advert {
+                name-server 2001:4860:4860::8888
+                prefix fc00:dead:fffd:83::/64 {
+                }
+                send-advert true
+            }
+        }
+    }
+    loopback lo {
+    }
+    wireguard wg01 {
+        address 10.1.1.1/24
+        description VPN
+        peer mojpc {
+            allowed-ips 10.1.1.0/24
+            allowed-ips 10.1.1.2/32
+            pubkey ****************
+        }
+        port 51820
+    }
+}
+nat {
+    destination {
+        rule 100 {
+            description "SSH to APISERV"
+            destination {
+                address 88.200.24.231
+                port 2299
+            }
+            inbound-interface eth0
+            protocol tcp_udp
+            translation {
+                address 192.168.1.101
+                port 22
+            }
+        }
+        rule 101 {
+            description "http to apiserv"
+            destination {
+                address 88.200.24.231
+                port 80
+            }
+            inbound-interface eth0
+            protocol tcp_udp
+            translation {
+                address 192.168.1.101
+                port 80
+            }
+        }
+        rule 102 {
+            description "SSH to OTHR"
+            destination {
+                address 88.200.24.231
+                port 2288
+            }
+            inbound-interface eth0
+            protocol tcp_udp
+            translation {
+                address 192.168.1.102
+                port 22
+            }
+        }
+        rule 103 {
+            description "SSH to ETCD"
+            destination {
+                address 88.200.24.31
+                port 2277
+            }
+            inbound-interface eth0
+            protocol tcp_udp
+            translation {
+                address 192.168.1.103
+                port 22
+            }
+        }
+    }
+    nptv6 {
+        rule 66 {
+            outbound-interface eth0
+            source {
+                prefix fc00:dead:fffd:83::/64
+            }
+            translation {
+                prefix 2001:1470:fffd:83::/64
+            }
+        }
+    }
+    source {
+        rule 100 {
+            outbound-interface eth0
+            source {
+                address 192.168.1.0/24
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 105 {
+            outbound-interface eth0
+            source {
+                address 10.8.0.0/24
+            }
+            translation {
+                address masquerade
+            }
+        }
+    }
+}
+protocols {
+    static {
+        route 0.0.0.0/0 {
+            next-hop 88.200.24.1 {
+            }
+        }
+        route6 ::/0 {
+            next-hop 2001:1470:fffd:80::1 {
+            }
+        }
+    }
+}
+service {
+    dhcp-server {
+        shared-network-name DMZ {
+            subnet 192.168.1.0/24 {
+                default-router 192.168.1.1
+                dns-server 8.8.8.8
+                domain-name sk01
+                lease 86400
+                range 0 {
+                    start 192.168.1.100
+                    stop 192.168.1.200
+                }
+                static-mapping APISERV {
+                    ip-address 192.168.1.101
+                    mac-address 00:0c:29:be:c3:98
+                }
+                static-mapping ETCD {
+                    ip-address 192.168.1.103
+                    mac-address 00:0c:29:a6:68:00
+                }
+                static-mapping OTHR {
+                    ip-address 192.168.1.102
+                    mac-address 00:0c:29:7a:ee:7f
+                }
+            }
+        }
+        shared-network-name INTERNAL {
+            subnet 10.8.0.0/24 {
+                default-router 10.8.0.1
+                dns-server 8.8.8.8
+                dns-server 8.8.4.4
+                domain-name internal
+                lease 86400
+                range 0 {
+                    start 10.8.0.100
+                    stop 10.8.0.200
+                }
+            }
+        }
+    }
+    dhcpv6-server {
+        preference 255
+        shared-network-name internalv6 {
+            subnet 2001:1470:fffd:81::/64 {
+                address-range {
+                    start 2001:1470:fffd:81::100 {
+                        stop 2001:1470:fffd:81::200
+                    }
+                }
+                name-server 2606:4700:4700::111
+            }
+        }
+    }
+    dns {
+        forwarding {
+            allow-from 0.0.0.0/0
+            cache-size 0
+            listen-address 127.0.0.1
+            name-server 1.1.1.1
+            name-server 8.8.8.8
+        }
+    }
+    ssh {
+        listen-address 0.0.0.0
+        port 22
+    }
+}
+system {
+    config-management {
+        commit-revisions 100
+    }
+    console {
+        device ttyS0 {
+            speed 9600
+        }
+    }
+    host-name sk01
+    login {
+        user vyos {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+    }
+    name-server 1.1.1.1
+    ntp {
+        server ntp1.arnes.si {
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level info
+            }
+            facility protocols {
+                level debug
+            }
+        }
+    }
+    time-zone UTC
+}
+
+

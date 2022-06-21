@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="400px" preserveAspectRatio="none" style="width:570px;height:400px;background:#00000000;" version="1.1" viewBox="0 0 570 400" width="570px" zoomAndPan="magnify"><defs><filter height="300%" id="f1b8oyaib9w7pz" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[d39f33ca384321ea7c4845935bcf0932]
+cluster Delovanje--><rect fill="#FFFFFF" filter="url(#f1b8oyaib9w7pz)" height="274" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="453" x="46" y="7"/><rect height="241.7031" rx="12.5" ry="12.5" style="stroke:#00000000;stroke-width:1.0;fill:none;" width="447" x="49" y="36.2969"/><line style="stroke:#5FB8EC;stroke-width:1.5;fill:none;" x1="46" x2="499" y1="33.2969" y2="33.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="238.5" y="23.9951">Delovanje</text><g id="Delovanje.Preverjanje"><rect fill="#FFFFFF" filter="url(#f1b8oyaib9w7pz)" height="50.2656" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="131" x="89.5" y="50"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="89.5" x2="220.5" y1="76.2969" y2="76.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="117" y="67.9951">Preverjanje</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="111" x="94.5" y="92.4355">do: preveri status</text></g><g id="Delovanje.Kuhanje"><rect fill="#FFFFFF" filter="url(#f1b8oyaib9w7pz)" height="50.2656" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="148" x="275" y="50"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="275" x2="423" y1="76.2969" y2="76.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="321" y="67.9951">Kuhanje</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="128" x="280" y="92.4355">do: zaženi generator</text></g><g id="Delovanje.Alarm"><rect fill="#FFFFFF" filter="url(#f1b8oyaib9w7pz)" height="50.2656" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="142" x="100" y="207"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="100" x2="242" y1="233.2969" y2="233.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="152" y="224.9951">Alarm</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="122" x="105" y="249.4355">do: prikaži dogodek</text></g><g id="Delovanje.Koncano"><rect fill="#FFFFFF" filter="url(#f1b8oyaib9w7pz)" height="50.2656" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="158" x="291" y="207"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="291" x2="449" y1="233.2969" y2="233.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="339.5" y="224.9951">Končano</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138" x="296" y="249.4355">do: vklopi alarm za 5 s</text></g><g id="Onemogoceno"><rect fill="#FFFFFF" filter="url(#f1b8oyaib9w7pz)" height="50" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="124" x="7" y="336"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="7" x2="131" y1="362.2969" y2="362.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="17" y="353.9951">Onemogočeno</text></g><g id="Cakanje"><rect fill="#FFFFFF" filter="url(#f1b8oyaib9w7pz)" height="50" rx="12.5" ry="12.5" style="stroke:#5FB8EC;stroke-width:1.5;" width="75" x="445.5" y="336"/><line style="stroke:#5FB8EC;stroke-width:1.5;" x1="445.5" x2="520.5" y1="362.2969" y2="362.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="455.5" y="353.9951">Čakanje</text></g><!--MD5=[26bb4655786e8f6e3b48e1a5bb4a4fee]
+link Preverjanje to Kuhanje--><path d="M220.68,75 C236.42,75 253.39,75 269.68,75 " fill="none" id="Preverjanje-to-Kuhanje" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="274.71,75,265.71,71,269.71,75,265.71,79,274.71,75" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="18" x="238.75" y="68.0669">OK</text><!--MD5=[462b326792fe13231af589a1911b5837]
+link Kuhanje to Koncano--><path d="M352.28,100.22 C356,127.63 362.04,172.28 366.02,201.65 " fill="none" id="Kuhanje-to-Koncano" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="366.74,206.95,369.4922,197.4935,366.067,201.9955,361.565,198.5703,366.74,206.95" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="36" x="372.5" y="143.0669">potek</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="364" y="158.1997">časovne</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="55" x="363" y="173.3325">omejitve</text><!--MD5=[fa6206c576f6ce92254a5cc2e666e6d9]
+link Kuhanje to Kuhanje--><path d="M423.13,60.49 C442.95,61.29 458,66.13 458,75 C458,83.11 445.43,87.85 428.12,89.21 " fill="none" id="Kuhanje-to-Kuhanje" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="423.13,89.51,432.354,92.9622,428.121,89.2097,431.8735,84.9767,423.13,89.51" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="464" y="79.5669">čas</text><!--MD5=[c98f7d665fddda6731f1b83414c6f354]
+link Preverjanje to Alarm--><path d="M142.17,100.41 C133.02,121.07 123.7,151.33 132,177 C134.91,186.01 139.95,194.77 145.45,202.53 " fill="none" id="Preverjanje-to-Alarm" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="148.55,206.74,146.4268,197.1227,145.5821,202.7162,139.9886,201.8714,148.55,206.74" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="47" x="142.5" y="143.0669">napaka</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="138" y="158.1997">vrtečega</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="66" x="133" y="173.3325">podstavka</text><!--MD5=[c98f7d665fddda6731f1b83414c6f354]
+link Preverjanje to Alarm--><path d="M183.88,100.17 C191.97,108.67 199.71,118.9 204,130 C211.52,149.49 209.66,156.89 204,177 C201.51,185.83 197.14,194.65 192.37,202.53 " fill="none" id="Preverjanje-to-Alarm-1" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="189.69,206.8,197.857,201.2954,192.3438,202.5624,191.0768,197.0493,189.69,206.8" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="47" x="222.5" y="150.5669">napaka</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="74" x="209" y="165.6997">generatorja</text><!--MD5=[039485bd4b59804473e21d5276680648]
+link Alarm to Onemogoceno--><path d="M151.57,257.19 C134.49,278.46 109.61,309.44 91.63,331.83 " fill="none" id="Alarm-to-Onemogoceno" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="88.35,335.9,97.1018,331.3827,91.4787,331.9998,90.8615,326.3768,88.35,335.9" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[430ada39834585e666b851fe8d880178]
+link Delovanje to Onemogoceno--><path d="M45.9961,97.8282 C45.8565,98.2428 45.7158,98.6625 45.5741,99.0872 C41.0381,112.6775 35.4213,131.4113 30.7025,152.945 C21.265,196.0125 15.42,250.28 29,297 C32.54,309.19 39.24,321.28 46.15,331.56 " fill="none" id="Delovanje-to-Onemogoceno" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="49.11,335.85,47.2846,326.1718,46.2677,331.7365,40.703,330.7195,49.11,335.85" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="33" x="34.5" y="229.0669">vrata</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="42" x="30" y="244.1997">odprta</text><!--MD5=[e8f5d5e8bd908ed14aab0c8f6d796bbc]
+link Koncano to Cakanje--><path d="M391.52,257.19 C410.53,278.55 438.24,309.7 458.18,332.11 " fill="none" id="Koncano-to-Cakanje" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="461.56,335.9,458.5503,326.5223,458.2302,332.1701,452.5824,331.8499,461.56,335.9" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[3e3541f6d0c7bba3a9c9827787237bf7]
+link Delovanje to Cakanje--><path d="M499.1595,140.04 C499.3236,140.2721 499.4866,140.5047 499.6484,140.738 C502.2381,144.4698 504.5417,148.3466 506.5808,152.3459 C510.6589,160.3446 513.6788,168.8337 515.8119,177.6336 C520.0781,195.2334 520.7975,214.0769 519.3425,232.7288 C516.4325,270.0325 504.825,306.57 495.5,330.86 " fill="none" id="Delovanje-to-Cakanje" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="493.62,335.69,500.6326,328.7745,495.4474,331.0359,493.186,325.8507,493.62,335.69" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="41" x="521" y="236.5669">preklic</text><!--MD5=[84bd7e8247ed6402dec8ecd6f81d9a2e]
+@startuml
+skinparam backgroundcolor transparent
+skinparam defaultTextAlignment center
+skinparam arrowColor black
+skinparam state {
+  BackgroundColor white
+  BorderColor #5FB8EC
+  StartColor #5FB8EC
+  EndColor #5FB8EC
+}
+
+state Delovanje {
+  state Preverjanje
+  Preverjanje: do: preveri status
+
+  state Kuhanje
+  Kuhanje: do: zaženi generator
+
+  state Alarm
+  Alarm: do: prikaži dogodek
+
+  state "Končano" as Koncano
+  Koncano: do: vklopi alarm za 5 s
+}
+
+State "Onemogočeno" as Onemogoceno
+State "Čakanje" as Cakanje
+
+Preverjanje -> Kuhanje: OK
+Kuhanje -down-> Koncano: potek\nčasovne\nomejitve
+Kuhanje - -> Kuhanje: čas
+Preverjanje -down-> Alarm: napaka\nvrtečega\npodstavka
+Preverjanje -down-> Alarm: napaka\ngeneratorja
+Alarm -down-> Onemogoceno
+Delovanje -> Onemogoceno: vrata\nodprta
+Koncano -down-> Cakanje
+Delovanje -> Cakanje: preklic
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
