@@ -1,0 +1,3 @@
+torch[cuda]
+numpy
+opencv-python
