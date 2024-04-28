@@ -1,0 +1,6 @@
+[submodule "3letnik/RGTI/seminarske/rgti-seminarska-webgl"]
+	path = 3letnik/RGTI/seminarske/rgti-seminarska-webgl
+	url = git@github.com:janvasiljevic/rgti-seminarska-webgl.git
+[submodule "3letnik/SP/LP-25"]
+	path = 3letnik/SP/LP-25
+	url = git@github.com:sp-2021-2022/LP-25.git

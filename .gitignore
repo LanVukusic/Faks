@@ -1,0 +1,16 @@
+OUT/
+*.out
+*.in
+*.diff
+*.res
+*.class
+Makefile
+Test/
+test/
+o.txt
+.vscode
+.svn
+proc-demo/
+log/
+tejma
+*.pdf

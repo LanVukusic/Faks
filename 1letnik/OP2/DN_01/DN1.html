@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://127.0.0.1:5500/spoznajmo-slovenijo.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>DN1</title>
+  <link rel="stylesheet" href="./DN1_files/leaflet.css">
+  
+  <!-- leaflet knjižnica -->
+  <script src="./DN1_files/leaflet.js"></script>
+  <!-- knjiznice -->
+  <script src="./DN1_files/distance-util.js"></script>
+  <script src="./DN1_files/skripta.js"></script>
+
+  <!-- leaflet stili -->
+  <link rel="stylesheet" href="./DN1_files/leaflet-routing-machine.css">
+  <!-- pravi css -->
+  <link rel="stylesheet" href="./DN1_files/stili.css">
+
+</head>
+
+<body data-gr-c-s-loaded="true" class="">
+
+  <!-- MENI -->
+  <meni>
+    <table>
+
+      <tbody><tr>
+        <td class="info-element">Izbirni meni:</td>
+        <td>
+          <select id="izbira" class="rob senca">
+            <option value="ni_izbrano">Izberi akcijo</option>
+            <option value="fakultete">Dodaj fakultete</option>
+            <option value="kulturne_dediscine">Dodaj kulturne dediščine</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td align="right"><input id="akcija" class="rob senca akcija" type="button" value="izvedi izbiro"></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td align="right">
+        </td></tr>
+
+        <tr>
+          <td class="info-element">Najdeni rezultati:</td>
+          <td>
+            <label id="fakultete_rezultati">77</label>
+            fakultet in
+            <br>
+            <label id="kulturne_dediscine_rezultati">2144</label>
+              kulturnih dediščin
+          </td>
+        </tr>
+
+        <tr>
+          <td class="info-element">
+            Prikaži v bližini do:
+          </td>
+          <td>
+            <input id="radij" type="number" max="6" min="0">
+            km
+          </td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td>
+            <button id="izbrisiRezultate" class="rob senca odstrani">
+              <img src="./DN1_files/ikona-odstrani.png" alt="odstrani_icon">
+              Odstrani vse interesne točke
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input id="idRadij" type="checkbox" name="radij" value="radij">Prikaz radijev na poti<br></td>
+        </tr>
+        <tr>
+          <td class="info-element">Smer poti:</td>
+          <td>
+            <input id="idDoFri" type="radio" name="pot" value="doFri" checked="">Pot do FRI<br>
+            <input id="idIzFri" type="radio" name="pot" value="izFri">Pot iz FRI<br>
+          </td>
+        </tr>
+      </tbody></table>
+
+      <table class="noga">
+        <tbody><tr>
+          <td colspan="100%" align="center" style="text-decoration: underline;">Dodatne informacije o poti</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Dolžina poti:</td>
+          <td><label id="dolzinaPoti">187</label></td>
+          <td>točk</td>
+        </tr>
+        <tr>
+          <td>Prikazane interesne točke:</td>
+          <td><label id="prikazaneTocke">13</label></td>
+          <td>točk</td>
+        </tr>
+      </tbody></table>
+    </meni>
+
+    <!-- TELO -->
+    <telo id="mapa_id" class="rob senca leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-336px, 705px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 16; transform: translate3d(-2146px, 960px, 0px) scale(4);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="./DN1_files/5824.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(598px, -368px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5823.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(598px, -624px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5824(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(342px, -368px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5824(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(854px, -368px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5825.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(598px, -112px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5823(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(342px, -624px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5823(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(854px, -624px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5825(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(342px, -112px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5825(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(854px, -112px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5822.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(598px, -880px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5824(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(86px, -368px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5824(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1110px, -368px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5826.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(598px, 144px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5822(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(342px, -880px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5822(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(854px, -880px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5823(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(86px, -624px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5823(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1110px, -624px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5825(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(86px, -112px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5825(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1110px, -112px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5826(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(342px, 144px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5826(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(854px, 144px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5822(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(86px, -880px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5822(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1110px, -880px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5826(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(86px, 144px, 0px); opacity: 1;"><img alt="" role="presentation" src="./DN1_files/5826(4).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1110px, 144px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(730px, 21px, 0px);"><img src="./DN1_files/marker-shadow(1).png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(730px, 21px, 0px);"><img src="./DN1_files/marker-shadow(1).png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(974px, -584px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(739px, 1px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(786px, 27px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(771px, 19px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(838px, 44px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(833px, 37px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(832px, 17px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(716px, 18px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(727px, 30px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(839px, 39px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(814px, -75px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(959px, -294px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(971px, -293px, 0px);"><img src="./DN1_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(927px, -264px, 0px);"></div><div class="leaflet-pane leaflet-overlay-pane"><svg pointer-events="none" class="leaflet-zoom-animated" width="1202" height="1061" viewBox="236 -817 1202 1061" style="transform: translate3d(236px, -817px, 0px);"><g><path class="leaflet-interactive" stroke="transparent" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="orange" fill-opacity="0.2" fill-rule="evenodd" d="M578.7965368889272,21.376018959097564a151,151 0 1,0 302,0 a151,151 0 1,0 -302,0 "></path><path class="leaflet-interactive" stroke="transparent" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="orange" fill-opacity="0.2" fill-rule="evenodd" d="M579.7286044443026,-50.30826101708226a151,151 0 1,0 302,0 a151,151 0 1,0 -302,0 "></path><path class="leaflet-interactive" stroke="transparent" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="orange" fill-opacity="0.2" fill-rule="evenodd" d="M544.1935288887471,-130.89673899603076a151,151 0 1,0 302,0 a151,151 0 1,0 -302,0 "></path><path class="leaflet-interactive" stroke="transparent" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="orange" fill-opacity="0.2" fill-rule="evenodd" d="M587.534670222085,-202.42488121706992a151,151 0 1,0 302,0 a151,151 0 1,0 -302,0 "></path><path class="leaflet-interactive" stroke="transparent" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="orange" fill-opacity="0.2" fill-rule="evenodd" d="M650.7987555554137,-269.59248058195226a151,151 0 1,0 302,0 a151,151 0 1,0 -302,0 "></path><path class="leaflet-interactive" stroke="transparent" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="orange" fill-opacity="0.2" fill-rule="evenodd" d="M739.4616817776114,-371.19272341229953a151,151 0 1,0 302,0 a151,151 0 1,0 -302,0 "></path><path class="leaflet-interactive" stroke="transparent" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="orange" fill-opacity="0.2" fill-rule="evenodd" d="M795.1527182222344,-406.1256276583299a151,151 0 1,0 302,0 a151,151 0 1,0 -302,0 "></path><path class="leaflet-interactive" stroke="transparent" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="orange" fill-opacity="0.2" fill-rule="evenodd" d="M780.9386879997328,-496.99093454377726a151,151 0 1,0 302,0 a151,151 0 1,0 -302,0 "></path><path class="leaflet-interactive" stroke="transparent" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="orange" fill-opacity="0.2" fill-rule="evenodd" d="M824.1633208887652,-545.5344630121253a151,151 0 1,0 302,0 a151,151 0 1,0 -302,0 "></path><path class="leaflet-interactive" stroke="transparent" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="orange" fill-opacity="0.2" fill-rule="evenodd" d="M798.9974968889728,-584.0015561478212a151,151 0 1,0 302,0 a151,151 0 1,0 -302,0 "></path><path class="leaflet-interactive" stroke="black" stroke-opacity="0.15" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M974 -584L965 -596"></path><path class="leaflet-interactive" stroke="white" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M974 -584L965 -596"></path><path class="leaflet-interactive" stroke="gray" stroke-opacity="0.8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7,12" fill="none" d="M974 -584L965 -596"></path><path class="leaflet-interactive" stroke="black" stroke-opacity="0.15" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M730 21L731 13L725 11L744 -41L734 -47L719 -65L706 -106L697 -124L695 -131L696 -142L721 -177L732 -197L736 -201L741 -204L773 -214L780 -218L784 -223L789 -253L796 -265L828 -291L888 -370L896 -374L915 -374L924 -376L928 -378L936 -387L971 -453L946 -477L926 -506L954 -523L968 -535L978 -539L976 -545L966 -555L941 -575L965 -596"></path><path class="leaflet-interactive" stroke="white" stroke-opacity="0.8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M730 21L731 13L725 11L744 -41L734 -47L719 -65L706 -106L697 -124L695 -131L696 -142L721 -177L732 -197L736 -201L741 -204L773 -214L780 -218L784 -223L789 -253L796 -265L828 -291L888 -370L896 -374L915 -374L924 -376L928 -378L936 -387L971 -453L946 -477L926 -506L954 -523L968 -535L978 -539L976 -545L966 -555L941 -575L965 -596"></path><path class="leaflet-interactive" stroke="red" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M730 21L731 13L725 11L744 -41L734 -47L719 -65L706 -106L697 -124L695 -131L696 -142L721 -177L732 -197L736 -201L741 -204L773 -214L780 -218L784 -223L789 -253L796 -265L828 -291L888 -370L896 -374L915 -374L924 -376L928 -378L936 -387L971 -453L946 -477L926 -506L954 -523L968 -535L978 -539L976 -545L966 -555L941 -575L965 -596"></path></g></svg></div><div class="leaflet-pane leaflet-marker-pane"><img src="./DN1_files/marker-icon-2x-blue.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(730px, 21px, 0px); z-index: 21;"><img src="./DN1_files/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive leaflet-marker-draggable" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(730px, 21px, 0px); z-index: 21;"><img src="./DN1_files/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive leaflet-marker-draggable" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(974px, -584px, 0px); z-index: -584;"><img src="./DN1_files/marker-icon-2x-green.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(739px, 1px, 0px); z-index: 1;"><img src="./DN1_files/marker-icon-2x-green.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(786px, 27px, 0px); z-index: 27;"><img src="./DN1_files/marker-icon-2x-green.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(771px, 19px, 0px); z-index: 19;"><img src="./DN1_files/marker-icon-2x-green.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(838px, 44px, 0px); z-index: 44;"><img src="./DN1_files/marker-icon-2x-green.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(833px, 37px, 0px); z-index: 37;"><img src="./DN1_files/marker-icon-2x-green.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(832px, 17px, 0px); z-index: 17;"><img src="./DN1_files/marker-icon-2x-green.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(716px, 18px, 0px); z-index: 18;"><img src="./DN1_files/marker-icon-2x-green.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(727px, 30px, 0px); z-index: 30;"><img src="./DN1_files/marker-icon-2x-green.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(839px, 39px, 0px); z-index: 39;"><img src="./DN1_files/marker-icon-2x-blue.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(814px, -75px, 0px); z-index: -75;"><img src="./DN1_files/marker-icon-2x-blue.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(959px, -294px, 0px); z-index: -294;"><img src="./DN1_files/marker-icon-2x-blue.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(971px, -293px, 0px); z-index: -293;"><img src="./DN1_files/marker-icon-2x-blue.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(927px, -264px, 0px); z-index: -264;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"><div class="leaflet-popup  leaflet-zoom-animated" style="opacity: 1; transform: translate3d(974px, -584px, 0px); bottom: -7px; left: -138px;"><div class="leaflet-popup-content-wrapper"><div class="leaflet-popup-content" style="width: 235px;">Izbrana točka:LatLng(46.086091, 14.49028)</div></div><div class="leaflet-popup-tip-container"><div class="leaflet-popup-tip"></div></div><a class="leaflet-popup-close-button" href="http://127.0.0.1:5500/spoznajmo-slovenijo.html#close">×</a></div></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(2.26584e+06px, 1.49103e+06px, 0px) scale(8192);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="http://127.0.0.1:5500/spoznajmo-slovenijo.html#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="http://127.0.0.1:5500/spoznajmo-slovenijo.html#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"><div class="leaflet-routing-container leaflet-bar leaflet-control"><div class="leaflet-routing-alternatives-container"><div class="leaflet-routing-alt "><h2>Večna pot, Šišenska cesta</h2><h3>5.6 km, 11 min</h3><table class=" "><colgroup class=""><col class="leaflet-routing-instruction-icon"><col class="leaflet-routing-instruction-text"><col class="leaflet-routing-instruction-distance"></colgroup><tbody class=""><tr class=""><td class=""><span class="leaflet-routing-icon leaflet-routing-icon-depart"></span></td><td class="">Head north</td><td class="">100 m</td></tr><tr class=""><td class=""><span class="leaflet-routing-icon leaflet-routing-icon-turn-right"></span></td><td class="">Turn right</td><td class="">350 m</td></tr><tr class=""><td class=""><span class="leaflet-routing-icon leaflet-routing-icon-turn-left"></span></td><td class="">Turn left onto Večna pot</td><td class="">2 km</td></tr><tr class=""><td class=""><span class="leaflet-routing-icon leaflet-routing-icon-continue"></span></td><td class="">Continue onto Šišenska cesta</td><td class="">1 km</td></tr><tr class=""><td class=""><span class="leaflet-routing-icon leaflet-routing-icon-continue"></span></td><td class="">Continue onto Litostrojska cesta</td><td class="">600 m</td></tr><tr class=""><td class=""><span class="leaflet-routing-icon leaflet-routing-icon-turn-left"></span></td><td class="">Turn left onto Korotanska ulica</td><td class="">450 m</td></tr><tr class=""><td class=""><span class="leaflet-routing-icon leaflet-routing-icon-turn-right"></span></td><td class="">Turn right onto Stegne</td><td class="">1 km</td></tr><tr class=""><td class=""><span class="leaflet-routing-icon leaflet-routing-icon-arrive"></span></td><td class="">You have arrived at your destination, on the right</td><td class="">0 m</td></tr></tbody></table></div></div></div></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com/" title="A JS library for interactive maps">Leaflet</a></div></div></div></telo>
+
+    <!-- leaflet knjižnica za poti -->
+    <script src="./DN1_files/leaflet-routing-machine.js"></script>
+  <!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+  
+</body></html>

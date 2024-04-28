@@ -1,0 +1,130 @@
+Naloga 1
+
+Sestavite funkcijo vsota1 : int -> int, ki sprejme n in vrne vsoto 1 + 2 + ⋯ + n. 
+Uporabite reference in zanko while.
+
+let vsota1 n = 
+  let i = ref 1 in
+  let j = ref 0 in
+  while !i <= n do
+    j := !j + !i ;
+    i := !i + 1
+  done ;
+  !j
+;;
+
+Naloga 2
+
+Sestavite funkcijo fibonacci1 : int -> int, ki sprejme n in vrne n-to Fibonaccijevo število F(n). 
+Nauk: Fibonaccijevo zaporedje je definirano s predpisom:
+
+F(0) = 0
+F(1) = 1
+F(n) = F(n-1) + F(n-2)
+
+
+let fibonacci1 n = 
+  let num1 = ref 0 in
+  let num2 = ref 1 in
+  let i = ref 1 in
+  let sum = ref 0 in
+  while !i <= n do
+    sum := !num1 + !num2;
+    num1 := !num2;
+    num2 := !sum;
+    sum := 0;
+    i := !i + 1;
+  done;
+  !num1
+;;
+
+Naloga 3
+
+Sestavite funkcijo vsota2 : int -> int, ki sprejme n in vrne vsoto 1 + 2 + ⋯ + n.
+Funkcija naj bo rekurzivna in naj ne uporablja zank in referenc.
+
+let rec vsota2 n = 
+  if (n == 0) then 0
+  else n + vsota2 (n - 1);;
+
+Naloga 4
+
+Sestavite funkcijo fibonacci2 : int -> int, ki sprejme n in vrne n-to Fibonaccijevo število F(n).
+Funkcija naj bo rekurzivna in naj ne uporablja zank in referenc.
+
+let rec fibonacci2 n = 
+  if (n == 0) then 0 
+  else if (n == 1) then 1
+  else fibonacci2 (n - 2) + fibonacci2 (n - 1);;
+ 
+let rec fibonacci21 = function
+  | 0 -> 0
+  | 1 -> 1
+  | n -> fibonacci21 (n - 2) + fibonacci21 (n - 1);;
+
+
+Naloga 5
+
+Po zgornjem receptu predelajte funkcijo vsota1 v funkcijo vsota3, ki uporablja akumulatorje in repno rekurzijo. Nato primerajte delovanje funkcij vsota1, vsota2 in vsota3. 
+Ali lahko vse tri izračunajo npr. vsoto prvih 1000000 števil?
+
+let vsota3 n = 
+  let rec vsota v i = 
+    if (i == n) then (v+n)
+    else vsota (v+i) (i+1)
+  in
+  vsota 0 1;;
+  
+Naloga 6
+
+Po zgornjem receptu predelajte funkcijo fibonacci1 v funkcijo fibonacci3,
+ki uporablja akumulatorje in repno rekurzijo.
+
+let fibonacci3 n = 
+  let rec fib v i j =
+    if (v == n) then i
+    else if (n == 0) then 0
+    else if (n == 1) then 1
+    else fib (v+1) (j) (i + j)
+  in
+  fib 0 0 1
+;;
+
+Naloga 7
+
+Sestavite funkcijo vsota4, ki izračuna vsoto števil 1 + 2 + ⋯ + n, tako da uporabite funkcijo zanka.
+Torej, vaša rešitev mora biti oblike
+
+let vsota4 n = zanka ⋯ ⋯ ⋯ ⋯
+kjer ⋯ nadomestite z ustreznimi vrednostmi s₀, p, f in r.
+
+let zanka s0 p f r =
+  let rec loop s =
+    if p s then loop (f s) else r s
+  in
+  loop s0
+;;
+
+let vsota4 n = zanka
+    (0, 0)
+    (fun (i, s) -> i <= n)
+    (fun (i, s) -> (i + 1, s + i)) 
+    (fun (i, s) -> s)
+;;
+
+
+Naloga 8
+
+Sestavite funkcijo fibonacci4, ki izračuna n-to Fibonaccijevo, tako da uporabite funkcijo zanka.
+Torej, vaša rešitev mora biti oblike:
+
+let fibonacci4 n = zanka ⋯ ⋯ ⋯ ⋯
+kjer ⋯ nadomestite z ustreznimi vrednostmi s₀, p, f in r.
+
+
+let fibonacci4 n = zanka
+    (0, 1, 0)
+    (fun (i, j, v) -> v < n)
+    (fun (i, j, v) -> (j, i + j, v + 1))
+    (fun (i, j, v) -> i)
+;;

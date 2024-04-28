@@ -1,0 +1,8 @@
+scanpy
+numpy
+biopython
+pandas
+matplotlib
+statsmodels
+scipy
+leidenalg

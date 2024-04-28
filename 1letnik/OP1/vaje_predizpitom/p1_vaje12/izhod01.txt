@@ -1,0 +1,4 @@
+[10, 21, 26, 14, 17, 15]
+[10, 26, 14]
+[Bojan, Denis, Hilda, Jasna, Karel, Mojca, Peter, Roman, Sonja, Urban, Vinko, Zoran]
+[Denis, Eva, Franci, Gregor, Hilda, Ivan, Jasna, Karel, Lea, Mojca]

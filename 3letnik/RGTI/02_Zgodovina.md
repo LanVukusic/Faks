@@ -1,0 +1,47 @@
+# Kratek pogled nazaj
+
+## Začetki
+- 1958 Tennis for two, prikaze na osciloskopu
+- 1960 -70 Črtna grafika. 
+  - vektorska grafika. ne raster zasloni.
+  - **Sketchpad** prvi cad software
+    - wierd ass autocad.
+    - laufa na enem kompu na MIT-u. nikjer drugje
+- 1962 "commercial" igra, SpaceWar.
+  - pališ neke asteroide
+- 1970 -80 legit monitorji, raster graphics (pixli)
+  - opuščajo črte -> poligoni
+- Konzole
+  - 1972 Arari **pong** prva legit komercialna igrca
+  - 1978 **invaders**
+- Grafika v  filmih
+  - Starwars, 
+    - wire graphics
+    - death star model je legit narjen iz kompa.
+- 1980 - 1990 Realizem
+  - texture
+  - senčenje
+  - pacman, donky kong, mario :O
+  - Filmi:
+    - pixar, prvi 3d animacija z sencami. una lučka
+    - tron (taprvi)
+    - itd
+- 1990 - 2000
+  - OpenGl
+  - 3D igre
+    - Wolfenstein 3D
+    - Civ
+    - Doom
+    - SC1
+  - Filmi
+    - Starwars
+    - pixar
+    - total recall (mocap)
+- 2000
+  - fotorealizem
+  - programable
+  - IGRE
+    - mobile
+  - Filmi
+    - hardcore CGI ala avatar
+    

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Domača naloga RGTI1</title>
+</head>
+
+<body style="
+    display: flex;
+">
+    <style>
+        textarea {
+            display: block;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+    <div style="flex:1">
+        <canvas width="800" height="600" id="canvas"></canvas>
+        <textarea placeholder="input" id="in"></textarea>
+        {
+        "vertices": [
+        -1, -1, -1,
+        1, -1, -1,
+        1, 1, -1,
+        -1, 1, -1,
+        -1, -1, 1,
+        1, -1, 1,
+        1, 1, 1,
+        -1, 1, 1],
+        "indices": [0, 1, 2, 0, 2, 3, 0, 1, 5, 0, 4, 5, 0, 4, 7, 0, 3, 7, 2, 3, 6, 3, 6, 7, 1, 2, 5, 2, 6, 5, 4, 5, 6,
+        4, 6, 7],
+        "camera": {
+        "rotation": [0, 0, 0],
+        "translation": [0, 0, -5],
+        "perspective": 0.0015
+        },
+        "model": {
+        "rotation": [0, 0, 0],
+        "translation": [0, 0, 0],
+        "scale": [1, 1, 1]
+        }
+        }
+    </div>
+    <div id="sliders" style="flex:1;">
+        <h3>Translations</h3>
+        <ul>
+            <li><b>W,S</b> for up and down</li>
+            <li><b>A,D</b> for left and right</li>
+            <li><b>Q,E</b> for in and out</li>
+        </ul>
+        <h3>Rotations</h3>
+        <ul>
+            <li><b>I,K</b> around X</li>
+            <li><b>J,L</b> around Y</li>
+            <li><b>U,O</b> around Z</li>
+        </ul>
+        <span>
+            hold <b>SHIFT</b> to controll camera instead
+        </span>
+    </div>
+
+    <script type="module">
+        import { SceneReader } from './SceneReader.js';
+        import { render } from './Engine.js';
+        const input = document.getElementById("in");
+        const width = 800;
+        const height = 600;
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d")
+        let scene;
+
+        input.addEventListener('change', e =>
+        {
+            scene = SceneReader.readFromJson(input.value);
+            render(scene, width, height, ctx);
+        });
+        document.addEventListener("keydown", (e) =>
+        {
+
+            const key = e.key.toLowerCase();
+            let thing;
+            if (!e.shiftKey) {
+                thing = scene.model;
+            } else {
+                thing = scene.camera;
+            }
+            switch (key) {
+                case "w":
+                    thing.translation[1] -= 0.1;
+                    break;
+                case "s":
+                    thing.translation[1] += 0.1;
+                    break;
+                case "a":
+                    thing.translation[0] -= 0.1;
+                    break;
+                case "d":
+                    thing.translation[0] += 0.1;
+                    break;
+                case "q":
+                    thing.translation[2] += 0.1;
+                    break;
+                case "e":
+                    thing.translation[2] -= 0.1;
+                    break;
+                case "j":
+                    thing.rotation[1] -= 0.1;
+                    break;
+                case "l":
+                    thing.rotation[1] += 0.1;
+                    break;
+                case "i":
+                    thing.rotation[0] -= 0.1;
+                    break;
+                case "k":
+                    thing.rotation[0] += 0.1;
+                    break;
+                case "u":
+                    thing.rotation[2] += 0.1;
+                    break;
+                case "o":
+                    thing.rotation[2] -= 0.1;
+                    break;
+            }
+
+            render(scene, width, height, ctx);
+            render(scene, width, height, ctx);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+export ETCDCTL_API=3
+HOST_1=192.168.1.101
+HOST_2=192.168.1.102
+HOST_3=192.168.1.103
+ENDPOINTS=$HOST_1:2379,$HOST_2:2379,$HOST_3:2379
+
+etcdctl --endpoints=$ENDPOINTS --write-out=table member list

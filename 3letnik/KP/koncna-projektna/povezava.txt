@@ -1,0 +1,3 @@
+sistem - ime - ipv4 - ipv6 - username/pass - ssh dostopni podatki
+
+vyos - sk01 - 88.200.24.231 - 2001:1470:fffd:80::2 - vyos:tojesimple - port 22, klasika

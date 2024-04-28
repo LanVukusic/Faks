@@ -1,0 +1,26 @@
+PROTO 0
+TODO
+mode of operation. 1 bit. smart or just all numbers
+
+PROTO 1
+8 bits representing the smallest number
+
+PROTO 2
+4 bits represent the maximal number of bits to represent all the numbers after adjusting with subtracting 
+the smaller number it is maximum of 8 (2 ** 8 = 256 > 255) and 8 is 1000 in binary
+that number will be abreviated as M
+
+PROTO 3
+8 bits representing the length of the matrix
+
+
+now the sequence follows for every instance of number
+PROTO 4
+- M bits that encode the number
+
+following is the describtion of a tree that is creating the island of numbers
+ - 4 bits representing the directions.
+ - getBitSize(matrixLength) bits of streak;
+
+
+
