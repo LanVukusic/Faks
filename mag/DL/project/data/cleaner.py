@@ -8,6 +8,7 @@ import re
 import glob
 import os
 from resize_svg import resize_svg
+from cairosvg import svg2png
 
 
 # decimal_matcher = re.compile(r"-*\d+\.?\d*")
@@ -35,6 +36,7 @@ def clean_svg(svg_string: str) -> str:
 
 pth = "merged_icons"
 out = "clean_icons"
+out_img = "clean_images"
 for file in glob.glob(os.path.join(pth, "*.svg")):
     name = os.path.split(file)[-1].replace(".svg", "")
     try:
@@ -43,8 +45,9 @@ for file in glob.glob(os.path.join(pth, "*.svg")):
             rescaled = normalize_svg_viewbox(data, SVG_W, SVG_H)
             cleaned = clean_svg(rescaled)
             print(name)
+            svg2png(bytestring=cleaned,write_to= os.path.join(out_img, f"{name}_clean.png"))
 
         with open(os.path.join(out, f"{name}_clean.svg"), "w") as out_file:
             out_file.write(cleaned)
-    except:
-        print(f"ERROR:  {name}")
+    except Exception as error:
+        print(f"ERROR:  {name}", error)
