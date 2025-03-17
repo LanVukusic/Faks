@@ -3,14 +3,11 @@
 ## Deep Learning, 23/24
 
 This is the report for the first deep learning exercise.  
-Instructions are available in the form of a [PDF here](DL_HW1.pdf).  
 
 ### Pen and paper weight update derivation
 
-Notes are available as PDFs here:
-
-- [forward](Hw–01_forward.pdf)
-- [backprop](Hw–01_back.pdf)
+![forward](backprop2.jpg)
+![forward](backprop1.jpg)
 
 ### Network implementation
 
@@ -112,7 +109,7 @@ As stated in the chapter about L2, the regularization hd little to no effect on 
 
 #### Learning rate schedule
 
-When training without a learning rate schedule, I had to start with a smaller learning in order to converge to the same loss (43% accuracy, 1.8 loss).  
+When training without a learning rate schedule, I had to start with a smaller learning in order to converge to the same loss (35% accuracy, 1.8 loss).  
 Having a learning rate scheduler allowed me to have a higher LR in the beginning of the training which sped up the initial model training.
 
 ### Sources
