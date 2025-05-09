@@ -270,13 +270,13 @@ def top_nodes(G: nx.Graph, C: Dict[Any, float], centrality: str, n=15) -> List[A
     ):
         if not G.nodes[i]["label"].startswith("m-"):
             nodes.append(G.nodes[i])
-            print(
-                "{:>12.6f} | '{:s}' ({:,d})".format(c, G.nodes[i]["label"], G.degree[i])
-            )
+            # print(
+            #     "{:>12.6f} | '{:s}' ({:,d})".format(c, G.nodes[i]["label"], G.degree[i])
+            # )
             n -= 1
             if n == 0:
                 break
-    print()
+    # print()
     return nodes
 
 

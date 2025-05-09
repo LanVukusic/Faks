@@ -96,7 +96,7 @@ class Network(object):
             print("Epoch {} complete".format(epoch))
             print("Current LR: {}".format(eta_current))
             print("Loss:" + str(loss_avg / len(mini_batches)))
-            self.plot()
+            # self.plot()
             if epoch % 10 == 0:
                 self.eval_network(val_data, val_class)
             print()
@@ -126,7 +126,6 @@ class Network(object):
         return l2_regularization
 
     def update_network(self, gw, gb, eta):
-
         if self.optimizer == "sgd":
             for i in range(len(self.weights)):
                 self.weights[i] -= eta * gw[i]
