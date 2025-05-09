@@ -1,0 +1,151 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pralnica-dev
+spec:
+  hostNetwork: true
+  containers:
+    - name: frontend
+      image: node:18
+      workingDir: /app  # Sets the default working directory
+      command: ["yarn", "dev"]
+      ports:
+        - containerPort: 5173
+      volumeMounts: # samo za dev, lahko kopiras vse
+        - name: fe-volume
+          mountPath: /app
+
+    - name: python-app
+      image: python:3.11
+      workingDir: /app
+      command: ["/bin/sh", "-c"]
+      args:
+        - pip install -r requirements.txt &&
+          python server.py;
+      ports:
+        - containerPort: 8080
+      volumeMounts:  # samo za dev, lahko kopiras vse
+        - name: python-volume
+          mountPath: /app
+      env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+
+    - name: backend
+      image: qmcgaw/godevcontainer
+      workingDir: /app  # Sets the default working directory
+      command: ["go", "run", "main.go"]
+      ports:
+        - containerPort: 1234
+      volumeMounts:  # samo za dev, lahko kopiras vse
+        - name: be-volume
+          mountPath: /app
+      env:
+        - name: POSTGRES_PASSWORD
+          value: trust
+        - name: PGHOST
+          value: localhost  # En
+
+    - name: schema-dumper # samo ignoriras ker nerabis vec
+      image: postgres
+      workingDir: /app  # Directory inside the container to store the dump
+      command: ["/bin/sh", "-c", "pg_dump --username=postgres --schema-only > schema.sql"]
+      env:
+        - name: POSTGRES_PASSWORD
+          value: trust
+        - name: PGHOST
+          value: localhost  # Ensures the dumper connects to the PostgreSQL container
+      volumeMounts:
+        - name: be-volume
+          mountPath: /app
+      spec:
+        restartPolicy: Never
+      
+
+    - name: postgres # ignoriras nerabis
+      image: postgres
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: data-volume
+          mountPath: /app
+      env:
+        - name: POSTGRES_PASSWORD
+          value: trust
+        - name: PGDATA
+          value: /app
+
+      healthcheck:
+        test: ["CMD-SHELL", "pg_isready"]
+        interval: 1s
+        timeout: 5s
+        retries: 0
+
+    - name: rabbitMQ 
+      image: rabbitmq:3-management
+      ports:
+        - containerPort: 15674 # stomp_web
+        - containerPort: 15672 # amp
+        - containerPort: 15692 # metrics
+        - containerPort: 5672 # metrics
+      volumeMounts: # samo za dev, lahko kopiras vse
+        - name: mq-volume
+          mountPath: /etc/rabbitmq/enabled_plugins
+      env:
+        - name: RABBITMQ_DEFAULT_USER
+          value: zajec
+        - name: RABBITMQ_DEFAULT_PASS
+          value: korenje
+
+
+    - name: prometheus
+      image: prom/prometheus
+      ports:
+        - containerPort: 9090
+        - containerPort: 5672
+      volumeMounts:  # samo za dev, lahko kopiras vse
+        - name: prometheus-conf-volume
+          mountPath: /etc/prometheus/prometheus.yml
+
+    - name: grafana
+      image: grafana/grafana:latest
+      ports:
+        - containerPort: 3000
+      volumeMounts:  # nevem zares
+        - name: grafana-conf
+          mountPath: /etc/grafana/provisioning/datasources
+      env:
+        - name: GF_SECURITY_ADMIN_PASSWORD
+          value: admin
+        - name: GF_SECURITY_ADMIN_USER
+          value: admin
+
+  volumes:
+    - name: fe-volume
+      hostPath:
+        path: ./frontend
+        type: Directory
+    - name: be-volume
+      hostPath:
+        path: ./backend
+        type: Directory
+    - name: data-volume
+      hostPath:
+        path: ./data
+        type: Directory
+    - name: mq-volume
+      hostPath:
+        path: ./rabbitmq/enabled_plugins
+        type: File
+    - name: prometheus-conf-volume
+      hostPath:
+        path: ./prometheus/prometheus.yml
+        type: Directory
+    - name: python-volume
+      hostPath:
+        path: ./python
+        type: Directory
+    - name: grafana-conf
+      hostPath:
+        path: ./grafana
+        type: Directory

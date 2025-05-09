@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "init": "supabase init",
+    "login": "supabase login",
+    "deploy": "functions deploy test --no-verify-jwt"
+  },
+  "dependencies": {
+    "supabase": "^2.2.1"
+  }
+}

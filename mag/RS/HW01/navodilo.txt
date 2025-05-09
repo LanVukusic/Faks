@@ -1,0 +1,16 @@
+The Whetstone benchmark is an one of the method used to evaluate CPU performance, particularly for scientific applications. It consists of several modules that represent a range of operations commonly performed in scientific programs. The benchmark utilizes a variety of C functions, including sin, cos, sqrt, exp, and log, along with integer and floating-point mathematical operations, array accesses, conditional branches, and procedure calls.
+
+Objectives
+
+Evaluate the performance of the out-of-order (OoO) processor by running the Whetstone benchmark in GEM5. Modify the following parameters of the out-of-order (O3) processor:
+
+Issue Width: 1, 2, 4, 8
+
+Reorder Buffer (ROB) Size: 2, 4, 8, 16, 32
+
+Run the Whetstone benchmark for each combination of these parameters and record the results. When analyzing performance, consider the following metrics:
+
+
+IPC (Instructions Per Cycle)
+
+CPI (Cycles Per Instruction)
