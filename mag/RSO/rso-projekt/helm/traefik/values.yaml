@@ -1,0 +1,31 @@
+traefik:
+  ingressClass:
+    name: traefik
+    enabled: true
+    isDefaultClass: true
+  logs:
+    general:
+      noColor: true
+      format: json
+    access:
+      enabled: true
+      format: json
+
+  ports:
+    traefik:
+      exposedPort: 8080
+
+  ingressRoute:
+    dashboard:
+      enabled: true
+      entryPoints:
+        - web
+
+dns: 'zaanimivo.xyz'
+
+#  resources:
+#    requests:
+#      cpu: 100m
+#      memory: 32Mi
+#    limits:
+#      cpu: 1
