@@ -1,0 +1,10 @@
+Analizirajte diske.
+1.) Katere datoteke vsebujejo niz XXXX? To vključuje dokumente in slike.
+2.) Kaj se je z vsakim računalnikom dogajalo?
+3.) So bile katere od iskanih datotek izbrisane?
+4.) So bile katere od iskanih datotek lahko namerno skrite?
+
+Pri tem pazite, da:
+1.) Rokujete z navideznimi računalniki, kot bi bili resnični.
+2.) Kot funkcijo za izračun varnostnih vsot uporabite SHA512.
+3.) Opišete vse opravljeno delo, ne glede na to, ali je vodilo do uporabnih podatkov.
