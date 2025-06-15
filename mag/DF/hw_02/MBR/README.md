@@ -1,7 +1,11 @@
 # Custom MBR
 
-to deploy please run
+to test
 
 ```bash
-cargo build --target x86_64-unknown-uefi
+make run
 ```
+
+## Proof
+
+![image](image.png)
