@@ -1,0 +1,23 @@
+PID,Event,Details,File,Modification
+,execve,"Executable: ./hard, Args: ['./hard']",,
+,openat,"openat(AT_FDCWD, ""/sys/kernel/mm/transparent_hugepage/hpage_pmd_size"", O_RDONLY) = -1 ENOENT (No such file or directory)",/sys/kernel/mm/transparent_hugepage/hpage_pmd_size,Open
+4.0,openat,"openat(AT_FDCWD, ""hard.txt"", O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC, 0644) = 3",hard.txt,Open
+4.0,write,"write(3, ""hard"", 4)         = 4",,"Write (content preview: ""hard..."")"
+4.0,write,"write(1, ""Created hard.txt\n"", 17) = 17",,"Write (content preview: ""Created hard.txt\n..."")"
+4.0,openat,"openat(AT_FDCWD, ""/dev/null"", O_RDONLY|O_CLOEXEC) = 3",/dev/null,Open
+9.0,exit,Exited with code 0,,
+10.0,execve,"Executable: ./simpleOut, Args: ['./simpleOut']",,
+10.0,openat,"openat(AT_FDCWD, ""/sys/kernel/mm/transparent_hugepage/hpage_pmd_size"", O_RDONLY) = -1 ENOENT (No such file or directory)",/sys/kernel/mm/transparent_hugepage/hpage_pmd_size,Open
+10.0,openat,"openat(AT_FDCWD, ""out.txt"", O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC, 0644) = 3",out.txt,Open
+14.0,write,"write(3, ""helo"", 4)         = 4",,"Write (content preview: ""helo..."")"
+14.0,exit,Exited with code 0,,
+13.0,exit,Exited with code 0,,
+12.0,exit,Exited with code 0,,
+11.0,exit,Exited with code 0,,
+10.0,exit,Exited with code 0,,
+4.0,write,"write(1, ""Executed ./simpleOut\n"", 21) = 21",,"Write (content preview: ""Executed ./simpleOut\n..."")"
+8.0,exit,Exited with code 0,,
+7.0,exit,Exited with code 0,,
+6.0,exit,Exited with code 0,,
+5.0,exit,Exited with code 0,,
+5.0,exit,Exited with code 0,,

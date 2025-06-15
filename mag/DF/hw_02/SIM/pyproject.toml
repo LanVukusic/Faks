@@ -1,0 +1,20 @@
+[project]
+name = "hw-02"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ipykernel>=6.29.5",
+    "matplotlib>=3.10.3",
+    "numpy>=2.3.0",
+    "pandas>=2.3.0",
+    "pyqt6>=6.9.1",
+    "pyserial>=3.5",
+    "serial>=0.0.97",
+]
+
+[tool.uv.sources]
+smpp-twisted3 = { git = "https://github.com/jookies/smpp.twisted" }
+asn1tools = { git = "https://github.com/osmocom/asn1tools" }
+smpp-pdu = { git = "https://github.com/hologram-io/smpp.pdu" }
