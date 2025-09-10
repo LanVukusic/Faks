@@ -40,6 +40,6 @@
     "@vitejs/plugin-react": "^2.2.0",
     "protoc-gen-grpc-web": "^1.5.0",
     "typescript": "^4.6.4",
-    "vite": "^3.2.3"
+    "vite": "^5.4.20"
   }
 }
