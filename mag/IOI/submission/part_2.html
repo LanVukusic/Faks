@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slovenia Municipalities: Students & Density</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.17.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0"></script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 10px;
+    }
+
+    #vis {
+      width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Municipalities of Slovenia: Population Density & Students</h1>
+  <div id="vis"></div>
+
+  <script>
+    Promise.all([
+      fetch('obcine.json').then(r => r.json()),
+      fetch('obcine.geojson').then(r => r.json())
+    ]).then(([tabularData, geojsonData]) => {
+      const spec = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "width": 800,
+        "height": 600,
+        "data": {
+          "values": geojsonData,
+          "format": { "type": "json", "property": "features" }
+        },
+        "transform": [
+          {
+            "lookup": "properties.OB_UIME",
+            "from": {
+              "data": { "values": tabularData },
+              "key": "obcina",
+              "fields": ["prebivalci", "studenti", "area", "centroid_lon", "centroid_lat"]
+            },
+            "as": ["prebivalci", "studenti", "area", "lon", "lat"]
+          },
+          {
+            "calculate": "datum.prebivalci / datum.area",
+            "as": "density"
+          }
+        ],
+        "projection": {
+          "type": "mercator",
+          "center": [15.0, 46.0],
+          "scale": 8000,
+          "translate": [400, 300]
+        },
+        "layer": [
+          {
+            "mark": {
+              "type": "geoshape",
+              "stroke": "white",
+              "strokeWidth": 0.5
+            },
+            "encoding": {
+              "color": {
+                "field": "density",
+                "type": "quantitative",
+                "scale": { "scheme": "blues" },
+                "legend": { "title": "Pop. Density (rel.)" }
+              },
+              "tooltip": [
+                { "field": "properties.OB_UIME", "type": "nominal", "title": "Municipality" },
+                { "field": "prebivalci", "type": "quantitative", "title": "Population" },
+                { "field": "studenti", "type": "quantitative", "title": "Students" },
+                { "field": "density", "type": "quantitative", "title": "Density", "format": ".2f" }
+              ]
+            }
+          },
+          {
+            "mark": {
+              "type": "circle",
+              "opacity": 0.8,
+              "stroke": "black",
+              "strokeWidth": 0.3
+            },
+            "encoding": {
+              "longitude": { "field": "lon", "type": "quantitative" },
+              "latitude": { "field": "lat", "type": "quantitative" },
+              "size": {
+                "field": "studenti",
+                "type": "quantitative",
+                "scale": { "range": [20, 300] },
+                "legend": { "title": "Number of Students" }
+              },
+              "color": { "value": "orange" },
+              "tooltip": [
+                { "field": "properties.OB_UIME", "type": "nominal", "title": "Municipality" },
+                { "field": "studenti", "type": "quantitative", "title": "Students" }
+              ]
+            }
+          }
+        ]
+      };
+
+      vegaEmbed('#vis', spec, { actions: true });
+    }).catch(err => {
+      console.error("Failed to load data:", err);
+      document.body.innerHTML += `<p style="color:red;text-align:center">Error loading data: ${err.message}</p>`;
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energy Consumption vs. Food Prices</title>
+  <!-- Vega dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.17.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 10px;
+    }
+
+    #vis {
+      width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Energy Consumption and Food Prices</h1>
+  <div id="vis"></div>
+  <script>
+    const spec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 800,
+      "height": 400,
+      "data": { "url": "combined_data.json" },
+      "layer": [
+        {
+          "mark": { "type": "line", "color": "steelblue" },
+          "encoding": {
+            "x": { "field": "date", "type": "temporal", "title": "Date" },
+            "y": { "field": "energy_consumption", "type": "quantitative", "title": "Energy Consumption (GWh)", "axis": { "orient": "left" } }
+          }
+        },
+        {
+          "mark": "line",
+          "encoding": {
+            "x": { "field": "date", "type": "temporal", "title": "Date" },
+            "y": { "field": "price_index", "type": "quantitative", "title": "Food Price Index", "axis": { "orient": "right" } },
+            "color": { "field": "food_item", "type": "nominal", "title": "Food Item" }
+          }
+        },
+        {
+          "params": [
+            {
+              "name": "hover",
+              "select": { "type": "point", "fields": ["date"], "nearest": true, "on": "mouseover", "clear": "mouseout" }
+            }
+          ],
+          "mark": { "type": "rule", "color": "gray" },
+          "encoding": {
+            "x": { "field": "date", "type": "temporal" },
+            "opacity": {
+              "condition": { "param": "hover", "empty": false, "value": 0.7 },
+              "value": 0
+            },
+            "tooltip": [
+              { "field": "date", "type": "temporal", "title": "Date", "format": "%Y-%m" },
+              { "field": "energy_consumption", "type": "quantitative", "title": "Energy Consumption", "format": ".2f" },
+              { "field": "food_item", "type": "nominal", "title": "Food Item" },
+              { "field": "price_index", "type": "quantitative", "title": "Price Index", "format": ".2f" }
+            ]
+          }
+        }
+      ],
+      "resolve": { "scale": { "y": "independent" } }
+    };
+    vegaEmbed('#vis', spec, { actions: true });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electricity Consumption Over Time</title>
+  <!-- Vega dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.17.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 10px;
+    }
+
+    #vis {
+      width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Electricity Consumption Over Time</h1>
+  <div id="vis"></div>
+  <script>
+    fetch('electricity_by_time.json')
+      .then(res => res.json())
+      .then(data => {
+        const spec = {
+          "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+          "data": { "values": data },
+          "width": 800,
+          "height": 400,
+          "layer": [
+            {
+              "mark": "line",
+              "selection": {
+                "brush": { "type": "interval", "encodings": ["x"] }
+              },
+              "encoding": {
+                "x": { "field": "date", "type": "temporal", "title": "Date" },
+                "y": { "field": "consumption", "type": "quantitative", "title": "Consumption (GWh)" }
+              }
+            },
+            {
+              "transform": [
+                { "filter": { "selection": "brush" } },
+                { "aggregate": [{ "op": "mean", "field": "consumption", "as": "mean_consumption" }] }
+              ],
+              "mark": "rule",
+              "encoding": {
+                "y": { "field": "mean_consumption", "type": "quantitative" },
+                "color": { "value": "red" },
+                "size": { "value": 2 }
+              }
+            }
+          ]
+        };
+        vegaEmbed('#vis', spec, { actions: true });
+      }).catch(err => console.error(err));
+  </script>
+</body>
+
+</html>

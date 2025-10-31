@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Part 1: Iris + PCA Visualization</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.17.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0"></script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      background: #fafafa;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .chart {
+      width: 500px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+    }
+
+    .loading {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Iris Dataset: Attributes & PCA Projection</h1>
+  <div class="container">
+    <div id="plot1" class="chart">
+      <div class="loading">Loading chart 1...</div>
+    </div>
+    <div id="plot2" class="chart">
+      <div class="loading">Loading chart 2...</div>
+    </div>
+    <div id="plot3" class="chart">
+      <div class="loading">Loading chart 3...</div>
+    </div>
+  </div>
+
+  <script>
+    // Helper: escape dot in field names for Vega-Lite
+    const esc = f => f.replace(/\./g, '\\.');
+
+    // Function to load data and render charts
+    async function loadDataAndRenderCharts () {
+      try {
+        // Wait for both data fetches to complete
+        const [dataResponse, lineResponse] = await Promise.all([
+          fetch('data.json'),
+          fetch('line.json')
+        ]);
+
+        // Check if responses are ok
+        if (!dataResponse.ok) throw new Error(`Failed to load data: ${dataResponse.status}`);
+        if (!lineResponse.ok) throw new Error(`Failed to load line: ${lineResponse.status}`);
+
+        // Parse JSON data
+        const data = await dataResponse.json();
+        const line = await lineResponse.json();
+
+        // Define chart specifications
+        const spec1 = {
+          "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+          "data": { "values": data },
+          "mark": "circle",
+          "encoding": {
+            "x": { "field": esc("sepal.length"), "type": "quantitative", "title": "Sepal Length" },
+            "y": { "field": esc("sepal.width"), "type": "quantitative", "title": "Sepal Width" },
+            "size": { "field": esc("petal.length"), "type": "quantitative", "title": "Petal Length" },
+            "color": { "field": "variety", "type": "nominal" },
+            "tooltip": [
+              { "field": esc("sepal.length"), "type": "quantitative" },
+              { "field": esc("sepal.width"), "type": "quantitative" },
+              { "field": esc("petal.length"), "type": "quantitative" },
+              { "field": "variety", "type": "nominal" }
+            ]
+          },
+          "title": "Plot 1: Sepal L vs W (size = Petal L)"
+        };
+
+        const spec2 = {
+          "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+          "data": { "values": data },
+          "mark": "point",
+          "encoding": {
+            "x": { "field": esc("petal.length"), "type": "quantitative", "title": "Petal Length" },
+            "y": { "field": esc("petal.width"), "type": "quantitative", "title": "Petal Width" },
+            "color": { "field": esc("sepal.length"), "type": "quantitative", "scale": { "scheme": "viridis" } },
+            "shape": { "field": "variety", "type": "nominal" },
+            "tooltip": [
+              { "field": esc("petal.length"), "type": "quantitative" },
+              { "field": esc("petal.width"), "type": "quantitative" },
+              { "field": esc("sepal.length"), "type": "quantitative" },
+              { "field": "variety", "type": "nominal" }
+            ]
+          },
+          "title": "Plot 2: Petal L vs W (color = Sepal L)"
+        };
+
+        const spec3 = {
+          "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+          "data": { "values": data },
+          "layer": [
+            // Layer 1: data points
+            {
+              "mark": "circle",
+              "encoding": {
+                "x": { "field": "PCA1", "type": "quantitative", "title": "PCA1" },
+                "y": { "field": "PCA2", "type": "quantitative", "title": "PCA2" },
+                "color": { "field": "variety", "type": "nominal" },
+                "tooltip": [
+                  { "field": "PCA1", "type": "quantitative" },
+                  { "field": "PCA2", "type": "quantitative" },
+                  { "field": "variety", "type": "nominal" }
+                ]
+              }
+            },
+            {
+              "data": { "values": line },
+              "mark": {
+                "type": "line",
+                "strokeDash": [4, 4],
+                "strokeWidth": 2,
+                "color": "black"
+              },
+              "encoding": {
+                "x": { "field": "x", "type": "quantitative" },
+                "y": { "field": "y", "type": "quantitative" },
+              }
+            }
+          ],
+          "title": "Plot 3: PCA Projection (line separates Setosa)"
+        };
+
+        // Embed all three charts
+        await Promise.all([
+          vegaEmbed('#plot1', spec1, { actions: false }),
+          vegaEmbed('#plot2', spec2, { actions: false }),
+          vegaEmbed('#plot3', spec3, { actions: false })
+        ]);
+
+      } catch (err) {
+        console.error("Error:", err);
+        document.body.innerHTML += `<p style="color:red;text-align:center">Failed to load data: ${err.message}</p>`;
+      }
+    }
+
+    // Start loading data and rendering charts
+    loadDataAndRenderCharts();
+  </script>
+</body>
+
+</html>
