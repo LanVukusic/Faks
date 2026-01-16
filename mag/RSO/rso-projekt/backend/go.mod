@@ -4,7 +4,7 @@ go 1.23.3
 
 require (
 	github.com/go-chi/chi v1.5.5 // indirect
-	github.com/go-chi/chi/v5 v5.1.0
+	github.com/go-chi/chi/v5 v5.2.2
 	github.com/jackc/pgx/v5 v5.7.2
 	github.com/prometheus/client_golang v1.20.5
 	github.com/swaggo/swag v1.16.4
