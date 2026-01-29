@@ -5,6 +5,6 @@
     "deploy": "functions deploy test --no-verify-jwt"
   },
   "dependencies": {
-    "supabase": "^2.2.1"
+    "supabase": "^2.72.9"
   }
 }
